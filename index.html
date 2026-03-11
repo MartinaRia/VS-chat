@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Martina Ria | Liquid Innovation V2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --base--light: #faf8f8;
+      --base-tint--light: #ffffff;
+      --base-shade--light: #e0dddb;
+      --base-opp--light: #161616;
+      --base-opp-tint--light: #1c1c1c;
+      --accent--light: #6298a8;
+      --accent-rgb--light: 98, 152, 168;
+      --additional--light: #9f8be7;
+      --additional-rgb--light: 159, 139, 231;
+      --neutral-transparent--light: rgba(255, 255, 255, 0.3);
+      --st-bright--light: #161616;
+      --st-medium--light: #7c7c7c;
+      --st-muted--light: #e0dddb;
+      --st-opp-bright--light: #ffffff;
+      --fw-regular--light: 400;
+      --fw-medium--light: 600;
+      --fw-semibold--light: 700;
+      --fw-bold--light: 800;
+      --fw-regular-opp--light: 300;
+      --fw-medium-opp--light: 500;
+      --t-bright--light: #161616;
+      --t-medium--light: #303030;
+      --t-muted--light: #585858;
+      --t-muted-extra--light: #b2aead;
+      --t-opp-bright--light: #ffffff;
+      --t-opp-medium--light: #acacac;
+      --t-opp-muted--light: #838383;
+      --bg: #f5f0e8;
+      --bg-alt: var(--base-tint--light);
+      --accent: var(--accent--light);
+      --accent-soft: rgba(var(--accent-rgb--light), 0.15);
+      --text: var(--t-bright--light);
+      --muted: var(--t-muted--light);
+      --card: var(--base-tint--light);
+      --border: var(--base-shade--light);
+      --danger: #c65b5b;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 18px 45px rgba(22, 22, 22, 0.08);
+      --max-width: 1120px;
+      --nav-height: 68px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #faf7f6 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* NAVBAR */
+
+    header {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%);
+      width: min(calc(100% - 32px), 760px);
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      border-radius: 999px;
+    }
+
+    .nav {
+      min-height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 8px 10px 8px 16px;
+      border: 1px solid rgba(224, 221, 219, 1);
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 999px;
+      box-shadow: 0 16px 40px rgba(22, 22, 22, 0.08);
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      font-size: 18px;
+    }
+
+    .nav-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 30% 20%, var(--base-tint--light), var(--accent--light) 42%, var(--base-opp--light));
+      box-shadow: 0 0 0 1px rgba(98, 152, 168, 0.22),
+        0 18px 40px rgba(22, 22, 22, 0.12);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      padding: 10px 16px;
+      border-radius: 999px;
+      transition: color 0.2s ease, background 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: rgba(98, 152, 168, 0.08);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pill {
+      font-size: 12px;
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(224, 221, 219, 1);
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn {
+      border-radius: var(--radius-pill);
+      padding: 13px 22px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease,
+        border-color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn svg {
+      width: 16px;
+      height: 16px;
+      flex: 0 0 16px;
+    }
+
+    .btn-primary {
+      background: var(--accent--light);
+      color: var(--t-opp-bright--light);
+      box-shadow: 0 12px 30px rgba(98, 152, 168, 0.26);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      background: #4f8392;
+      box-shadow: 0 18px 40px rgba(98, 152, 168, 0.32);
+    }
+
+    .btn-outline {
+      border-color: rgba(224, 221, 219, 1);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.56);
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(98, 152, 168, 0.45);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.96);
+    }
+
+    /* HERO */
+
+    main {
+      flex: 1;
+    }
+
+    .hero {
+      padding: 56px 0 40px;
+      background: linear-gradient(
+        180deg,
+        #faf7f6 0%,
+        rgba(98, 152, 168, 0.08) 58%,
+        #e1dedc 100%
+      );
+    }
+
+    .hero-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      border: 0;
+      color: var(--accent--light);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      margin-bottom: 22px;
+      font-weight: 700;
+    }
+
+    .hero-kicker-dot {
+      width: 18px;
+      height: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      line-height: 1;
+      flex: 0 0 auto;
+    }
+
+    .hero-kicker-dot svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 6vw, 5.1rem);
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+      margin-bottom: 16px;
+      max-width: 24ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, var(--accent--light), #78aebd 72%, var(--additional--light));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 600px;
+      margin-bottom: 22px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-meta-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(98, 152, 168, 0.7);
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      margin-top: -18px;
+    }
+
+    .hero-card {
+      width: 100%;
+      max-width: 245px;
+      aspect-ratio: 1 / 1;
+      display: grid;
+      place-items: center;
+      padding: 5px;
+      position: relative;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 999px;
+      border: 1px solid rgba(213, 207, 204, 0.8);
+      pointer-events: none;
+    }
+
+    .hero-image-wrap {
+      width: 78%;
+      aspect-ratio: 1 / 1;
+      margin: 0 auto;
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 18%;
+    }
+
+    .hero-orbit {
+      position: absolute;
+      inset: 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(213, 207, 204, 0.8);
+      pointer-events: none;
+    }
+
+    .section-divider {
+      height: 1px;
+      width: min(100% - 40px, var(--max-width));
+      margin: 0 auto;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 0, 0, 0.08),
+        transparent
+      );
+    }
+
+    /* SECTION GENERIC */
+
+    section {
+      padding: 56px 0;
+    }
+
+    .section-header {
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .section-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--accent--light);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+      line-height: 0.98;
+      max-width: none;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-subtitle {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* SERVIZI */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .service-card {
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      border: 1px solid rgba(224, 221, 219, 1);
+      box-shadow: 0 10px 24px rgba(22, 22, 22, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease,
+        border-color 0.12s ease, background 0.12s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 34px rgba(22, 22, 22, 0.08);
+      border-color: #c8c3c0;
+      background: rgba(255, 255, 255, 0.82);
+    }
+
+    .service-image {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(224, 221, 219, 1);
+      background: var(--base-shade--light);
+    }
+
+    .service-title {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .service-desc {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .service-tag {
+      font-size: 12px;
+      padding: 5px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(224, 221, 219, 1);
+      color: var(--muted);
+    }
+
+    /* CHI SONO */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about-text {
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 10px;
+      max-width: 560px;
+    }
+
+    .about-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .metric {
+      padding: 10px 12px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(224, 221, 219, 1);
+      font-size: 12px;
+      display: inline-flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 120px;
+    }
+
+    .metric strong {
+      font-size: 16px;
+    }
+
+    .about-card {
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 24px;
+      padding: 24px;
+      border: 1px solid rgba(224, 221, 219, 1);
+      box-shadow: var(--shadow-soft);
+    }
+
+    /* PORTFOLIO */
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .case-card {
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      border: 1px solid rgba(224, 221, 219, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .case-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .case-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .case-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .case-subheading {
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+
+    .case-list {
+      margin-left: 16px;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* TESTIMONIANZA */
+
+    .testimonial {
+      background: rgba(255, 255, 255, 0.52);
+      border-radius: 26px;
+      padding: 28px;
+      border: 1px solid rgba(224, 221, 219, 1);
+      box-shadow: var(--shadow-soft);
+      max-width: 720px;
+    }
+
+    .testimonial-quote {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .testimonial-name {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .testimonial-role {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* FAQ */
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 26px;
+      align-items: flex-start;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .faq-item {
+      padding: 16px 18px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(224, 221, 219, 1);
+      font-size: 13px;
+    }
+
+    .faq-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    .faq-item p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* CONTATTI */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 26px;
+      align-items: flex-start;
+    }
+
+    .contact-options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .contact-pill {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(224, 221, 219, 1);
+      font-size: 13px;
+    }
+
+    .contact-pill span:first-child {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .contact-pill a {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .contact-socials {
+      display: flex;
+      gap: 10px;
+      margin-top: 6px;
+      font-size: 13px;
+    }
+
+    .contact-socials a {
+      padding: 6px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(224, 221, 219, 1);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .contact-form {
+      background: rgba(255, 255, 255, 0.52);
+      border-radius: 24px;
+      padding: 24px 24px 26px;
+      border: 1px solid rgba(224, 221, 219, 1);
+      box-shadow: var(--shadow-soft);
+      font-size: 13px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .form-field {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    label {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    label span {
+      color: var(--danger);
+    }
+
+    input,
+    select,
+    textarea {
+      background: var(--base-tint--light);
+      border-radius: 10px;
+      border: 1px solid rgba(224, 221, 219, 1);
+      padding: 8px 10px;
+      color: var(--text);
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(98, 152, 168, 0.35);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-actions {
+      margin-top: 10px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid rgba(224, 221, 219, 1);
+      padding: 32px 0 120px;
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 8px;
+    }
+
+    .footer-socials a {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: 1px solid rgba(224, 221, 219, 1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .about-grid,
+      .faq-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 76px;
+      }
+
+      .hero-card {
+        max-width: 227px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      header {
+        top: 0;
+        bottom: auto;
+        width: 100%;
+        transform: none;
+        left: 0;
+        padding: 12px 16px 0;
+      }
+
+      .nav {
+        border-radius: 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-left {
+        font-size: 16px;
+      }
+
+      .hero-title {
+        font-size: 46px;
+      }
+
+      .services-grid,
+      .cases-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .nav {
+        gap: 12px;
+      }
+
+      .hero {
+        padding-top: 96px;
+      }
+
+      .section-title {
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="container nav">
+        <div class="nav-left">
+          <div class="nav-logo"></div>
+          <span>MR</span>
+        </div>
+        <nav class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#servizi">Servizi</a>
+          <a href="#chi-sono">Chi Sono</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contatti">Contatti</a>
+        </nav>
+        <div class="nav-right">
+          <a
+            class="btn btn-outline"
+            href="https://calendar.app.google/pb9KF4MJrXB4ZnHZ6"
+            target="_blank"
+            rel="noopener"
+            >Prenota</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section id="home" class="hero">
+        <div class="container hero-grid">
+          <div class="hero-visual">
+            <div class="hero-card">
+              <div class="hero-image-wrap">
+                <img
+                  src="assets/martina_ria.jpg"
+                  alt="Ritratto professionale di Martina Ria"
+                />
+              </div>
+              <div class="hero-orbit"></div>
+            </div>
+          </div>
+          <div class="hero-content">
+            <div class="hero-kicker">
+              <span class="hero-kicker-dot" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M10 2.25 4.75 4.5v4.12c0 4.03 2.4 7.74 6.12 9.43a.92.92 0 0 0 .76 0c3.72-1.69 6.12-5.4 6.12-9.43V4.5L10 2.25Z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="m7.9 10.15 1.43 1.42 2.77-3.2"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+              <span>Innovation Manager · Digital Transformation</span>
+            </div>
+            <h1 class="hero-title">
+              CREO VALORE DOVE GLI ALTRI VEDONO <span>COMPLESSITÀ</span>
+            </h1>
+            <p class="hero-subtitle">
+              Aiuto le aziende a creare e redistribuire valore attraverso
+              l’ottimizzazione dei processi, l’attrazione di nuovi mercati,
+              l’integrazione di strumenti innovativi e il miglioramento
+              dell’efficienza digitale.
+            </p>
+            <div class="hero-actions">
+              <a
+                class="btn btn-primary"
+                href="https://calendar.app.google/pb9KF4MJrXB4ZnHZ6"
+                target="_blank"
+                rel="noopener"
+                ><svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M8 2V5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M16 2V5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M3.5 9H20.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                  <rect
+                    x="3.5"
+                    y="4.5"
+                    width="17"
+                    height="16"
+                    rx="3"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  />
+                </svg>Prenota una Sessione</a
+              >
+              <a class="btn btn-outline" href="#servizi">Scopri i Servizi</a>
+            </div>
+            <div class="hero-meta">
+              <span><span class="hero-meta-dot"></span> Innovation Management</span>
+              <span><span class="hero-meta-dot"></span> Digital Strategy</span>
+              <span><span class="hero-meta-dot"></span> AI &amp; Automazioni</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="section-divider"></div>
+
+      <!-- SERVIZI -->
+      <section id="servizi">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-kicker">Servizi</div>
+            <h2 class="section-title">Come posso aiutarti?</h2>
+            <p class="section-subtitle">
+              Ogni sfida digitale ha una soluzione. Il modo migliore per trovarla
+              è partire da una domanda concreta.
+            </p>
+          </div>
+
+          <div class="services-grid">
+            <!-- 1 -->
+            <a
+              class="service-card"
+              href="https://innovation-manager.base44.app/Servizi?service=creazione-siti-web"
+            >
+              <div class="service-image">
+                <img
+                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69afe1183f5c98a1f23a4d5f/405eb8f00_generated_ca4509c0.png"
+                  alt="Creazione e ristrutturazione siti web"
+                />
+              </div>
+              <div class="service-title">
+                Come posso creare o migliorare il mio sito web?
+              </div>
+              <div class="service-desc">
+                Il modo migliore per creare o migliorare un sito web è partire da
+                un’analisi strategica che allinei design, contenuti e tecnologia
+                agli obiettivi di business.
+              </div>
+              <div class="service-tags">
+                <span class="service-tag">Web Design</span>
+                <span class="service-tag">SEO</span>
+                <span class="service-tag">UX/UI</span>
+                <span class="service-tag">Performance</span>
+              </div>
+            </a>
+
+            <!-- 2 -->
+            <a
+              class="service-card"
+              href="https://innovation-manager.base44.app/Servizi?service=creazione-web-app"
+            >
+              <div class="service-title">
+                Come posso sviluppare una web app per la mia azienda?
+              </div>
+              <div class="service-desc">
+                Il modo migliore per sviluppare una web app aziendale è definire
+                chiaramente i processi da digitalizzare e progettare un’applicazione
+                su misura.
+              </div>
+              <div class="service-tags">
+                <span class="service-tag">Web App</span>
+                <span class="service-tag">SaaS</span>
+                <span class="service-tag">Cloud</span>
+                <span class="service-tag">Custom</span>
+              </div>
+            </a>
+
+            <!-- 3 -->
+            <a
+              class="service-card"
+              href="https://innovation-manager.base44.app/Servizi?service=creazione-ecommerce"
+            >
+              <div class="service-title">
+                Come posso vendere online con un e-commerce efficace?
+              </div>
+              <div class="service-desc">
+                Il modo migliore per vendere online è creare un e-commerce
+                ottimizzato per la conversione, con un’esperienza d’acquisto
+                fluida e una strategia di marketing integrata.
+              </div>
+              <div class="service-tags">
+                <span class="service-tag">E-commerce</span>
+                <span class="service-tag">Vendite Online</span>
+                <span class="service-tag">Checkout</span>
+                <span class="service-tag">Marketing</span>
+              </div>
+            </a>
+
+            <!-- 4 -->
+            <a
+              class="service-card"
+              href="https://innovation-manager.base44.app/Servizi?service=integrazione-ai"
+            >
+              <div class="service-image">
+                <img
+                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69afe1183f5c98a1f23a4d5f/aefb16128_generated_5382cc7a.png"
+                  alt="Integrazione AI nei processi aziendali"
+                />
+              </div>
+              <div class="service-title">
+                Come posso ottimizzare i processi aziendali con l’AI?
+              </div>
+              <div class="service-desc">
+                Il modo migliore per ottimizzare i processi è l’integrazione di
+                soluzioni AI autonome che automatizzano i flussi decisionali e le
+                attività ripetitive.
+              </div>
+              <div class="service-tags">
+                <span class="service-tag">AI</span>
+                <span class="service-tag">Machine Learning</span>
+                <span class="service-tag">Automazione</span>
+                <span class="service-tag">Efficienza</span>
+              </div>
+            </a>
+
+            <!-- 5 -->
+            <a
+              class="service-card"
+              href="https://innovation-manager.base44.app/Servizi?service=analisi-performance"
+            >
+              <div class="service-title">
+                Come posso migliorare le performance del mio sito?
+              </div>
+              <div class="service-desc">
+                Il modo migliore per migliorare le performance è un’analisi
+                tecnica approfondita che valuti velocità, SEO, user experience e
+                tasso di conversione.
+              </div>
+              <div class="service-tags">
+                <span class="service-tag">Performance</span>
+                <span class="service-tag">Analytics</span>
+                <span class="service-tag">SEO Tecnico</span>
+                <span class="service-tag">Core Web Vitals</span>
+              </div>
+            </a>
+
+            <!-- 6 -->
+            <a
+              class="service-card"
+              href="https://innovation-manager.base44.app/Servizi?service=project-management"
+            >
+              <div class="service-image">
+                <img
+                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69afe1183f5c98a1f23a4d5f/149e5c887_generated_98c3c8c8.png"
+                  alt="Project Management"
+                />
+              </div>
+              <div class="service-title">
+                Come posso gestire efficacemente i miei progetti digitali?
+              </div>
+              <div class="service-desc">
+                Il modo migliore per gestire progetti digitali è adottare
+                metodologie agili con milestone chiari, comunicazione strutturata
+                e controllo costante dei risultati.
+              </div>
+              <div class="service-tags">
+                <span class="service-tag">Agile</span>
+                <span class="service-tag">Scrum</span>
+                <span class="service-tag">Delivery</span>
+                <span class="service-tag">Stakeholder</span>
+              </div>
+            </a>
+
+            <!-- 7 -->
+            <a
+              class="service-card"
+              href="https://innovation-manager.base44.app/Servizi?service=program-management"
+            >
+              <div class="service-title">
+                Come posso coordinare più progetti digitali contemporaneamente?
+              </div>
+              <div class="service-desc">
+                Il modo migliore per coordinare programmi complessi è avere una
+                visione strategica integrata che allinei tutti i progetti agli
+                obiettivi aziendali.
+              </div>
+              <div class="service-tags">
+                <span class="service-tag">Governance</span>
+                <span class="service-tag">Strategia</span>
+                <span class="service-tag">Portfolio</span>
+                <span class="service-tag">Coordinamento</span>
+              </div>
+            </a>
+
+            <!-- 8 -->
+            <a
+              class="service-card"
+              href="https://innovation-manager.base44.app/Servizi?service=innovation-management"
+            >
+              <div class="service-title">
+                Come posso innovare la mia azienda in modo strutturato?
+              </div>
+              <div class="service-desc">
+                Il modo migliore per innovare è adottare un approccio sistematico
+                che identifichi opportunità, valuti la fattibilità e implementi
+                soluzioni in modo iterativo.
+              </div>
+              <div class="service-tags">
+                <span class="service-tag">Innovazione</span>
+                <span class="service-tag">Strategy</span>
+                <span class="service-tag">R&amp;D</span>
+                <span class="service-tag">Roadmap</span>
+              </div>
+            </a>
+
+            <!-- 9 -->
+            <a
+              class="service-card"
+              href="https://innovation-manager.base44.app/Servizi?service=agenti-ai"
+            >
+              <div class="service-title">
+                Cosa sono gli Agenti AI e come possono aiutare la mia azienda?
+              </div>
+              <div class="service-desc">
+                Gli Agenti AI sono sistemi autonomi capaci di eseguire compiti
+                specifici, dal customer service all’analisi dati, scalando le
+                operazioni senza aumentare il personale.
+              </div>
+              <div class="service-tags">
+                <span class="service-tag">Agenti AI</span>
+                <span class="service-tag">Chatbot</span>
+                <span class="service-tag">Automazione</span>
+                <span class="service-tag">NLP</span>
+              </div>
+            </a>
+
+            <!-- 10 -->
+            <a
+              class="service-card"
+              href="https://innovation-manager.base44.app/Servizi?service=automazioni-processi"
+            >
+              <div class="service-title">
+                Come posso automatizzare i processi digitali della mia azienda?
+              </div>
+              <div class="service-desc">
+                Il modo migliore per automatizzare è mappare i processi attuali,
+                identificare le inefficienze e implementare workflow automatizzati
+                che eliminino le attività ripetitive.
+              </div>
+              <div class="service-tags">
+                <span class="service-tag">Workflow</span>
+                <span class="service-tag">RPA</span>
+                <span class="service-tag">Integrazione</span>
+                <span class="service-tag">Efficienza</span>
+              </div>
+            </a>
+
+            <!-- 11 -->
+            <a
+              class="service-card"
+              href="https://innovation-manager.base44.app/Servizi?service=trasformazione-digitale"
+            >
+              <div class="service-title">
+                Come posso guidare la trasformazione digitale della mia azienda?
+              </div>
+              <div class="service-desc">
+                Il modo migliore per affrontare la trasformazione digitale è avere
+                una roadmap chiara che bilanci innovazione tecnologica, cambiamento
+                organizzativo e obiettivi di business.
+              </div>
+              <div class="service-tags">
+                <span class="service-tag">Digital Strategy</span>
+                <span class="service-tag">Change Management</span>
+                <span class="service-tag">Assessment</span>
+                <span class="service-tag">Roadmap</span>
+              </div>
+            </a>
+
+            <!-- 12 -->
+            <a
+              class="service-card"
+              href="https://innovation-manager.base44.app/Servizi?service=strumenti-collaborazione"
+            >
+              <div class="service-image">
+                <img
+                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69afe1183f5c98a1f23a4d5f/5c8161144_generated_02830ab7.png"
+                  alt="Strumenti di collaborazione"
+                />
+              </div>
+              <div class="service-title">
+                Come posso migliorare la collaborazione nel mio team?
+              </div>
+              <div class="service-desc">
+                Il modo migliore per migliorare la collaborazione è selezionare e
+                integrare gli strumenti giusti che si adattino ai flussi di lavoro
+                del tuo team.
+              </div>
+              <div class="service-tags">
+                <span class="service-tag">Collaboration</span>
+                <span class="service-tag">Team</span>
+                <span class="service-tag">Produttività</span>
+                <span class="service-tag">Integrazione</span>
+              </div>
+            </a>
+
+            <!-- 13 -->
+            <a
+              class="service-card"
+              href="https://innovation-manager.base44.app/Servizi?service=scelta-software"
+            >
+              <div class="service-title">
+                Come scelgo il software giusto per la mia azienda?
+              </div>
+              <div class="service-desc">
+                Il modo migliore per scegliere un software è analizzare le esigenze
+                specifiche, confrontare le opzioni disponibili e valutare costi,
+                scalabilità e integrazioni.
+              </div>
+              <div class="service-tags">
+                <span class="service-tag">Software Selection</span>
+                <span class="service-tag">Benchmark</span>
+                <span class="service-tag">POC</span>
+                <span class="service-tag">Implementazione</span>
+              </div>
+            </a>
+
+            <!-- 14 -->
+            <a
+              class="service-card"
+              href="https://innovation-manager.base44.app/Servizi?service=scelta-gestionale"
+            >
+              <div class="service-title">
+                Come scelgo il gestionale aziendale più adatto?
+              </div>
+              <div class="service-desc">
+                Il modo migliore per scegliere un gestionale è partire dalla
+                mappatura dei processi attuali e confrontare le soluzioni con i
+                requisiti specifici dell’azienda.
+              </div>
+              <div class="service-tags">
+                <span class="service-tag">ERP</span>
+                <span class="service-tag">CRM</span>
+                <span class="service-tag">Gestionale</span>
+                <span class="service-tag">Migrazione</span>
+              </div>
+            </a>
+
+            <!-- 15 -->
+            <a
+              class="service-card"
+              href="https://innovation-manager.base44.app/Servizi?service=build-or-buy"
+            >
+              <div class="service-title">
+                Quando conviene sviluppare internamente vs acquistare un software?
+              </div>
+              <div class="service-desc">
+                La scelta tra Build or Buy dipende dal budget, dalla specificità
+                delle esigenze, dalle competenze interne e dalla tempistica. Un’analisi
+                strutturata è il modo migliore per decidere.
+              </div>
+              <div class="service-tags">
+                <span class="service-tag">Build vs Buy</span>
+                <span class="service-tag">TCO</span>
+                <span class="service-tag">Strategia</span>
+                <span class="service-tag">Analisi</span>
+              </div>
+            </a>
+
+            <!-- 16 -->
+            <a
+              class="service-card"
+              href="https://innovation-manager.base44.app/Servizi?service=vendor-selection"
+            >
+              <div class="service-title">
+                Come posso trovare il fornitore tecnologico giusto?
+              </div>
+              <div class="service-desc">
+                Il modo migliore per selezionare un vendor è definire criteri
+                oggettivi di valutazione e condurre un processo strutturato di
+                scouting e comparazione.
+              </div>
+              <div class="service-tags">
+                <span class="service-tag">Vendor</span>
+                <span class="service-tag">Procurement</span>
+                <span class="service-tag">RFP</span>
+                <span class="service-tag">Negoziazione</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+      <div class="section-divider"></div>
+
+      <!-- CHI SONO -->
+      <section id="chi-sono">
+        <div class="container about-grid">
+          <div>
+            <div class="section-kicker">Chi Sono</div>
+            <h2 class="section-title">Martina Ria</h2>
+            <p class="about-text">
+              Sono un’Innovation Manager specializzata in trasformazione digitale e
+              consulenza per l’innovazione. Il mio obiettivo è aiutare le aziende a
+              creare o redistribuire valore ottimizzando processi, integrando
+              strumenti innovativi e migliorando l’efficienza digitale.
+            </p>
+            <p class="about-text">
+              Il modo migliore per affrontare la trasformazione digitale è avere al
+              tuo fianco un consulente che conosce sia la tecnologia che il
+              business, capace di tradurre la complessità in soluzioni fluide e
+              concrete.
+            </p>
+            <div class="about-metrics">
+              <div class="metric">
+                <strong>50+</strong>
+                <span>Progetti Completati</span>
+              </div>
+              <div class="metric">
+                <strong>100%</strong>
+                <span>Approccio Personalizzato</span>
+              </div>
+              <div class="metric">
+                <strong>360°</strong>
+                <span>Visione Integrata</span>
+              </div>
+              <div class="metric">
+                <strong>∞</strong>
+                <span>Innovazione Continua</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-card">
+            <div class="section-kicker">Innovation Manager</div>
+            <p class="about-text">
+              Strategia digitale, gestione di progetti complessi, integrazione di
+              AI e automazioni: accompagno le aziende in percorsi di innovazione
+              misurabile, con un approccio concreto e orientato ai risultati.
+            </p>
+          </div>
+        </div>
+      </section>
+      <div class="section-divider"></div>
+
+      <!-- PORTFOLIO -->
+      <section id="portfolio">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-kicker">Portfolio</div>
+            <h2 class="section-title">Casi Studio</h2>
+            <p class="section-subtitle">
+              Progetti che hanno generato impatto misurabile. Dalla sfida alla
+              soluzione, fino ai risultati concreti.
+            </p>
+          </div>
+
+          <div class="cases-grid">
+            <!-- Case 1 -->
+            <div class="case-card">
+              <div class="case-label">Digitalizzazione Processi Aziendali</div>
+              <div class="case-title">PMI Settore Manifatturiero</div>
+              <div class="case-subheading">Sfida</div>
+              <p class="case-sub">
+                Processi manuali e dispersione documentale causavano ritardi
+                operativi e perdita di dati critici.
+              </p>
+              <div class="case-subheading">Soluzione</div>
+              <p class="case-sub">
+                Implementazione di un sistema di workflow automation integrato con
+                gestionale ERP esistente, utilizzando tecnologie low-code e API
+                custom.
+              </p>
+              <div class="case-subheading">Risultati</div>
+              <ul class="case-list">
+                <li>Riduzione del 65% dei tempi di elaborazione ordini</li>
+                <li>Eliminazione totale degli errori di inserimento dati</li>
+                <li>ROI raggiunto in 8 mesi</li>
+              </ul>
+            </div>
+
+            <!-- Case 2 -->
+            <div class="case-card">
+              <div class="case-label">E-commerce B2B ad Alte Performance</div>
+              <div class="case-title">Distributore Settore Elettronica</div>
+              <div class="case-subheading">Sfida</div>
+              <p class="case-sub">
+                Necessità di piattaforma e-commerce scalabile per gestire catalogo
+                di 50.000+ prodotti con prezzi personalizzati per cliente.
+              </p>
+              <div class="case-subheading">Soluzione</div>
+              <p class="case-sub">
+                Sviluppo di piattaforma e-commerce custom con integrazione
+                real-time al gestionale, ottimizzazione SEO tecnica e sistema di
+                pricing dinamico.
+              </p>
+              <div class="case-subheading">Risultati</div>
+              <ul class="case-list">
+                <li>Incremento del 180% nelle vendite online</li>
+                <li>Tempo di caricamento pagine &lt; 1.2s</li>
+                <li>4.500+ ordini mensili automatizzati</li>
+              </ul>
+            </div>
+
+            <!-- Case 3 -->
+            <div class="case-card">
+              <div class="case-label">Integrazione AI per Customer Service</div>
+              <div class="case-title">Azienda SaaS</div>
+              <div class="case-subheading">Sfida</div>
+              <p class="case-sub">
+                Volume crescente di richieste cliente con team di supporto saturo e
+                tempi di risposta lunghi.
+              </p>
+              <div class="case-subheading">Soluzione</div>
+              <p class="case-sub">
+                Implementazione di Agente AI conversazionale integrato con
+                knowledge base aziendale, escalation automatica ai team umani per
+                casi complessi.
+              </p>
+              <div class="case-subheading">Risultati</div>
+              <ul class="case-list">
+                <li>70% delle richieste gestite autonomamente dall’AI</li>
+                <li>Tempo medio di risposta ridotto a &lt; 2 minuti</li>
+                <li>Customer satisfaction +35%</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="section-divider"></div>
+
+      <!-- TESTIMONIANZE -->
+      <section id="testimonianze">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-kicker">Testimonianze</div>
+            <h2 class="section-title">Cosa dicono i clienti</h2>
+          </div>
+          <div class="testimonial">
+            <p class="testimonial-quote">
+              “Martina ha trasformato completamente il nostro approccio alla
+              digitalizzazione. In 6 mesi abbiamo automatizzato processi che ci
+              facevano perdere ore ogni giorno. Il ROI è stato immediato.”
+            </p>
+            <div class="testimonial-name">Marco Bellini</div>
+            <div class="testimonial-role">CEO · TechFlow Solutions</div>
+          </div>
+        </div>
+      </section>
+      <div class="section-divider"></div>
+
+      <!-- FAQ -->
+      <section id="faq">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-kicker">FAQ</div>
+            <h2 class="section-title">Domande Frequenti</h2>
+            <p class="section-subtitle">
+              Le risposte alle domande più comuni sulla trasformazione digitale e i
+              servizi di Innovation Management.
+            </p>
+          </div>
+          <div class="faq-grid">
+          <div class="faq-list">
+            <div class="faq-item">
+              <strong
+                >Cos’è un Innovation Manager e come può aiutare la mia
+                azienda?</strong
+              >
+              <p>
+                Un Innovation Manager è un professionista che guida le aziende
+                nella trasformazione digitale, identificando opportunità di
+                innovazione e implementando soluzioni concrete. Il modo migliore
+                per capire se la tua azienda ne ha bisogno è valutare se i tuoi
+                processi sono efficienti, se sfrutti le tecnologie più adatte e se
+                la tua strategia digitale è allineata agli obiettivi di business.
+              </p>
+            </div>
+            <div class="faq-item">
+              <strong
+                >Qual è il vantaggio dell’integrazione AI nei processi
+                aziendali?</strong
+              >
+              <p>
+                L’AI permette di automatizzare attività ripetitive, migliorare la
+                qualità delle decisioni e liberare tempo per attività a maggior
+                valore aggiunto, aumentando efficienza e scalabilità.
+              </p>
+            </div>
+            <div class="faq-item">
+              <strong
+                >Come scelgo tra sviluppare un software internamente o
+                acquistarne uno esistente (Build or Buy)?</strong
+              >
+              <p>
+                Dipende da budget, specificità delle esigenze, competenze interne e
+                tempistiche. Un’analisi strutturata dei trade-off è fondamentale
+                per prendere la decisione corretta.
+              </p>
+            </div>
+          </div>
+          </div>
+        </div>
+      </section>
+      <div class="section-divider"></div>
+
+      <!-- CONTATTI -->
+      <section id="contatti">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-kicker">Contatti</div>
+            <h2 class="section-title">Iniziamo a parlare</h2>
+            <p class="section-subtitle">
+              Hai un progetto in mente o vuoi esplorare nuove possibilità per la
+              tua azienda? Scegli il modo che preferisci per contattarmi.
+            </p>
+          </div>
+          <div class="contact-grid">
+          <div>
+            <div class="contact-options">
+              <div class="contact-pill">
+                <span>Prenota una Sessione</span>
+                <a
+                  href="https://calendar.app.google/pb9KF4MJrXB4ZnHZ6"
+                  target="_blank"
+                  rel="noopener"
+                  >Consulenza gratuita di 30 minuti</a
+                >
+              </div>
+              <div class="contact-pill">
+                <span>Email</span>
+                <a href="mailto:martina.ria@hotmail.com"
+                  >martina.ria@hotmail.com</a
+                >
+              </div>
+              <div class="contact-socials">
+                <a
+                  href="https://www.instagram.com/ria_martina_/"
+                  target="_blank"
+                  rel="noopener"
+                  >Instagram</a
+                >
+                <a
+                  href="https://www.linkedin.com/in/martina-ria/"
+                  target="_blank"
+                  rel="noopener"
+                  >LinkedIn</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form">
+            <form>
+              <div class="form-row">
+                <div class="form-field">
+                  <label>Nome <span>*</span></label>
+                  <input type="text" name="nome" required />
+                </div>
+                <div class="form-field">
+                  <label>Email <span>*</span></label>
+                  <input type="email" name="email" required />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-field">
+                  <label>Azienda</label>
+                  <input type="text" name="azienda" />
+                </div>
+                <div class="form-field">
+                  <label>Servizio di Interesse</label>
+                  <select name="servizio">
+                    <option value="">Seleziona un servizio</option>
+                    <option>Creazione e ristrutturazione siti web</option>
+                    <option>Creazione web app</option>
+                    <option>Creazione e-commerce</option>
+                    <option>Integrazione AI nei processi aziendali</option>
+                    <option>Analisi performance siti web</option>
+                    <option>Project / Program Management</option>
+                    <option>Innovation Management</option>
+                    <option>Agenti AI</option>
+                    <option>Automazioni processi digitali</option>
+                    <option>Trasformazione Digitale</option>
+                    <option>Scelta o Sostituzione Software/Gestionale</option>
+                    <option>Altro</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-field">
+                <label>Messaggio <span>*</span></label>
+                <textarea name="messaggio" required></textarea>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                  Invia Messaggio
+                </button>
+              </div>
+            </form>
+          </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-row">
+        <div>
+          <strong>MARTINA RIA</strong> · Innovation Manager · Digital Transformation
+          Consultant<br />
+          © 2026 Martina Ria. Tutti i diritti riservati.
+        </div>
+        <div class="footer-socials">
+          <a
+            href="https://www.instagram.com/ria_martina_/"
+            target="_blank"
+            rel="noopener"
+            >IG</a
+          >
+          <a
+            href="https://www.linkedin.com/in/martina-ria/"
+            target="_blank"
+            rel="noopener"
+            >IN</a
+          >
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chi Sono | Martina Ria</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --base--light: #faf8f8;
+      --base-tint--light: #ffffff;
+      --base-shade--light: #d9d4d2;
+      --base-opp--light: #161616;
+      --accent--light: #6298a8;
+      --t-bright--light: #161616;
+      --t-muted--light: #5d5a59;
+      --t-soft--light: #8c8885;
+      --t-opp-bright--light: #ffffff;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 18px 45px rgba(22, 22, 22, 0.08);
+      --max-width: 1120px;
+      --nav-height: 68px;
+      --page-bg: #f3efee;
+      --card-bg: rgba(255, 255, 255, 0.52);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: var(--page-bg);
+      color: var(--t-bright--light);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%);
+      width: min(calc(100% - 32px), 760px);
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      border-radius: 999px;
+    }
+
+    .nav {
+      min-height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 8px 10px 8px 16px;
+      border: 1px solid rgba(224, 221, 219, 1);
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 999px;
+      box-shadow: 0 16px 40px rgba(22, 22, 22, 0.08);
+    }
+
+    .nav-left,
+    .nav-right,
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-logo {
+      width: 100px;
+      height: 35px;
+      object-fit: contain;
+      flex: 0 0 auto;
+    }
+
+    .nav-links {
+      gap: 4px;
+      font-size: 14px;
+      color: var(--t-muted--light);
+    }
+
+    .nav-links a {
+      padding: 10px 16px;
+      border-radius: 999px;
+      transition: color 0.2s ease, background 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.is-active {
+      color: var(--t-opp-bright--light);
+      background: #171717;
+    }
+
+    .btn {
+      border-radius: var(--radius-pill);
+      padding: 13px 22px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease,
+        border-color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent--light), #568998);
+      color: var(--t-opp-bright--light);
+      box-shadow: 0 12px 30px rgba(98, 152, 168, 0.28);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 36px rgba(98, 152, 168, 0.34);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.55);
+      border-color: rgba(224, 221, 219, 1);
+      color: var(--t-bright--light);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.88);
+    }
+
+    main {
+      flex: 1;
+      padding: 68px 0 190px;
+    }
+
+    .about-page {
+      padding-top: 40px;
+    }
+
+    .intro {
+      max-width: 760px;
+      margin-bottom: 64px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.34em;
+      color: var(--accent--light);
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 4.5rem);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+      margin-bottom: 18px;
+    }
+
+    .lead {
+      max-width: 700px;
+      font-size: clamp(1.18rem, 2vw, 1.95rem);
+      line-height: 1.28;
+      color: #2c2a2a;
+    }
+
+    .content-stack {
+      display: grid;
+      gap: 56px;
+    }
+
+    .panel,
+    .contact-card {
+      background: var(--card-bg);
+      border: 1px solid var(--base-shade--light);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 12px 28px rgba(22, 22, 22, 0.03);
+    }
+
+    .panel {
+      padding: 28px 28px 24px;
+    }
+
+    .panel h2,
+    .section-heading {
+      font-size: clamp(1.7rem, 3vw, 2.1rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 22px;
+    }
+
+    .mission-copy {
+      display: grid;
+      gap: 14px;
+      color: var(--t-muted--light);
+      font-size: 16px;
+      max-width: 920px;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 24px;
+      padding-left: 24px;
+      max-width: 920px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: rgba(217, 212, 210, 1);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -24px;
+      top: 7px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent--light);
+      box-shadow: 0 0 0 6px rgba(98, 152, 168, 0.14);
+    }
+
+    .timeline-item h3 {
+      font-size: 1.05rem;
+      margin-bottom: 4px;
+    }
+
+    .timeline-item p {
+      color: var(--t-muted--light);
+      font-size: 15px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      padding: 10px 15px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--base-shade--light);
+      background: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+      color: #2f2c2b;
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .cert-card {
+      padding: 20px 18px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--base-shade--light);
+      background: rgba(255, 255, 255, 0.58);
+      min-height: 132px;
+    }
+
+    .cert-card h3 {
+      font-size: 1rem;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+
+    .cert-card .issuer {
+      color: var(--t-muted--light);
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .cert-card .date {
+      color: var(--t-soft--light);
+      font-size: 13px;
+    }
+
+    .contact-card {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-card p {
+      color: var(--t-muted--light);
+      max-width: 720px;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .social-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--base-shade--light);
+      background: rgba(255, 255, 255, 0.72);
+      font-size: 14px;
+    }
+
+    .social-pill svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 36px 0 12px;
+    }
+
+    .cta h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.04em;
+      line-height: 1.02;
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      max-width: 700px;
+      margin: 0 auto 22px;
+      color: var(--t-muted--light);
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(224, 221, 219, 1);
+      padding: 32px 0 120px;
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--t-muted--light);
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 8px;
+    }
+
+    .footer-socials a {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: 1px solid rgba(224, 221, 219, 1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--t-muted--light);
+    }
+
+    @media (max-width: 900px) {
+      .cert-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 780px) {
+      main {
+        padding-top: 42px;
+      }
+
+      .about-page {
+        padding-top: 32px;
+      }
+
+      .intro {
+        margin-bottom: 52px;
+      }
+
+      .content-stack {
+        gap: 44px;
+      }
+
+      header {
+        width: min(calc(100% - 20px), 760px);
+      }
+
+      .nav {
+        justify-content: center;
+        padding: 10px 12px;
+      }
+
+      .nav-left {
+        display: none;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        font-size: 13px;
+      }
+
+      .nav-right {
+        display: none;
+      }
+
+      .panel,
+      .contact-card {
+        padding: 22px 20px;
+      }
+
+      .footer-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        padding: 0 16px;
+      }
+
+      .lead {
+        font-size: 1.05rem;
+      }
+
+      .timeline {
+        padding-left: 20px;
+      }
+
+      .timeline-item {
+        padding-left: 16px;
+      }
+
+      .timeline-item::before {
+        left: -20px;
+      }
+
+      .cta-actions,
+      .contact-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn,
+      .social-pill {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="container nav">
+        <div class="nav-left">
+          <img class="nav-logo" src="assets/logo-martina-ria.png" alt="Logo Martina Ria" />
+        </div>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="servizi.html">Servizi</a>
+          <a class="is-active" href="chi-sono.html">Chi Sono</a>
+          <a href="index.html#faq">FAQ</a>
+          <a href="index.html#contatti">Contatti</a>
+        </nav>
+        <div class="nav-right">
+          <a
+            class="btn btn-primary"
+            href="https://calendar.app.google/pb9KF4MJrXB4ZnHZ6"
+            target="_blank"
+            rel="noopener"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 3.5v3"></path>
+              <path d="M16 3.5v3"></path>
+              <path d="M4.5 9h15"></path>
+              <rect x="4" y="5.5" width="16" height="14.5" rx="2.5"></rect>
+            </svg>
+            Prenota
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container about-page">
+        <section class="intro">
+          <div class="eyebrow">Chi Sono</div>
+          <h1>Martina Ria</h1>
+          <p class="lead">
+            Innovation Manager specializzata nella trasformazione digitale e nella
+            consulenza per l'innovazione aziendale.
+          </p>
+        </section>
+
+        <div class="content-stack">
+          <section class="panel" aria-labelledby="missione-title">
+            <h2 id="missione-title">La Mia Missione</h2>
+            <div class="mission-copy">
+              <p>
+                Aiuto le aziende a creare o redistribuire valore ottimizzando processi,
+                inventando o integrando strumenti nuovi o meglio configurati nella loro
+                catena del valore, migliorando l'efficienza digitale e il web marketing.
+              </p>
+              <p>
+                Il modo migliore per affrontare la complessita del mondo digitale e avere
+                al proprio fianco un consulente che conosce sia la tecnologia che il
+                business. La mia esperienza mi permette di tradurre le esigenze aziendali
+                in soluzioni concrete, fluide e scalabili.
+              </p>
+              <p>
+                Credo che l'innovazione non sia un evento, ma un processo continuo. Ogni
+                azienda ha un potenziale nascosto che aspetta solo di essere attivato con
+                gli strumenti e le strategie giuste.
+              </p>
+            </div>
+          </section>
+
+          <section aria-labelledby="esperienza-title">
+            <h2 id="esperienza-title" class="section-heading">Aree di Esperienza</h2>
+            <div class="timeline">
+              <article class="timeline-item">
+                <h3>Innovation Management</h3>
+                <p>
+                  Guida strategica alla trasformazione digitale per aziende di diverse
+                  dimensioni e settori.
+                </p>
+              </article>
+              <article class="timeline-item">
+                <h3>Integrazione AI &amp; Automazione</h3>
+                <p>
+                  Implementazione di soluzioni di intelligenza artificiale e automazione
+                  dei processi aziendali.
+                </p>
+              </article>
+              <article class="timeline-item">
+                <h3>Web Development &amp; E-commerce</h3>
+                <p>
+                  Creazione di piattaforme web, web app e soluzioni e-commerce ad alte
+                  performance.
+                </p>
+              </article>
+              <article class="timeline-item">
+                <h3>Program &amp; Project Management</h3>
+                <p>
+                  Coordinamento di programmi complessi e gestione di progetti digitali con
+                  metodologie agili.
+                </p>
+              </article>
+              <article class="timeline-item">
+                <h3>Vendor Selection &amp; Software Advisory</h3>
+                <p>
+                  Supporto nella scelta di software, gestionali e fornitori tecnologici.
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <section aria-labelledby="competenze-title">
+            <h2 id="competenze-title" class="section-heading">Competenze</h2>
+            <div class="chips">
+              <span class="chip">Trasformazione Digitale</span>
+              <span class="chip">Intelligenza Artificiale</span>
+              <span class="chip">Agenti AI</span>
+              <span class="chip">Web Development</span>
+              <span class="chip">E-commerce</span>
+              <span class="chip">SEO &amp; Web Marketing</span>
+              <span class="chip">Project Management Agile</span>
+              <span class="chip">Program Management</span>
+              <span class="chip">Process Automation</span>
+              <span class="chip">Vendor Selection</span>
+              <span class="chip">Build or Buy Analysis</span>
+              <span class="chip">Digital Strategy</span>
+            </div>
+          </section>
+
+          <section aria-labelledby="certificazioni-title">
+            <h2 id="certificazioni-title" class="section-heading">Certificazioni</h2>
+            <div class="cert-grid">
+              <article class="cert-card">
+                <h3>Innovation Manager Certificato UNI11814</h3>
+                <div class="issuer">Kiwa Italia</div>
+                <div class="date">mar 2026</div>
+              </article>
+              <article class="cert-card">
+                <h3>Agile Product Management</h3>
+                <div class="issuer">Productside</div>
+                <div class="date">nov 2023</div>
+              </article>
+              <article class="cert-card">
+                <h3>Scrum Master Accredited Certification</h3>
+                <div class="issuer">International Scrum Institute</div>
+                <div class="date">gen 2024</div>
+              </article>
+              <article class="cert-card">
+                <h3>Professional Scrum Master I</h3>
+                <div class="issuer">Scrum.org</div>
+                <div class="date">dic 2023</div>
+              </article>
+              <article class="cert-card">
+                <h3>Certificazione ISIPM di Project Management</h3>
+                <div class="issuer">ISIPM - Istituto Italiano di Project Management</div>
+                <div class="date">nov 2021</div>
+              </article>
+              <article class="cert-card">
+                <h3>Full Stack Web Developer</h3>
+                <div class="issuer">Boolean Careers</div>
+                <div class="date">lug 2020</div>
+              </article>
+            </div>
+          </section>
+
+          <section class="contact-card" aria-labelledby="connect-title">
+            <h2 id="connect-title">Connettiamoci</h2>
+            <p>
+              Seguimi sui social per aggiornamenti, insight e contenuti sulla
+              trasformazione digitale.
+            </p>
+            <div class="contact-actions">
+              <a
+                class="social-pill"
+                href="https://www.linkedin.com/in/martina-ria/"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 10v7"></path>
+                  <path d="M8 7.2h.01"></path>
+                  <path d="M12 17v-4.2a2.3 2.3 0 0 1 4.6 0V17"></path>
+                  <path d="M12 10v1.1"></path>
+                </svg>
+                LinkedIn
+              </a>
+              <a
+                class="social-pill"
+                href="https://www.instagram.com/ria_martina_/"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="4.5" y="4.5" width="15" height="15" rx="4.5"></rect>
+                  <path d="M15.8 8.2h.01"></path>
+                  <circle cx="12" cy="12" r="3.2"></circle>
+                </svg>
+                Instagram
+              </a>
+            </div>
+          </section>
+
+          <section class="cta" aria-labelledby="cta-title">
+            <h2 id="cta-title">Pronta a trasformare la tua azienda?</h2>
+            <p>
+              Prenota una sessione gratuita per discutere le tue esigenze e trovare
+              insieme la strategia migliore.
+            </p>
+            <div class="cta-actions">
+              <a
+                class="btn btn-primary"
+                href="https://calendar.app.google/pb9KF4MJrXB4ZnHZ6"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 3.5v3"></path>
+                  <path d="M16 3.5v3"></path>
+                  <path d="M4.5 9h15"></path>
+                  <rect x="4" y="5.5" width="16" height="14.5" rx="2.5"></rect>
+                </svg>
+                Prenota una Sessione
+              </a>
+              <a class="btn btn-outline" href="index.html#contatti">
+                Contattami
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 12h14"></path>
+                  <path d="m13 6 6 6-6 6"></path>
+                </svg>
+              </a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container footer-row">
+        <div>
+          <strong>MARTINA RIA</strong> · Innovation Manager · Digital Transformation
+          Consultant<br />
+          © 2026 Martina Ria. Tutti i diritti riservati.
+        </div>
+        <div class="footer-socials">
+          <a
+            href="https://www.instagram.com/ria_martina_/"
+            target="_blank"
+            rel="noopener"
+            >IG</a
+          >
+          <a
+            href="https://www.linkedin.com/in/martina-ria/"
+            target="_blank"
+            rel="noopener"
+            >IN</a
+          >
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
