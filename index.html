@@ -59,7 +59,7 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
         "Segoe UI", sans-serif;
-      background: linear-gradient(180deg, #faf7f6 0%, var(--bg) 100%);
+      background: #faf7f6;
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
@@ -438,18 +438,29 @@
     .services-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
+      gap: 18px;
+      align-items: stretch;
     }
 
     .service-card {
-      background: rgba(255, 255, 255, 0.5);
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+      min-height: 280px;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.92) 0%,
+        rgba(255, 255, 255, 0.68) 100%
+      );
       border-radius: var(--radius-lg);
-      padding: 22px;
+      padding: 26px;
       border: 1px solid rgba(224, 221, 219, 1);
-      box-shadow: 0 10px 24px rgba(22, 22, 22, 0.04);
+      box-shadow: 0 16px 34px rgba(22, 22, 22, 0.05);
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      justify-content: space-between;
+      gap: 18px;
       cursor: pointer;
       transition: transform 0.12s ease, box-shadow 0.12s ease,
         border-color 0.12s ease, background 0.12s ease;
@@ -457,43 +468,70 @@
 
     .service-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 18px 34px rgba(22, 22, 22, 0.08);
-      border-color: #c8c3c0;
-      background: rgba(255, 255, 255, 0.82);
+      box-shadow: 0 24px 44px rgba(22, 22, 22, 0.1);
+      border-color: rgba(98, 152, 168, 0.4);
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.96) 0%,
+        rgba(246, 250, 251, 0.92) 100%
+      );
     }
 
-    .service-image {
+    .service-top {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .service-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
       border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid rgba(224, 221, 219, 1);
-      background: var(--base-shade--light);
+      border: 1px solid rgba(98, 152, 168, 0.22);
+      background: rgba(98, 152, 168, 0.08);
+      color: var(--accent--light);
+    }
+
+    .service-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
     }
 
     .service-title {
       font-size: 18px;
       font-weight: 700;
-      line-height: 1.25;
+      line-height: 1.2;
     }
 
     .service-desc {
-      font-size: 14px;
+      font-size: 15px;
       color: var(--muted);
     }
 
-    .service-tags {
+    .service-points {
+      position: relative;
+      z-index: 1;
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 4px;
+      gap: 10px;
     }
 
-    .service-tag {
-      font-size: 12px;
-      padding: 5px 10px;
-      border-radius: var(--radius-pill);
-      background: rgba(255, 255, 255, 0.82);
-      border: 1px solid rgba(224, 221, 219, 1);
-      color: var(--muted);
+    .service-point {
+      display: inline-flex;
+      align-items: center;
+      font-size: 13px;
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 18px;
+      border: 1px solid rgba(210, 216, 224, 0.9);
+      background: rgba(244, 247, 250, 0.96);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
     }
 
     /* CHI SONO */
@@ -856,6 +894,10 @@
         grid-template-columns: minmax(0, 1fr);
       }
 
+      .service-card {
+        max-width: none;
+      }
+
       .nav {
         gap: 12px;
       }
@@ -1002,369 +1044,110 @@
             <div class="section-kicker">Servizi</div>
             <h2 class="section-title">Come posso aiutarti?</h2>
             <p class="section-subtitle">
-              Ogni sfida digitale ha una soluzione. Il modo migliore per trovarla
-              è partire da una domanda concreta.
+              Un supporto strategico e operativo su quattro aree chiave, per
+              trasformare obiettivi digitali in progetti concreti.
             </p>
           </div>
 
           <div class="services-grid">
-            <!-- 1 -->
-            <a
-              class="service-card"
-              href="https://innovation-manager.base44.app/Servizi?service=creazione-siti-web"
-            >
-              <div class="service-image">
-                <img
-                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69afe1183f5c98a1f23a4d5f/405eb8f00_generated_ca4509c0.png"
-                  alt="Creazione e ristrutturazione siti web"
-                />
+            <a class="service-card" href="#contatti">
+              <div class="service-top">
+                <span class="service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 4.25C14.8995 4.25 17.25 6.60051 17.25 9.5C17.25 11.5962 16.0189 13.405 14.2417 14.2458L13.75 16.25H10.25L9.75828 14.2458C7.98114 13.405 6.75 11.5962 6.75 9.5C6.75 6.60051 9.10051 4.25 12 4.25Z" stroke-width="1.8" stroke-linejoin="round"/>
+                    <path d="M10 19H14" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M10.5 16.25H13.5" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                <div class="service-title">
+                  Innovazione e trasformazione digitale
+                </div>
+                <div class="service-desc">
+                  Supporto aziende e PMI nel ridisegnare processi, strumenti e
+                  priorita digitali, con un approccio concreto e orientato al valore.
+                </div>
               </div>
-              <div class="service-title">
-                Come posso creare o migliorare il mio sito web?
-              </div>
-              <div class="service-desc">
-                Il modo migliore per creare o migliorare un sito web è partire da
-                un’analisi strategica che allinei design, contenuti e tecnologia
-                agli obiettivi di business.
-              </div>
-              <div class="service-tags">
-                <span class="service-tag">Web Design</span>
-                <span class="service-tag">SEO</span>
-                <span class="service-tag">UX/UI</span>
-                <span class="service-tag">Performance</span>
+              <div class="service-points">
+                <span class="service-point">Innovation Management</span>
+                <span class="service-point">Assistenza alla Trasformazione Digitale</span>
+                <span class="service-point">Program Management</span>
+                <span class="service-point">Project Management</span>
               </div>
             </a>
 
-            <!-- 2 -->
-            <a
-              class="service-card"
-              href="https://innovation-manager.base44.app/Servizi?service=creazione-web-app"
-            >
-              <div class="service-title">
-                Come posso sviluppare una web app per la mia azienda?
+            <a class="service-card" href="#contatti">
+              <div class="service-top">
+                <span class="service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 7.5H18" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M6 16.5H18" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M9 7.5C9 8.74264 7.99264 9.75 6.75 9.75C5.50736 9.75 4.5 8.74264 4.5 7.5C4.5 6.25736 5.50736 5.25 6.75 5.25C7.99264 5.25 9 6.25736 9 7.5Z" stroke-width="1.8"/>
+                    <path d="M19.5 16.5C19.5 17.7426 18.4926 18.75 17.25 18.75C16.0074 18.75 15 17.7426 15 16.5C15 15.2574 16.0074 14.25 17.25 14.25C18.4926 14.25 19.5 15.2574 19.5 16.5Z" stroke-width="1.8"/>
+                  </svg>
+                </span>
+                <div class="service-title">Processi, software e vendor</div>
+                <div class="service-desc">
+                  Aiuto a scegliere, sostituire o integrare software e gestionali
+                  evitando decisioni costose, frammentate o non sostenibili.
+                </div>
               </div>
-              <div class="service-desc">
-                Il modo migliore per sviluppare una web app aziendale è definire
-                chiaramente i processi da digitalizzare e progettare un’applicazione
-                su misura.
-              </div>
-              <div class="service-tags">
-                <span class="service-tag">Web App</span>
-                <span class="service-tag">SaaS</span>
-                <span class="service-tag">Cloud</span>
-                <span class="service-tag">Custom</span>
-              </div>
-            </a>
-
-            <!-- 3 -->
-            <a
-              class="service-card"
-              href="https://innovation-manager.base44.app/Servizi?service=creazione-ecommerce"
-            >
-              <div class="service-title">
-                Come posso vendere online con un e-commerce efficace?
-              </div>
-              <div class="service-desc">
-                Il modo migliore per vendere online è creare un e-commerce
-                ottimizzato per la conversione, con un’esperienza d’acquisto
-                fluida e una strategia di marketing integrata.
-              </div>
-              <div class="service-tags">
-                <span class="service-tag">E-commerce</span>
-                <span class="service-tag">Vendite Online</span>
-                <span class="service-tag">Checkout</span>
-                <span class="service-tag">Marketing</span>
+              <div class="service-points">
+                <span class="service-point">Scelta o sostituzione di software o gestionale</span>
+                <span class="service-point">Valutazioni Build or Buy</span>
+                <span class="service-point">Ricerca e selezione del vendor</span>
+                <span class="service-point">Integrazione strumenti di collaborazione</span>
               </div>
             </a>
 
-            <!-- 4 -->
-            <a
-              class="service-card"
-              href="https://innovation-manager.base44.app/Servizi?service=integrazione-ai"
-            >
-              <div class="service-image">
-                <img
-                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69afe1183f5c98a1f23a4d5f/aefb16128_generated_5382cc7a.png"
-                  alt="Integrazione AI nei processi aziendali"
-                />
+            <a class="service-card" href="#contatti">
+              <div class="service-top">
+                <span class="service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="7.25" y="7.25" width="9.5" height="9.5" rx="1.75" stroke-width="1.8"/>
+                    <path d="M10 1.5V4" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M14 1.5V4" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M10 20V22.5" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M14 20V22.5" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M20 10H22.5" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M20 14H22.5" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M1.5 10H4" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M1.5 14H4" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                <div class="service-title">AI e automazioni</div>
+                <div class="service-desc">
+                  Identifico dove l'AI ha davvero senso, progetto automazioni e
+                  introduco agenti AI nei processi dove generano impatto reale.
+                </div>
               </div>
-              <div class="service-title">
-                Come posso ottimizzare i processi aziendali con l’AI?
-              </div>
-              <div class="service-desc">
-                Il modo migliore per ottimizzare i processi è l’integrazione di
-                soluzioni AI autonome che automatizzano i flussi decisionali e le
-                attività ripetitive.
-              </div>
-              <div class="service-tags">
-                <span class="service-tag">AI</span>
-                <span class="service-tag">Machine Learning</span>
-                <span class="service-tag">Automazione</span>
-                <span class="service-tag">Efficienza</span>
-              </div>
-            </a>
-
-            <!-- 5 -->
-            <a
-              class="service-card"
-              href="https://innovation-manager.base44.app/Servizi?service=analisi-performance"
-            >
-              <div class="service-title">
-                Come posso migliorare le performance del mio sito?
-              </div>
-              <div class="service-desc">
-                Il modo migliore per migliorare le performance è un’analisi
-                tecnica approfondita che valuti velocità, SEO, user experience e
-                tasso di conversione.
-              </div>
-              <div class="service-tags">
-                <span class="service-tag">Performance</span>
-                <span class="service-tag">Analytics</span>
-                <span class="service-tag">SEO Tecnico</span>
-                <span class="service-tag">Core Web Vitals</span>
+              <div class="service-points">
+                <span class="service-point">Agenti AI</span>
+                <span class="service-point">Automazioni processi digitali</span>
+                <span class="service-point">Integrazione dell'AI nei processi aziendali</span>
               </div>
             </a>
 
-            <!-- 6 -->
-            <a
-              class="service-card"
-              href="https://innovation-manager.base44.app/Servizi?service=project-management"
-            >
-              <div class="service-image">
-                <img
-                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69afe1183f5c98a1f23a4d5f/149e5c887_generated_98c3c8c8.png"
-                  alt="Project Management"
-                />
+            <a class="service-card" href="#contatti">
+              <div class="service-top">
+                <span class="service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="7.5" stroke-width="1.8"/>
+                    <path d="M4.5 12H19.5" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M12 4.5C13.8467 6.5512 14.8963 9.19359 14.9583 12C14.8963 14.8064 13.8467 17.4488 12 19.5C10.1533 17.4488 9.10375 14.8064 9.04175 12C9.10375 9.19359 10.1533 6.5512 12 4.5Z" stroke-width="1.8" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <div class="service-title">
+                  Web, performance e presenza digitale
+                </div>
+                <div class="service-desc">
+                  Realizzo o ristrutturo siti, web app ed e-commerce con attenzione a
+                  performance, chiarezza, conversione e utilita di business.
+                </div>
               </div>
-              <div class="service-title">
-                Come posso gestire efficacemente i miei progetti digitali?
-              </div>
-              <div class="service-desc">
-                Il modo migliore per gestire progetti digitali è adottare
-                metodologie agili con milestone chiari, comunicazione strutturata
-                e controllo costante dei risultati.
-              </div>
-              <div class="service-tags">
-                <span class="service-tag">Agile</span>
-                <span class="service-tag">Scrum</span>
-                <span class="service-tag">Delivery</span>
-                <span class="service-tag">Stakeholder</span>
-              </div>
-            </a>
-
-            <!-- 7 -->
-            <a
-              class="service-card"
-              href="https://innovation-manager.base44.app/Servizi?service=program-management"
-            >
-              <div class="service-title">
-                Come posso coordinare più progetti digitali contemporaneamente?
-              </div>
-              <div class="service-desc">
-                Il modo migliore per coordinare programmi complessi è avere una
-                visione strategica integrata che allinei tutti i progetti agli
-                obiettivi aziendali.
-              </div>
-              <div class="service-tags">
-                <span class="service-tag">Governance</span>
-                <span class="service-tag">Strategia</span>
-                <span class="service-tag">Portfolio</span>
-                <span class="service-tag">Coordinamento</span>
-              </div>
-            </a>
-
-            <!-- 8 -->
-            <a
-              class="service-card"
-              href="https://innovation-manager.base44.app/Servizi?service=innovation-management"
-            >
-              <div class="service-title">
-                Come posso innovare la mia azienda in modo strutturato?
-              </div>
-              <div class="service-desc">
-                Il modo migliore per innovare è adottare un approccio sistematico
-                che identifichi opportunità, valuti la fattibilità e implementi
-                soluzioni in modo iterativo.
-              </div>
-              <div class="service-tags">
-                <span class="service-tag">Innovazione</span>
-                <span class="service-tag">Strategy</span>
-                <span class="service-tag">R&amp;D</span>
-                <span class="service-tag">Roadmap</span>
-              </div>
-            </a>
-
-            <!-- 9 -->
-            <a
-              class="service-card"
-              href="https://innovation-manager.base44.app/Servizi?service=agenti-ai"
-            >
-              <div class="service-title">
-                Cosa sono gli Agenti AI e come possono aiutare la mia azienda?
-              </div>
-              <div class="service-desc">
-                Gli Agenti AI sono sistemi autonomi capaci di eseguire compiti
-                specifici, dal customer service all’analisi dati, scalando le
-                operazioni senza aumentare il personale.
-              </div>
-              <div class="service-tags">
-                <span class="service-tag">Agenti AI</span>
-                <span class="service-tag">Chatbot</span>
-                <span class="service-tag">Automazione</span>
-                <span class="service-tag">NLP</span>
-              </div>
-            </a>
-
-            <!-- 10 -->
-            <a
-              class="service-card"
-              href="https://innovation-manager.base44.app/Servizi?service=automazioni-processi"
-            >
-              <div class="service-title">
-                Come posso automatizzare i processi digitali della mia azienda?
-              </div>
-              <div class="service-desc">
-                Il modo migliore per automatizzare è mappare i processi attuali,
-                identificare le inefficienze e implementare workflow automatizzati
-                che eliminino le attività ripetitive.
-              </div>
-              <div class="service-tags">
-                <span class="service-tag">Workflow</span>
-                <span class="service-tag">RPA</span>
-                <span class="service-tag">Integrazione</span>
-                <span class="service-tag">Efficienza</span>
-              </div>
-            </a>
-
-            <!-- 11 -->
-            <a
-              class="service-card"
-              href="https://innovation-manager.base44.app/Servizi?service=trasformazione-digitale"
-            >
-              <div class="service-title">
-                Come posso guidare la trasformazione digitale della mia azienda?
-              </div>
-              <div class="service-desc">
-                Il modo migliore per affrontare la trasformazione digitale è avere
-                una roadmap chiara che bilanci innovazione tecnologica, cambiamento
-                organizzativo e obiettivi di business.
-              </div>
-              <div class="service-tags">
-                <span class="service-tag">Digital Strategy</span>
-                <span class="service-tag">Change Management</span>
-                <span class="service-tag">Assessment</span>
-                <span class="service-tag">Roadmap</span>
-              </div>
-            </a>
-
-            <!-- 12 -->
-            <a
-              class="service-card"
-              href="https://innovation-manager.base44.app/Servizi?service=strumenti-collaborazione"
-            >
-              <div class="service-image">
-                <img
-                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69afe1183f5c98a1f23a4d5f/5c8161144_generated_02830ab7.png"
-                  alt="Strumenti di collaborazione"
-                />
-              </div>
-              <div class="service-title">
-                Come posso migliorare la collaborazione nel mio team?
-              </div>
-              <div class="service-desc">
-                Il modo migliore per migliorare la collaborazione è selezionare e
-                integrare gli strumenti giusti che si adattino ai flussi di lavoro
-                del tuo team.
-              </div>
-              <div class="service-tags">
-                <span class="service-tag">Collaboration</span>
-                <span class="service-tag">Team</span>
-                <span class="service-tag">Produttività</span>
-                <span class="service-tag">Integrazione</span>
-              </div>
-            </a>
-
-            <!-- 13 -->
-            <a
-              class="service-card"
-              href="https://innovation-manager.base44.app/Servizi?service=scelta-software"
-            >
-              <div class="service-title">
-                Come scelgo il software giusto per la mia azienda?
-              </div>
-              <div class="service-desc">
-                Il modo migliore per scegliere un software è analizzare le esigenze
-                specifiche, confrontare le opzioni disponibili e valutare costi,
-                scalabilità e integrazioni.
-              </div>
-              <div class="service-tags">
-                <span class="service-tag">Software Selection</span>
-                <span class="service-tag">Benchmark</span>
-                <span class="service-tag">POC</span>
-                <span class="service-tag">Implementazione</span>
-              </div>
-            </a>
-
-            <!-- 14 -->
-            <a
-              class="service-card"
-              href="https://innovation-manager.base44.app/Servizi?service=scelta-gestionale"
-            >
-              <div class="service-title">
-                Come scelgo il gestionale aziendale più adatto?
-              </div>
-              <div class="service-desc">
-                Il modo migliore per scegliere un gestionale è partire dalla
-                mappatura dei processi attuali e confrontare le soluzioni con i
-                requisiti specifici dell’azienda.
-              </div>
-              <div class="service-tags">
-                <span class="service-tag">ERP</span>
-                <span class="service-tag">CRM</span>
-                <span class="service-tag">Gestionale</span>
-                <span class="service-tag">Migrazione</span>
-              </div>
-            </a>
-
-            <!-- 15 -->
-            <a
-              class="service-card"
-              href="https://innovation-manager.base44.app/Servizi?service=build-or-buy"
-            >
-              <div class="service-title">
-                Quando conviene sviluppare internamente vs acquistare un software?
-              </div>
-              <div class="service-desc">
-                La scelta tra Build or Buy dipende dal budget, dalla specificità
-                delle esigenze, dalle competenze interne e dalla tempistica. Un’analisi
-                strutturata è il modo migliore per decidere.
-              </div>
-              <div class="service-tags">
-                <span class="service-tag">Build vs Buy</span>
-                <span class="service-tag">TCO</span>
-                <span class="service-tag">Strategia</span>
-                <span class="service-tag">Analisi</span>
-              </div>
-            </a>
-
-            <!-- 16 -->
-            <a
-              class="service-card"
-              href="https://innovation-manager.base44.app/Servizi?service=vendor-selection"
-            >
-              <div class="service-title">
-                Come posso trovare il fornitore tecnologico giusto?
-              </div>
-              <div class="service-desc">
-                Il modo migliore per selezionare un vendor è definire criteri
-                oggettivi di valutazione e condurre un processo strutturato di
-                scouting e comparazione.
-              </div>
-              <div class="service-tags">
-                <span class="service-tag">Vendor</span>
-                <span class="service-tag">Procurement</span>
-                <span class="service-tag">RFP</span>
-                <span class="service-tag">Negoziazione</span>
+              <div class="service-points">
+                <span class="service-point">Creazione e ristrutturazione siti web</span>
+                <span class="service-point">Web app ed e-commerce</span>
+                <span class="service-point">Analisi delle performance dei siti web</span>
               </div>
             </a>
           </div>
