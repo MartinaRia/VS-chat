@@ -82,25 +82,24 @@
       box-shadow: 0 16px 40px rgba(22, 22, 22, 0.08);
     }
 
-    .nav-left,
-    .nav-right,
-    .nav-links {
+    .nav-left {
       display: flex;
       align-items: center;
-    }
-
-    .nav-left {
       gap: 10px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      font-size: 18px;
     }
 
     .nav-logo {
-      width: 100px;
-      height: 35px;
+      width: 91px;
+      height: auto;
       object-fit: contain;
-      flex: 0 0 auto;
     }
 
     .nav-links {
+      display: flex;
+      align-items: center;
       gap: 4px;
       font-size: 14px;
       color: var(--t-muted--light);
@@ -112,10 +111,20 @@
       transition: color 0.2s ease, background 0.2s ease;
     }
 
-    .nav-links a:hover,
-    .nav-links a.is-active {
+    .nav-links a:hover {
       color: var(--t-bright--light);
       background: rgba(98, 152, 168, 0.08);
+    }
+
+    .nav-links a.is-active {
+      background: var(--base-opp--light);
+      color: var(--t-opp-bright--light);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     .btn {
@@ -132,32 +141,22 @@
       transition: transform 0.1s ease, box-shadow 0.2s ease, background 0.2s ease;
     }
 
-    .btn-icon {
+    .btn svg {
       width: 16px;
       height: 16px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 1.8;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      flex: 0 0 auto;
+      flex: 0 0 16px;
     }
 
-    .btn-primary {
+    .nav-cta {
       background: var(--accent--light);
       color: var(--t-opp-bright--light);
       box-shadow: 0 12px 30px rgba(98, 152, 168, 0.26);
     }
 
-    .btn-primary:hover {
+    .nav-cta:hover {
       transform: translateY(-1px);
       background: #4f8392;
-    }
-
-    .btn-outline {
-      border-color: rgba(224, 221, 219, 1);
-      color: var(--t-bright--light);
-      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 18px 40px rgba(98, 152, 168, 0.32);
     }
 
     main {
@@ -492,37 +491,77 @@
     <header>
       <div class="container nav">
         <div class="nav-left">
-          <a href="index.html">
-            <img class="nav-logo" src="assets/logo-martina-ria.png" alt="Logo Martina Ria" />
-          </a>
+          <img
+            class="nav-logo"
+            src="assets/logo-martina-ria.webp"
+            alt="Martina Ria"
+            width="1417"
+            height="650"
+            loading="eager"
+            decoding="async"
+          />
         </div>
-        <nav class="nav-links">
+        <nav class="nav-links" aria-label="Navigazione principale">
           <a href="index.html">Home</a>
           <a class="is-active" href="servizi.html">Servizi</a>
-          <a href="index.html#chi-sono">Chi Sono</a>
-          <a href="index.html#faq">FAQ</a>
-          <a href="index.html#contatti">Contatti</a>
+          <a href="chi-sono.html">Chi Sono</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contatti.html">Contatti</a>
         </nav>
         <div class="nav-right">
           <a
-            class="btn btn-primary"
+            class="btn nav-cta"
             href="https://calendar.app.google/pb9KF4MJrXB4ZnHZ6"
             target="_blank"
             rel="noopener"
+            ><svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M8 2V5"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+              <path
+                d="M16 2V5"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+              <path
+                d="M4 9H20"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+              <path
+                d="M4 6.5C4 5.67 4.67 5 5.5 5H18.5C19.33 5 20 5.67 20 6.5V18.5C20 19.33 19.33 20 18.5 20H5.5C4.67 20 4 19.33 4 18.5V6.5Z"
+                stroke="currentColor"
+                stroke-width="1.8"
+              />
+              <path
+                d="M8 13H12"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+              <path
+                d="M8 16H10"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>Prenota</a
           >
-            <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M8 3.5v3"></path>
-              <path d="M16 3.5v3"></path>
-              <path d="M4.5 9h15"></path>
-              <rect x="4" y="5.5" width="16" height="14.5" rx="2.5"></rect>
-            </svg>
-            Prenota
-          </a>
         </div>
       </div>
     </header>
 
-    <main>
+    <main id="main-content">
       <section class="hero">
         <div class="container">
           <div class="services-intro">
