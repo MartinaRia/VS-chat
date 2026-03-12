@@ -2,8 +2,42 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <title>Martina Ria | Liquid Innovation V2</title>
+  <title>Martina Ria | Innovation Manager e Consulente Trasformazione Digitale</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Martina Ria aiuta PMI e aziende a migliorare processi, scegliere software, integrare AI e trasformare la presenza digitale con un approccio concreto, misurabile e orientato ai risultati."
+  />
+  <meta
+    name="robots"
+    content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  />
+  <meta name="author" content="Martina Ria" />
+  <meta name="theme-color" content="#faf7f6" />
+  <meta property="og:locale" content="it_IT" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Martina Ria" />
+  <meta
+    property="og:title"
+    content="Martina Ria | Innovation Manager e Consulente Trasformazione Digitale"
+  />
+  <meta
+    property="og:description"
+    content="Consulenza per innovazione, trasformazione digitale, AI, software selection e performance web per aziende e PMI."
+  />
+  <meta property="og:image" content="assets/martina_ria.webp" />
+  <meta property="og:image:alt" content="Ritratto professionale di Martina Ria" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:title"
+    content="Martina Ria | Innovation Manager e Consulente Trasformazione Digitale"
+  />
+  <meta
+    name="twitter:description"
+    content="Strategia digitale, processi, AI e siti ad alte performance per aziende che vogliono crescere con metodo."
+  />
+  <meta name="twitter:image" content="assets/martina_ria.webp" />
+  <link rel="preload" as="image" href="assets/martina_ria.webp" type="image/webp" />
   <style>
     :root {
       --base--light: #faf8f8;
@@ -310,7 +344,7 @@
     .hero-subtitle {
       font-size: 16px;
       color: var(--muted);
-      max-width: 600px;
+      max-width: 760px;
       margin-bottom: 22px;
       margin-left: auto;
       margin-right: auto;
@@ -631,6 +665,44 @@
     .about-cta {
       margin-top: 26px;
       display: inline-flex;
+    }
+
+    /* METODO */
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .process-card {
+      min-height: 220px;
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(224, 221, 219, 1);
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: 0 14px 35px rgba(22, 22, 22, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .process-step {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent--light);
+      font-weight: 700;
+    }
+
+    .process-card h3 {
+      font-size: 20px;
+      line-height: 1.1;
+    }
+
+    .process-card p {
+      color: var(--muted);
+      font-size: 14px;
     }
 
     /* PORTFOLIO */
@@ -1126,6 +1198,24 @@
       justify-content: flex-end;
     }
 
+    .contact-note {
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
     /* FOOTER */
 
     footer {
@@ -1202,6 +1292,10 @@
 
       .hero-card {
         max-width: 227px;
+      }
+
+      .process-grid {
+        grid-template-columns: minmax(0, 1fr);
       }
     }
 
@@ -1302,19 +1396,132 @@
       }
     }
   </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ProfessionalService",
+          "name": "Martina Ria",
+          "description": "Consulenza in innovation management, trasformazione digitale, software selection, AI e performance web per aziende e PMI.",
+          "email": "martina.ria@hotmail.com",
+          "image": "assets/martina_ria.webp",
+          "priceRange": "$$",
+          "areaServed": "IT",
+          "sameAs": [
+            "https://www.linkedin.com/in/martina-ria/",
+            "https://www.instagram.com/ria_martina_/"
+          ],
+          "founder": {
+            "@type": "Person",
+            "name": "Martina Ria",
+            "jobTitle": "Innovation Manager"
+          }
+        },
+        {
+          "@type": "Person",
+          "name": "Martina Ria",
+          "jobTitle": "Innovation Manager e Consulente per la Trasformazione Digitale",
+          "worksFor": {
+            "@type": "ProfessionalService",
+            "name": "Martina Ria"
+          },
+          "email": "martina.ria@hotmail.com",
+          "sameAs": [
+            "https://www.linkedin.com/in/martina-ria/",
+            "https://www.instagram.com/ria_martina_/"
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Cos’è un Innovation Manager e come può aiutare la mia azienda?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Un Innovation Manager aiuta l'azienda a rendere più efficaci processi, strumenti e decisioni digitali. Il modo migliore per capire se ti serve è verificare se hai attività lente, strumenti scollegati o investimenti digitali che non stanno producendo risultati chiari."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Qual è il vantaggio dell’integrazione AI nei processi aziendali?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Il vantaggio principale dell'integrazione AI è automatizzare attività ripetitive, ridurre errori e accelerare decisioni operative senza perdere controllo sul processo."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Come scelgo tra sviluppare un software internamente o acquistarne uno esistente (Build or Buy)?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Il modo migliore per decidere tra build o buy è confrontare obiettivi, tempi, costi, personalizzazioni richieste e capacità interna di gestire il progetto nel tempo."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Quanto tempo richiede una trasformazione digitale?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Una trasformazione digitale può richiedere da poche settimane a diversi mesi. Il modo migliore per ridurre tempi e rischi è procedere per priorità e roadmap progressive."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Quali sono i costi di una consulenza di Innovation Management?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "I costi dipendono da complessità, durata e obiettivi del progetto. Il modo migliore per avere una stima corretta è partire da una sessione iniziale di confronto sul contesto aziendale."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Come posso migliorare le performance del mio sito web?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Il modo migliore per migliorare le performance di un sito web è ottimizzare immagini, codice, struttura SEO, esperienza mobile e percorsi di conversione partendo da un'analisi tecnica."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Cosa sono gli Agenti AI e come possono aiutare la mia azienda?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Gli Agenti AI sono sistemi che eseguono attività operative e decisionali entro confini definiti. Possono aiutare l'azienda a gestire richieste, dati e workflow con maggiore continuità e scalabilità."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Come avviene la scelta o sostituzione di un gestionale aziendale?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "La scelta o sostituzione di un gestionale parte dalla mappatura dei processi e dal confronto tra requisiti, integrazioni, costi e sostenibilità operativa della soluzione."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  </script>
 </head>
 <body>
   <div class="page">
+    <a class="sr-only" href="#main-content">Salta al contenuto principale</a>
     <header>
       <div class="container nav">
         <div class="nav-left">
           <img
             class="nav-logo"
-            src="assets/logo-martina-ria.png"
+            src="assets/logo-martina-ria.webp"
             alt="Martina Ria"
+            width="1417"
+            height="650"
+            loading="eager"
+            decoding="async"
           />
         </div>
-        <nav class="nav-links">
+        <nav class="nav-links" aria-label="Navigazione principale">
           <a href="#home">Home</a>
           <a href="#servizi">Servizi</a>
           <a href="#chi-sono">Chi Sono</a>
@@ -1374,7 +1581,7 @@
       </div>
     </header>
 
-    <main>
+    <main id="main-content">
       <!-- HERO -->
       <section id="home" class="hero">
         <div class="container hero-grid">
@@ -1382,8 +1589,12 @@
             <div class="hero-card">
               <div class="hero-image-wrap">
                 <img
-                  src="assets/martina_ria.jpg"
+                  src="assets/martina_ria.webp"
                   alt="Ritratto professionale di Martina Ria"
+                  width="1003"
+                  height="1003"
+                  fetchpriority="high"
+                  decoding="async"
                 />
               </div>
               <div class="hero-orbit"></div>
@@ -1392,15 +1603,16 @@
           <div class="hero-content">
             <div class="hero-kicker">
               <span class="hero-kicker-dot" aria-hidden="true">
-                <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
-                    d="M10 2.25 4.75 4.5v4.12c0 4.03 2.4 7.74 6.12 9.43a.92.92 0 0 0 .76 0c3.72-1.69 6.12-5.4 6.12-9.43V4.5L10 2.25Z"
+                    d="M12 3 6 5.25v5.02c0 4.22 2.58 8.17 6 9.73 3.42-1.56 6-5.51 6-9.73V5.25L12 3Z"
                     stroke="currentColor"
                     stroke-width="1.8"
+                    stroke-linecap="round"
                     stroke-linejoin="round"
                   />
                   <path
-                    d="m7.9 10.15 1.43 1.42 2.77-3.2"
+                    d="m9.4 12.1 1.85 1.85 3.35-4.1"
                     stroke="currentColor"
                     stroke-width="1.8"
                     stroke-linecap="round"
@@ -1411,13 +1623,13 @@
               <span>Innovation Manager · Digital Transformation</span>
             </div>
             <h1 class="hero-title">
-              CREO VALORE DOVE GLI ALTRI VEDONO <span>COMPLESSITÀ</span>
+              CREO VALORE DOVE ALTRI VEDONO <span>COMPLESSITÀ</span>
             </h1>
             <p class="hero-subtitle">
-              Aiuto le aziende a creare e redistribuire valore attraverso
-              l’ottimizzazione dei processi, l’attrazione di nuovi mercati,
-              l’integrazione di strumenti innovativi e il miglioramento
-              dell’efficienza digitale.
+              Aiuto aziende e PMI a migliorare processi, scegliere software,
+              integrare AI e costruire una presenza digitale che generi risultati.
+              Il modo migliore per innovare non è aggiungere complessità: è
+              semplificare, misurare e intervenire dove l'impatto è reale.
             </p>
             <div class="hero-actions">
               <a
@@ -1685,47 +1897,46 @@
 
             <!-- Case 2 -->
             <div class="case-card">
-              <div class="case-label">E-commerce B2B ad Alte Performance</div>
-              <div class="case-title">Distributore Settore Elettronica</div>
+              <div class="case-label">RISTRUTTURAZIONE SITO E MARKETING FUNNEL</div>
+              <div class="case-title">PMI servizi</div>
               <div class="case-subheading">Sfida</div>
               <p class="case-sub">
-                Necessità di piattaforma e-commerce scalabile per gestire catalogo
-                di 50.000+ prodotti con prezzi personalizzati per cliente.
+                Il sito esistente non comunicava il valore dell'azienda, era lento
+                e non aiutava né la lead generation né l'orientamento del cliente.
               </p>
               <div class="case-subheading">Soluzione</div>
               <p class="case-sub">
-                Sviluppo di piattaforma e-commerce custom con integrazione
-                real-time al gestionale, ottimizzazione SEO tecnica e sistema di
-                pricing dinamico.
+                Ristrutturazione del sito, semplificazione dell'architettura
+                informativa, miglioramento performance, revisione messaggi e CTA.
               </p>
-              <div class="case-subheading">Risultati</div>
+              <div class="case-subheading">Risultato</div>
               <ul class="case-list">
-                <li>Incremento del 180% nelle vendite online</li>
-                <li>Tempo di caricamento pagine &lt; 1.2s</li>
-                <li>4.500+ ordini mensili automatizzati</li>
+                <li>Presenza digitale più credibile</li>
+                <li>Aumento CTR + 35%</li>
+                <li>Aumento lead + 20%</li>
               </ul>
             </div>
 
             <!-- Case 3 -->
             <div class="case-card">
-              <div class="case-label">Integrazione AI per Customer Service</div>
-              <div class="case-title">Azienda SaaS</div>
+              <div class="case-label">SCELTA E SOSTITUZIONE GESTIONALE</div>
+              <div class="case-title">Azienda strutturata</div>
               <div class="case-subheading">Sfida</div>
               <p class="case-sub">
-                Volume crescente di richieste cliente con team di supporto saturo e
-                tempi di risposta lunghi.
+                Strumenti frammentati, processi ridondanti e difficoltà nel capire se
+                sviluppare una soluzione custom o scegliere un software esistente.
               </p>
               <div class="case-subheading">Soluzione</div>
               <p class="case-sub">
-                Implementazione di Agente AI conversazionale integrato con
-                knowledge base aziendale, escalation automatica ai team umani per
-                casi complessi.
+                Analisi dei requisiti, valutazione build or buy, definizione
+                criteri decisionali, supporto nella selezione vendor e nella
+                governance del cambiamento.
               </p>
-              <div class="case-subheading">Risultati</div>
+              <div class="case-subheading">Risultato</div>
               <ul class="case-list">
-                <li>70% delle richieste gestite autonomamente dall’AI</li>
-                <li>Tempo medio di risposta ridotto a &lt; 2 minuti</li>
-                <li>Customer satisfaction +35%</li>
+                <li>Decisione più consapevole</li>
+                <li>Spesa piu contenuta, prodotto piu allineato alle esigenze aziendali</li>
+                <li>Maggiore allineamento tra necessità operative e soluzione scelta.</li>
               </ul>
             </div>
           </div>
@@ -1844,6 +2055,48 @@
       </section>
       <div class="section-divider"></div>
 
+      <!-- METODO -->
+      <section id="metodo">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-kicker">Metodo</div>
+            <h2 class="section-title">Come lavoro per ridurre rischi e aumentare risultati</h2>
+            <p class="section-subtitle">
+              Il modo migliore per ottenere un progetto digitale utile è partire da
+              una diagnosi chiara, definire priorità misurabili e implementare solo
+              ciò che migliora davvero performance, efficienza o conversione.
+            </p>
+          </div>
+          <div class="process-grid">
+            <article class="process-card">
+              <div class="process-step">01 Analisi</div>
+              <h3>Capisco il problema prima della soluzione</h3>
+              <p>
+                Analizzo processi, strumenti, attriti operativi e obiettivi di
+                business per individuare dove si perde tempo, margine o controllo.
+              </p>
+            </article>
+            <article class="process-card">
+              <div class="process-step">02 Strategia</div>
+              <h3>Definisco una roadmap sostenibile</h3>
+              <p>
+                Traduco le priorità in un piano concreto: software, AI,
+                automazioni, governance del progetto e metriche da monitorare.
+              </p>
+            </article>
+            <article class="process-card">
+              <div class="process-step">03 Implementazione</div>
+              <h3>Rendo l'innovazione operativa</h3>
+              <p>
+                Coordino la messa a terra delle soluzioni e verifico che il
+                risultato migliori davvero efficienza, chiarezza e generazione lead.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <div class="section-divider"></div>
+
       <!-- FAQ -->
       <section id="faq">
         <div class="container">
@@ -1906,7 +2159,9 @@
                   <p>
                     L’AI permette di automatizzare attività ripetitive, migliorare la
                     qualità delle decisioni e liberare tempo per attività a maggior
-                    valore aggiunto, aumentando efficienza e scalabilità.
+                    valore aggiunto. Il modo migliore per integrarla è partire da
+                    processi ad alto volume o ad alto attrito, dove l'impatto è
+                    misurabile fin da subito.
                   </p>
                 </div>
               </div>
@@ -1930,9 +2185,10 @@
               >
                 <div class="faq-panel-inner">
                   <p>
-                    Dipende da budget, specificità delle esigenze, competenze interne e
-                    tempistiche. Un’analisi strutturata dei trade-off è fondamentale
-                    per prendere la decisione corretta.
+                    Il modo migliore per scegliere tra build o buy è confrontare
+                    budget, tempi, personalizzazione richiesta, competenze interne e
+                    costi di manutenzione futuri. Un’analisi strutturata evita
+                    decisioni costose e difficili da sostenere.
                   </p>
                 </div>
               </div>
@@ -2046,9 +2302,9 @@
                     Gli Agenti AI sono sistemi di intelligenza artificiale autonomi
                     capaci di eseguire compiti specifici per conto dell'azienda.
                     Possono gestire conversazioni con i clienti, analizzare dati,
-                    automatizzare flussi di lavoro e molto altro. Il vantaggio
-                    principale è la possibilità di scalare le operazioni senza
-                    aumentare proporzionalmente il personale.
+                    automatizzare flussi di lavoro e molto altro. Il modo migliore
+                    per usarli è inserirli in processi con regole chiare, dati
+                    accessibili e obiettivi precisi di tempo, qualità o scalabilità.
                   </p>
                 </div>
               </div>
@@ -2077,7 +2333,7 @@
                     esigenze specifiche. Il modo migliore per scegliere è confrontare
                     le soluzioni disponibili sul mercato con i requisiti
                     dell'azienda, valutando fattori come scalabilità, integrazioni,
-                    costi di licenza e supporto tecnico.
+                    costi di licenza, facilità di adozione e supporto tecnico.
                   </p>
                 </div>
               </div>
@@ -2170,25 +2426,25 @@
           </div>
 
           <div class="contact-form">
-            <form>
+            <form aria-label="Modulo contatti">
               <div class="form-row">
                 <div class="form-field">
-                  <label>Nome <span>*</span></label>
-                  <input type="text" name="nome" required />
+                  <label for="nome">Nome <span>*</span></label>
+                  <input id="nome" type="text" name="nome" autocomplete="name" required />
                 </div>
                 <div class="form-field">
-                  <label>Email <span>*</span></label>
-                  <input type="email" name="email" required />
+                  <label for="email">Email <span>*</span></label>
+                  <input id="email" type="email" name="email" autocomplete="email" required />
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-field">
-                  <label>Azienda</label>
-                  <input type="text" name="azienda" />
+                  <label for="azienda">Azienda</label>
+                  <input id="azienda" type="text" name="azienda" autocomplete="organization" />
                 </div>
                 <div class="form-field">
-                  <label>Servizio di Interesse</label>
-                  <select name="servizio">
+                  <label for="servizio">Servizio di Interesse</label>
+                  <select id="servizio" name="servizio">
                     <option value="">Seleziona un servizio</option>
                     <option>Creazione e ristrutturazione siti web</option>
                     <option>Creazione web app</option>
@@ -2206,8 +2462,8 @@
                 </div>
               </div>
               <div class="form-field">
-                <label>Messaggio <span>*</span></label>
-                <textarea name="messaggio" required></textarea>
+                <label for="messaggio">Messaggio <span>*</span></label>
+                <textarea id="messaggio" name="messaggio" required></textarea>
               </div>
               <div class="form-actions">
                 <button type="submit" class="btn btn-primary">
@@ -2218,6 +2474,11 @@
                   Invia Messaggio
                 </button>
               </div>
+              <p class="contact-note">
+                Preferisci un contatto diretto? Il modo migliore per iniziare è
+                prenotare una consulenza gratuita di 30 minuti oppure scrivere a
+                <a href="mailto:martina.ria@hotmail.com">martina.ria@hotmail.com</a>.
+              </p>
             </form>
           </div>
           </div>

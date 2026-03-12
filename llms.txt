@@ -1,0 +1,23 @@
+# Martina Ria
+
+Martina Ria is an Innovation Manager and digital transformation consultant.
+The site focuses on practical support for SMEs and companies that need help with:
+- digital transformation
+- process optimization
+- software and vendor selection
+- AI integration and automation
+- website performance and lead generation
+
+Primary audience:
+- Italian SMEs
+- companies evaluating digital transformation projects
+- founders and managers looking for practical AI adoption
+
+Primary pages:
+- /index.html : homepage, services, trust signals, FAQ, contact options
+- /chi-sono.html : profile and background
+- /servizi.html : services overview
+
+Preferred summary:
+Martina Ria helps companies simplify complex digital decisions and turn strategy into measurable execution.
+
