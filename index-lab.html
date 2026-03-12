@@ -67,7 +67,7 @@
       --t-opp-bright--light: #ffffff;
       --t-opp-medium--light: #acacac;
       --t-opp-muted--light: #838383;
-      --bg: #f5f0e8;
+      --bg: #eef4f6;
       --bg-alt: var(--base-tint--light);
       --accent: var(--accent--light);
       --accent-soft: rgba(var(--accent-rgb--light), 0.15);
@@ -75,6 +75,8 @@
       --muted: var(--t-muted--light);
       --card: var(--base-tint--light);
       --border: var(--base-shade--light);
+      --accent-deep: #325866;
+      --grid-line: rgba(185, 219, 228, 0.14);
       --danger: #c65b5b;
       --radius-lg: 24px;
       --radius-md: 16px;
@@ -93,9 +95,13 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
         "Segoe UI", sans-serif;
-      background: #faf7f6;
+      background:
+        radial-gradient(circle at top left, rgba(98, 152, 168, 0.16), transparent 28%),
+        radial-gradient(circle at top right, rgba(207, 230, 236, 0.68), transparent 32%),
+        linear-gradient(180deg, #f5f9fa 0%, #e6eef1 100%);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
+      letter-spacing: -0.01em;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -119,7 +125,7 @@
       width: 100%;
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 24px;
     }
 
     /* NAVBAR */
@@ -268,43 +274,59 @@
     }
 
     .hero {
-      padding: 56px 0 40px;
-      background: linear-gradient(
-        180deg,
-        #faf7f6 0%,
-        rgba(98, 152, 168, 0.08) 58%,
-        #e1dedc 100%
-      );
+      position: relative;
+      overflow: hidden;
+      padding: 96px 0 68px;
+      background:
+        radial-gradient(circle at 20% 12%, rgba(98, 152, 168, 0.18), transparent 26%),
+        radial-gradient(circle at 82% 18%, rgba(194, 223, 231, 0.22), transparent 24%),
+        linear-gradient(180deg, #f5f9fa 0%, #dde8ec 100%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 84px 84px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.44), transparent 88%);
+      pointer-events: none;
     }
 
     .hero-grid {
-      display: flex;
-      flex-direction: column;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+      gap: 42px;
       align-items: center;
-      gap: 20px;
-      text-align: center;
     }
 
     .hero-content {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
+      text-align: left;
+      max-width: 760px;
     }
 
     .hero-kicker {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 0;
-      border-radius: 0;
-      background: transparent;
-      border: 0;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.58);
+      border: 1px solid rgba(98, 152, 168, 0.16);
       color: var(--accent--light);
       font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 0.3em;
-      margin-bottom: 22px;
+      margin-bottom: 18px;
       font-weight: 700;
+      backdrop-filter: blur(10px);
     }
 
     .hero-kicker-dot {
@@ -325,13 +347,11 @@
     }
 
     .hero-title {
-      font-size: clamp(3rem, 6vw, 5.1rem);
-      line-height: 0.96;
+      font-size: clamp(3.6rem, 7vw, 6.2rem);
+      line-height: 0.9;
       letter-spacing: -0.04em;
-      margin-bottom: 16px;
-      max-width: 24ch;
-      margin-left: auto;
-      margin-right: auto;
+      margin-bottom: 18px;
+      max-width: 10ch;
     }
 
     .hero-title span {
@@ -342,28 +362,24 @@
     }
 
     .hero-subtitle {
-      font-size: 16px;
+      font-size: 18px;
       color: var(--muted);
-      max-width: 760px;
-      margin-bottom: 22px;
-      margin-left: auto;
-      margin-right: auto;
+      max-width: 720px;
+      margin-bottom: 28px;
     }
 
     .hero-actions {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
       gap: 12px;
-      margin-bottom: 18px;
+      margin-bottom: 24px;
     }
 
     .hero-meta {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
-      gap: 18px;
-      font-size: 12px;
+      gap: 12px;
+      font-size: 13px;
       color: var(--muted);
     }
 
@@ -371,6 +387,10 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(224, 221, 219, 0.9);
+      background: rgba(255, 255, 255, 0.72);
     }
 
     .hero-meta-dot {
@@ -384,18 +404,19 @@
       position: relative;
       display: flex;
       justify-content: center;
-      margin-top: -18px;
+      min-height: 560px;
+      align-items: center;
     }
 
     .hero-card {
       width: 100%;
-      max-width: 245px;
+      max-width: 360px;
       aspect-ratio: 1 / 1;
       display: grid;
       place-items: center;
-      padding: 5px;
+      padding: 10px;
       position: relative;
-      animation: hero-float 5.8s ease-in-out infinite;
+      animation: floatFrame 8s ease-in-out infinite;
     }
 
     .hero-card::before {
@@ -403,59 +424,20 @@
       position: absolute;
       inset: 0;
       border-radius: 999px;
-      border: 1px solid rgba(213, 207, 204, 0.8);
+      border: 0;
+      background: none;
       pointer-events: none;
-    }
-
-    .hero-dot-orbit {
-      position: absolute;
-      border-radius: 999px;
-      pointer-events: none;
-    }
-
-    .hero-dot-orbit::before {
-      content: "";
-      position: absolute;
-      border-radius: 999px;
-    }
-
-    .hero-dot-orbit-outer {
-      inset: 0;
-      animation: hero-orbit-spin-outer 17s linear infinite;
-    }
-
-    .hero-dot-orbit-outer::before {
-      top: -5px;
-      left: calc(50% - 5px);
-      width: 10px;
-      height: 10px;
-      background: var(--additional--light);
-      box-shadow: 0 0 0 4px rgba(var(--additional-rgb--light), 0.22);
-    }
-
-    .hero-dot-orbit-inner {
-      inset: 16px;
-      animation: hero-orbit-spin-inner 12.5s linear infinite reverse;
-      z-index: 1;
-    }
-
-    .hero-dot-orbit-inner::before {
-      top: calc(50% - 4px);
-      left: -4px;
-      width: 8px;
-      height: 8px;
-      background: var(--accent--light);
-      box-shadow: 0 0 0 4px rgba(var(--accent-rgb--light), 0.22);
     }
 
     .hero-image-wrap {
-      width: 78%;
+      width: 76%;
       aspect-ratio: 1 / 1;
       margin: 0 auto;
       border-radius: 999px;
       overflow: hidden;
       position: relative;
       z-index: 1;
+      box-shadow: 0 24px 70px rgba(43, 77, 89, 0.18);
     }
 
     .hero-image-wrap img {
@@ -467,38 +449,36 @@
 
     .hero-orbit {
       position: absolute;
-      inset: 16px;
+      inset: 14px;
       border-radius: 999px;
-      border: 1px solid rgba(213, 207, 204, 0.8);
+      border: 1px solid rgba(182, 214, 223, 0.78);
       pointer-events: none;
+      animation: spinOrbit 18s linear infinite;
     }
 
-    @keyframes hero-float {
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
+    .hero-orbit::before,
+    .hero-orbit::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
     }
 
-    @keyframes hero-orbit-spin-outer {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
+    .hero-orbit::before {
+      top: 12%;
+      right: 14%;
+      width: 18px;
+      height: 18px;
+      background: linear-gradient(135deg, var(--accent--light), #b9e3ee);
+      box-shadow: 0 0 0 8px rgba(98, 152, 168, 0.12);
     }
 
-    @keyframes hero-orbit-spin-inner {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
+    .hero-orbit::after {
+      bottom: 18%;
+      left: 9%;
+      width: 12px;
+      height: 12px;
+      background: linear-gradient(135deg, #d5edf5, #f7fbff);
+      box-shadow: 0 0 0 7px rgba(213, 237, 245, 0.4);
     }
 
     .section-divider {
@@ -516,11 +496,11 @@
     /* SECTION GENERIC */
 
     section {
-      padding: 56px 0;
+      padding: 72px 0;
     }
 
     .section-header {
-      margin-bottom: 24px;
+      margin-bottom: 30px;
       text-align: center;
     }
 
@@ -534,19 +514,19 @@
     }
 
     .section-title {
-      font-size: clamp(2rem, 4vw, 3.25rem);
+      font-size: clamp(2.4rem, 4.6vw, 4rem);
       letter-spacing: -0.03em;
-      margin-bottom: 10px;
-      line-height: 0.98;
+      margin-bottom: 12px;
+      line-height: 0.92;
       max-width: none;
       margin-left: auto;
       margin-right: auto;
     }
 
     .section-subtitle {
-      font-size: 16px;
+      font-size: 17px;
       color: var(--muted);
-      max-width: 640px;
+      max-width: 700px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -686,7 +666,7 @@
     .about-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-      gap: 56px;
+      gap: 64px;
       align-items: start;
     }
 
@@ -695,10 +675,10 @@
     }
 
     .about-text {
-      font-size: 14px;
+      font-size: 15px;
       color: var(--muted);
-      margin-top: 10px;
-      max-width: 560px;
+      margin-top: 12px;
+      max-width: 590px;
     }
 
     .about-metrics {
@@ -708,10 +688,10 @@
     }
 
     .metric {
-      min-height: 136px;
-      padding: 22px 18px;
+      min-height: 148px;
+      padding: 24px 20px;
       border-radius: var(--radius-lg);
-      background: rgba(255, 255, 255, 0.82);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(233, 242, 245, 0.88));
       border: 1px solid rgba(224, 221, 219, 1);
       font-size: 12px;
       display: flex;
@@ -723,7 +703,7 @@
     }
 
     .metric strong {
-      font-size: 32px;
+      font-size: 38px;
       line-height: 1;
     }
 
@@ -739,25 +719,64 @@
 
     /* METODO */
 
+    .process-section .section-header {
+      text-align: left;
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(280px, 0.6fr);
+      gap: 28px;
+      align-items: end;
+    }
+
+    .process-section .section-subtitle {
+      margin: 0;
+      max-width: 520px;
+    }
+
     .process-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
+      position: relative;
+    }
+
+    .process-grid::before {
+      content: "";
+      position: absolute;
+      top: 44px;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(98, 152, 168, 0.35), transparent);
+      pointer-events: none;
     }
 
     .process-card {
-      min-height: 220px;
-      padding: 24px;
-      border-radius: var(--radius-lg);
+      position: relative;
+      min-height: 280px;
+      padding: 28px 24px 24px;
+      border-radius: 28px;
       border: 1px solid rgba(224, 221, 219, 1);
-      background: rgba(255, 255, 255, 0.82);
-      box-shadow: 0 14px 35px rgba(22, 22, 22, 0.05);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(232, 241, 244, 0.9));
+      box-shadow: 0 20px 44px rgba(22, 22, 22, 0.06);
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 16px;
+    }
+
+    .process-card::before {
+      content: "";
+      position: absolute;
+      top: 32px;
+      left: 24px;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent--light), #a8d9e5);
+      box-shadow: 0 0 0 8px rgba(98, 152, 168, 0.1);
     }
 
     .process-step {
+      padding-left: 42px;
       font-size: 12px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -766,13 +785,14 @@
     }
 
     .process-card h3 {
-      font-size: 20px;
-      line-height: 1.1;
+      font-size: 24px;
+      line-height: 1.04;
+      max-width: 12ch;
     }
 
     .process-card p {
       color: var(--muted);
-      font-size: 14px;
+      font-size: 15px;
     }
 
     /* PORTFOLIO */
@@ -780,49 +800,84 @@
     .cases-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
+      gap: 18px;
     }
 
     .case-card {
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: var(--radius-lg);
-      padding: 22px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(232, 241, 244, 0.86));
+      border-radius: 30px;
+      padding: 26px;
       border: 1px solid rgba(224, 221, 219, 1);
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 12px;
       font-size: 13px;
+      box-shadow: 0 16px 36px rgba(22, 22, 22, 0.05);
+    }
+
+    .case-card:nth-child(1) {
+      grid-column: span 2;
+    }
+
+    .case-card:nth-child(2),
+    .case-card:nth-child(3) {
+      grid-column: auto;
     }
 
     .case-label {
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
+      letter-spacing: 0.2em;
+      color: var(--accent-deep);
+      font-weight: 700;
     }
 
     .case-title {
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.05;
+    }
+
+    .case-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .case-badge {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(98, 152, 168, 0.2);
+      background: rgba(98, 152, 168, 0.08);
+      color: var(--accent-deep);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
     }
 
     .case-sub {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--muted);
-      margin-bottom: 6px;
+      margin-bottom: 0;
     }
 
     .case-subheading {
       font-size: 12px;
       font-weight: 600;
       margin-top: 6px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text);
     }
 
     .case-list {
-      margin-left: 16px;
-      margin-top: 4px;
+      margin-left: 18px;
       color: var(--muted);
-      font-size: 12px;
+      font-size: 13px;
+      display: grid;
+      gap: 8px;
     }
 
     /* TESTIMONIANZA */
@@ -1104,13 +1159,15 @@
     /* CONTATTI */
 
     #contatti {
-      background: #e7e7e7;
+      background:
+        radial-gradient(circle at top right, rgba(98, 152, 168, 0.12), transparent 30%),
+        linear-gradient(180deg, #edf4f6 0%, #dbe6ea 100%);
     }
 
     .contact-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 26px;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: 30px;
       align-items: flex-start;
     }
 
@@ -1204,12 +1261,36 @@
     }
 
     .contact-form {
-      background: rgba(255, 255, 255, 0.52);
-      border-radius: 24px;
-      padding: 24px 24px 26px;
+      background: rgba(255, 255, 255, 0.66);
+      border-radius: 30px;
+      padding: 28px 28px 30px;
       border: 1px solid rgba(224, 221, 219, 1);
       box-shadow: var(--shadow-soft);
       font-size: 13px;
+    }
+
+    .contact-form-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 18px;
+    }
+
+    .contact-form-title {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.05;
+    }
+
+    .contact-form-meta {
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(98, 152, 168, 0.1);
+      color: var(--accent-deep);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
     }
 
     .form-row {
@@ -1273,6 +1354,26 @@
       font-size: 12px;
       color: var(--muted);
     }
+
+    @keyframes spinOrbit {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes floatFrame {
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
 
     .sr-only {
       position: absolute;
@@ -1352,20 +1453,55 @@
         grid-template-columns: minmax(0, 1fr);
       }
 
+      .hero-grid,
       .about-grid {
         gap: 28px;
       }
 
       .hero {
-        padding-top: 76px;
+        padding-top: 104px;
+      }
+
+      .hero-content {
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero-title {
+        max-width: 12ch;
+      }
+
+      .hero-actions,
+      .hero-meta {
+        justify-content: center;
+      }
+
+      .hero-visual {
+        order: -1;
+        min-height: 430px;
       }
 
       .hero-card {
-        max-width: 227px;
+        max-width: 300px;
       }
 
+      .process-section .section-header,
       .process-grid {
         grid-template-columns: minmax(0, 1fr);
+      }
+
+      .process-grid::before {
+        display: none;
+      }
+
+      .cases-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .case-card:nth-child(1),
+      .case-card:nth-child(2),
+      .case-card:nth-child(3) {
+        grid-column: auto;
       }
     }
 
@@ -1420,8 +1556,21 @@
         padding-top: 96px;
       }
 
+      .hero-subtitle {
+        font-size: 17px;
+      }
+
+      .hero-visual {
+        min-height: auto;
+      }
+
       .section-title {
         max-width: none;
+      }
+
+      .case-head,
+      .contact-form-header {
+        flex-direction: column;
       }
 
       .testimonial {
@@ -1655,23 +1804,6 @@
       <!-- HERO -->
       <section id="home" class="hero">
         <div class="container hero-grid">
-          <div class="hero-visual">
-            <div class="hero-card">
-              <span class="hero-dot-orbit hero-dot-orbit-outer" aria-hidden="true"></span>
-              <span class="hero-dot-orbit hero-dot-orbit-inner" aria-hidden="true"></span>
-              <div class="hero-image-wrap">
-                <img
-                  src="assets/martina_ria.webp"
-                  alt="Ritratto professionale di Martina Ria"
-                  width="1003"
-                  height="1003"
-                  fetchpriority="high"
-                  decoding="async"
-                />
-              </div>
-              <div class="hero-orbit"></div>
-            </div>
-          </div>
           <div class="hero-content">
             <div class="hero-kicker">
               <span class="hero-kicker-dot" aria-hidden="true">
@@ -1750,6 +1882,21 @@
               <span><span class="hero-meta-dot"></span> Innovation Management</span>
               <span><span class="hero-meta-dot"></span> Digital Strategy</span>
               <span><span class="hero-meta-dot"></span> AI &amp; Automazioni</span>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="hero-card">
+              <div class="hero-image-wrap">
+                <img
+                  src="assets/martina_ria.webp"
+                  alt="Ritratto professionale di Martina Ria"
+                  width="1003"
+                  height="1003"
+                  fetchpriority="high"
+                  decoding="async"
+                />
+              </div>
+              <div class="hero-orbit"></div>
             </div>
           </div>
         </div>
@@ -1936,18 +2083,23 @@
         <div class="container">
           <div class="section-header">
             <div class="section-kicker">Portfolio</div>
-            <h2 class="section-title">Casi Studio</h2>
+            <h2 class="section-title">Casi studio che leggono il problema prima della soluzione</h2>
             <p class="section-subtitle">
-              Progetti che hanno generato impatto misurabile. Dalla sfida alla
-              soluzione, fino ai risultati concreti.
+              Non una vetrina di tool, ma decisioni progettuali che hanno reso più
+              forte il business: operatività, posizionamento, chiarezza commerciale.
             </p>
           </div>
 
           <div class="cases-grid">
             <!-- Case 1 -->
             <div class="case-card">
-              <div class="case-label">Digitalizzazione Processi Aziendali</div>
-              <div class="case-title">PMI Settore Manifatturiero</div>
+              <div class="case-head">
+                <div>
+                  <div class="case-label">Digitalizzazione Processi Aziendali</div>
+                  <div class="case-title">PMI Settore Manifatturiero</div>
+                </div>
+                <div class="case-badge">Operations redesign</div>
+              </div>
               <div class="case-subheading">Sfida</div>
               <p class="case-sub">
                 Processi manuali e dispersione documentale causavano ritardi
@@ -1955,9 +2107,8 @@
               </p>
               <div class="case-subheading">Soluzione</div>
               <p class="case-sub">
-                Implementazione di un sistema di workflow automation integrato con
-                gestionale ERP esistente, utilizzando tecnologie low-code e API
-                custom.
+                Workflow automation integrata con ERP esistente, tecnologie
+                low-code e API custom per connettere i passaggi critici.
               </p>
               <div class="case-subheading">Risultati</div>
               <ul class="case-list">
@@ -1969,8 +2120,13 @@
 
             <!-- Case 2 -->
             <div class="case-card">
-              <div class="case-label">RISTRUTTURAZIONE SITO E MARKETING FUNNEL</div>
-              <div class="case-title">PMI servizi</div>
+              <div class="case-head">
+                <div>
+                  <div class="case-label">RISTRUTTURAZIONE SITO E MARKETING FUNNEL</div>
+                  <div class="case-title">PMI servizi</div>
+                </div>
+                <div class="case-badge">Brand clarity</div>
+              </div>
               <div class="case-subheading">Sfida</div>
               <p class="case-sub">
                 Il sito esistente non comunicava il valore dell'azienda, era lento
@@ -1991,8 +2147,13 @@
 
             <!-- Case 3 -->
             <div class="case-card">
-              <div class="case-label">SCELTA E SOSTITUZIONE GESTIONALE</div>
-              <div class="case-title">Azienda strutturata</div>
+              <div class="case-head">
+                <div>
+                  <div class="case-label">SCELTA E SOSTITUZIONE GESTIONALE</div>
+                  <div class="case-title">Azienda strutturata</div>
+                </div>
+                <div class="case-badge">Decision architecture</div>
+              </div>
               <div class="case-subheading">Sfida</div>
               <p class="case-sub">
                 Strumenti frammentati, processi ridondanti e difficoltà nel capire se
@@ -2128,16 +2289,17 @@
       <div class="section-divider"></div>
 
       <!-- METODO -->
-      <section id="metodo">
+      <section id="metodo" class="process-section">
         <div class="container">
           <div class="section-header">
-            <div class="section-kicker">Metodo</div>
-            <h2 class="section-title">Come lavoro per ridurre rischi e aumentare risultati</h2>
-            <p class="section-subtitle">
-              Il modo migliore per ottenere un progetto digitale utile è partire da
-              una diagnosi chiara, definire priorità misurabili e implementare solo
-              ciò che migliora davvero performance, efficienza o conversione.
-            </p>
+            <div>
+              <div class="section-kicker">Metodo</div>
+              <h2 class="section-title">Il processo con cui rendo l'innovazione più governabile</h2>
+              <p class="section-subtitle">
+                La differenza non sta nel numero di strumenti introdotti, ma nella
+                qualità delle scelte. Ogni fase chiarisce dove intervenire e perché.
+              </p>
+            </div>
           </div>
           <div class="process-grid">
             <article class="process-card">
@@ -2429,10 +2591,10 @@
         <div class="container">
           <div class="section-header">
             <div class="section-kicker">Contatti</div>
-            <h2 class="section-title">Iniziamo a parlare</h2>
+            <h2 class="section-title">Iniziamo da una priorità chiara</h2>
             <p class="section-subtitle">
-              Hai un progetto in mente o vuoi esplorare nuove possibilità per la
-              tua azienda? Scegli il modo che preferisci per contattarmi.
+              Se il progetto è ancora confuso, va bene. Il primo obiettivo è capire
+              se il nodo principale riguarda processi, software, AI o presenza digitale.
             </p>
           </div>
           <div class="contact-grid">
@@ -2498,6 +2660,12 @@
           </div>
 
           <div class="contact-form">
+            <div class="contact-form-header">
+              <div>
+                <div class="contact-form-title">Inviami un messaggio</div>
+              </div>
+              <div class="contact-form-meta">Reply entro 48h</div>
+            </div>
             <form aria-label="Modulo contatti">
               <div class="form-row">
                 <div class="form-field">
