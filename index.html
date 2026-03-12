@@ -534,13 +534,46 @@
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
     }
 
+    .services-cta {
+      margin-top: 28px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .services-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--accent--light);
+      text-decoration: underline;
+      text-underline-offset: 5px;
+      text-decoration-thickness: 1.5px;
+    }
+
+    .services-link svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      transition: transform 0.12s ease;
+    }
+
+    .services-link:hover svg {
+      transform: translateX(2px);
+    }
+
     /* CHI SONO */
 
     .about-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
-      gap: 40px;
-      align-items: center;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: 56px;
+      align-items: start;
+    }
+
+    .about-copy {
+      max-width: 640px;
     }
 
     .about-text {
@@ -551,34 +584,39 @@
     }
 
     .about-metrics {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
     }
 
     .metric {
-      padding: 10px 12px;
-      border-radius: var(--radius-md);
+      min-height: 136px;
+      padding: 22px 18px;
+      border-radius: var(--radius-lg);
       background: rgba(255, 255, 255, 0.82);
       border: 1px solid rgba(224, 221, 219, 1);
       font-size: 12px;
-      display: inline-flex;
+      display: flex;
       flex-direction: column;
-      gap: 2px;
-      min-width: 120px;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      text-align: center;
     }
 
     .metric strong {
-      font-size: 16px;
+      font-size: 32px;
+      line-height: 1;
     }
 
-    .about-card {
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 24px;
-      padding: 24px;
-      border: 1px solid rgba(224, 221, 219, 1);
-      box-shadow: var(--shadow-soft);
+    .metric span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .about-cta {
+      margin-top: 26px;
+      display: inline-flex;
     }
 
     /* PORTFOLIO */
@@ -633,63 +671,278 @@
 
     /* TESTIMONIANZA */
 
+    .testimonial-carousel {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 18px 18px 14px;
+      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid rgba(210, 215, 223, 0.9);
+      border-radius: 28px;
+      box-shadow: 0 8px 20px rgba(22, 22, 22, 0.06);
+    }
+
     .testimonial {
-      background: rgba(255, 255, 255, 0.52);
-      border-radius: 26px;
-      padding: 28px;
-      border: 1px solid rgba(224, 221, 219, 1);
-      box-shadow: var(--shadow-soft);
-      max-width: 720px;
+      grid-template-columns: minmax(190px, 0.72fr) minmax(0, 1.28fr);
+      gap: 16px;
+      align-items: stretch;
+      background: rgba(244, 245, 247, 0.8);
+      border-radius: 22px;
+      padding: 16px;
+      border: 1px solid rgba(234, 236, 240, 0.95);
+      min-height: 220px;
+      display: none;
+    }
+
+    .testimonial.active {
+      display: grid;
+    }
+
+    .testimonial-client {
+      background: var(--accent);
+      border-radius: 22px;
+      padding: 18px 18px;
+      color: rgba(255, 255, 255, 0.94);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 168px;
+    }
+
+    .testimonial-client-top {
+      display: grid;
+      gap: 12px;
+    }
+
+    .testimonial-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .testimonial-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+    }
+
+    .testimonial-label {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(237, 245, 247, 0.82);
+    }
+
+    .testimonial-meta {
+      display: grid;
+      gap: 4px;
     }
 
     .testimonial-quote {
-      font-size: 14px;
+      display: flex;
+      align-items: center;
+      min-height: 168px;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(208, 214, 223, 0.9);
+      border-radius: 22px;
+      padding: 18px 20px;
+      font-size: 15px;
+      line-height: 1.6;
+      letter-spacing: 0;
       color: var(--muted);
-      margin-bottom: 12px;
+      margin-bottom: 0;
     }
 
-    .testimonial-name {
-      font-size: 14px;
-      font-weight: 600;
+    .testimonial-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .testimonial-nav {
+      display: flex;
+      gap: 10px;
+    }
+
+    .testimonial-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      border: 1px solid rgba(200, 208, 219, 0.95);
+      background: rgba(255, 255, 255, 0.92);
+      color: #0b1735;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+    }
+
+    .testimonial-btn:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 1);
+      border-color: rgba(11, 23, 53, 0.22);
+    }
+
+    .testimonial-btn:focus-visible,
+    .testimonial-dot:focus-visible {
+      outline: 2px solid rgba(180, 157, 147, 0.7);
+      outline-offset: 3px;
+    }
+
+    .testimonial-btn svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+    }
+
+    .testimonial-dots {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .testimonial-dot {
+      width: 10px;
+      height: 10px;
+      padding: 0;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(181, 191, 206, 0.9);
+      cursor: pointer;
+      transition: transform 180ms ease, background 180ms ease;
+    }
+
+    .testimonial-dot.active {
+      width: 30px;
+      background: #08112a;
+      transform: none;
     }
 
     .testimonial-role {
-      font-size: 12px;
-      color: var(--muted);
+      font-size: 13px;
+      color: rgba(239, 246, 248, 0.84);
+    }
+
+    .testimonial-name {
+      font-size: clamp(20px, 2.2vw, 26px);
+      line-height: 1.08;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .testimonial-status {
+      font-size: 11px;
+      color: #60708e;
+      min-width: 48px;
+      text-align: center;
     }
 
     /* FAQ */
 
-    .faq-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 26px;
-      align-items: flex-start;
-    }
-
-    .faq-list {
+    .faq-accordion {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
 
     .faq-item {
-      padding: 16px 18px;
-      border-radius: var(--radius-md);
+      border-radius: 20px;
       background: rgba(255, 255, 255, 0.82);
       border: 1px solid rgba(224, 221, 219, 1);
-      font-size: 13px;
+      box-shadow: 0 14px 35px rgba(22, 22, 22, 0.05);
+      overflow: hidden;
     }
 
-    .faq-item strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 13px;
+    .faq-trigger {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      padding: 20px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      text-align: left;
+      cursor: pointer;
+      font: inherit;
+      color: var(--text);
     }
 
-    .faq-item p {
+    .faq-trigger strong {
+      font-size: 15px;
+      line-height: 1.4;
+    }
+
+    .faq-icon {
+      position: relative;
+      flex: 0 0 auto;
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(98, 152, 168, 0.12);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .faq-icon::before,
+    .faq-icon::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 12px;
+      height: 1.8px;
+      border-radius: 999px;
+      background: var(--accent--light);
+      transform: translate(-50%, -50%);
+    }
+
+    .faq-icon::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: rgba(98, 152, 168, 0.2);
+    }
+
+    .faq-panel {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.25s ease;
+    }
+
+    .faq-item.open .faq-panel {
+      grid-template-rows: 1fr;
+    }
+
+    .faq-panel-inner {
+      overflow: hidden;
+    }
+
+    .faq-panel p {
+      padding: 0 22px 20px;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 14px;
+    }
+
+    .faq-cta {
+      margin-top: 28px;
     }
 
     /* CONTATTI */
@@ -849,9 +1102,12 @@
     @media (max-width: 960px) {
       .hero-grid,
       .about-grid,
-      .faq-grid,
       .contact-grid {
         grid-template-columns: minmax(0, 1fr);
+      }
+
+      .about-grid {
+        gap: 28px;
       }
 
       .hero {
@@ -881,6 +1137,10 @@
         display: none;
       }
 
+      .about-metrics {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
       .nav-left {
         font-size: 16px;
       }
@@ -908,6 +1168,47 @@
 
       .section-title {
         max-width: none;
+      }
+
+      .testimonial {
+        grid-template-columns: minmax(0, 1fr);
+        min-height: auto;
+        padding: 14px;
+        gap: 12px;
+      }
+
+      .testimonial-quote {
+        min-height: auto;
+        padding: 16px 16px;
+        font-size: 15px;
+      }
+
+      .testimonial-controls {
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .testimonial-carousel {
+        padding: 14px 14px 16px;
+        border-radius: 22px;
+      }
+
+      .testimonial-client {
+        min-height: 0;
+        padding: 18px 16px;
+        border-radius: 18px;
+      }
+
+      .testimonial-client-top {
+        gap: 12px;
+      }
+
+      .testimonial-role {
+        font-size: 14px;
+      }
+
+      .testimonial-dot.active {
+        width: 28px;
       }
     }
   </style>
@@ -1151,6 +1452,15 @@
               </div>
             </a>
           </div>
+          <div class="services-cta">
+            <a class="services-link" href="#contatti">
+              Scopri di piu
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M5 12H19" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M13 6L19 12L13 18" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
         </div>
       </section>
       <div class="section-divider"></div>
@@ -1158,7 +1468,7 @@
       <!-- CHI SONO -->
       <section id="chi-sono">
         <div class="container about-grid">
-          <div>
+          <div class="about-copy">
             <div class="section-kicker">Chi Sono</div>
             <h2 class="section-title">Martina Ria</h2>
             <p class="about-text">
@@ -1173,32 +1483,31 @@
               business, capace di tradurre la complessità in soluzioni fluide e
               concrete.
             </p>
-            <div class="about-metrics">
-              <div class="metric">
-                <strong>50+</strong>
-                <span>Progetti Completati</span>
-              </div>
-              <div class="metric">
-                <strong>100%</strong>
-                <span>Approccio Personalizzato</span>
-              </div>
-              <div class="metric">
-                <strong>360°</strong>
-                <span>Visione Integrata</span>
-              </div>
-              <div class="metric">
-                <strong>∞</strong>
-                <span>Innovazione Continua</span>
-              </div>
-            </div>
+            <a class="services-link about-cta" href="#portfolio">
+              Scopri di piu
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M5 12H19" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M13 6L19 12L13 18" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
           </div>
-          <div class="about-card">
-            <div class="section-kicker">Innovation Manager</div>
-            <p class="about-text">
-              Strategia digitale, gestione di progetti complessi, integrazione di
-              AI e automazioni: accompagno le aziende in percorsi di innovazione
-              misurabile, con un approccio concreto e orientato ai risultati.
-            </p>
+          <div class="about-metrics">
+            <div class="metric">
+              <strong>50+</strong>
+              <span>Progetti Completati</span>
+            </div>
+            <div class="metric">
+              <strong>100%</strong>
+              <span>Approccio Personalizzato</span>
+            </div>
+            <div class="metric">
+              <strong>360°</strong>
+              <span>Visione Integrata</span>
+            </div>
+            <div class="metric">
+              <strong>∞</strong>
+              <span>Innovazione Continua</span>
+            </div>
           </div>
         </div>
       </section>
@@ -1297,14 +1606,105 @@
             <div class="section-kicker">Testimonianze</div>
             <h2 class="section-title">Cosa dicono i clienti</h2>
           </div>
-          <div class="testimonial">
-            <p class="testimonial-quote">
-              “Martina ha trasformato completamente il nostro approccio alla
-              digitalizzazione. In 6 mesi abbiamo automatizzato processi che ci
-              facevano perdere ore ogni giorno. Il ROI è stato immediato.”
-            </p>
-            <div class="testimonial-name">Marco Bellini</div>
-            <div class="testimonial-role">CEO · TechFlow Solutions</div>
+          <div class="testimonial-carousel" data-carousel>
+            <article class="testimonial active" data-testimonial>
+              <div class="testimonial-client">
+                <div class="testimonial-client-top">
+                  <span class="testimonial-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9.5 8.25H6.75C6.05964 8.25 5.5 8.80964 5.5 9.5V15.75L8.5 13.5H9.5C10.1904 13.5 10.75 12.9404 10.75 12.25V9.5C10.75 8.80964 10.1904 8.25 9.5 8.25Z" stroke-width="1.8" stroke-linejoin="round"/>
+                      <path d="M17.25 8.25H14.5C13.8096 8.25 13.25 8.80964 13.25 9.5V15.75L16.25 13.5H17.25C17.9404 13.5 18.5 12.9404 18.5 12.25V9.5C18.5 8.80964 17.9404 8.25 17.25 8.25Z" stroke-width="1.8" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <div class="testimonial-label">Cliente</div>
+                </div>
+                <div class="testimonial-meta">
+                  <div class="testimonial-name">Marco T.</div>
+                  <div class="testimonial-role">Operations Manager</div>
+                </div>
+              </div>
+              <p class="testimonial-quote">“Approccio lucido, molto concreto, mai ornamentale. Ha portato metodo dove prima c'era solo urgenza.”</p>
+            </article>
+
+            <article class="testimonial" data-testimonial>
+              <div class="testimonial-client">
+                <div class="testimonial-client-top">
+                  <span class="testimonial-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9.5 8.25H6.75C6.05964 8.25 5.5 8.80964 5.5 9.5V15.75L8.5 13.5H9.5C10.1904 13.5 10.75 12.9404 10.75 12.25V9.5C10.75 8.80964 10.1904 8.25 9.5 8.25Z" stroke-width="1.8" stroke-linejoin="round"/>
+                      <path d="M17.25 8.25H14.5C13.8096 8.25 13.25 8.80964 13.25 9.5V15.75L16.25 13.5H17.25C17.9404 13.5 18.5 12.9404 18.5 12.25V9.5C18.5 8.80964 17.9404 8.25 17.25 8.25Z" stroke-width="1.8" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <div class="testimonial-label">Cliente</div>
+                </div>
+                <div class="testimonial-meta">
+                  <div class="testimonial-name">Laura B.</div>
+                  <div class="testimonial-role">CEO, PMI servizi</div>
+                </div>
+              </div>
+              <p class="testimonial-quote">“Ci ha aiutati a distinguere tra ciò che sembrava innovazione e ciò che serviva veramente. Differenza enorme.”</p>
+            </article>
+
+            <article class="testimonial" data-testimonial>
+              <div class="testimonial-client">
+                <div class="testimonial-client-top">
+                  <span class="testimonial-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9.5 8.25H6.75C6.05964 8.25 5.5 8.80964 5.5 9.5V15.75L8.5 13.5H9.5C10.1904 13.5 10.75 12.9404 10.75 12.25V9.5C10.75 8.80964 10.1904 8.25 9.5 8.25Z" stroke-width="1.8" stroke-linejoin="round"/>
+                      <path d="M17.25 8.25H14.5C13.8096 8.25 13.25 8.80964 13.25 9.5V15.75L16.25 13.5H17.25C17.9404 13.5 18.5 12.9404 18.5 12.25V9.5C18.5 8.80964 17.9404 8.25 17.25 8.25Z" stroke-width="1.8" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <div class="testimonial-label">Cliente</div>
+                </div>
+                <div class="testimonial-meta">
+                  <div class="testimonial-name">Davide R.</div>
+                  <div class="testimonial-role">Founder</div>
+                </div>
+              </div>
+              <p class="testimonial-quote">“Martina ha unito visione e operatività. Non si è limitata a proporre strumenti, ha rimesso ordine nelle decisioni.”</p>
+            </article>
+
+            <article class="testimonial" data-testimonial>
+              <div class="testimonial-client">
+                <div class="testimonial-client-top">
+                  <span class="testimonial-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9.5 8.25H6.75C6.05964 8.25 5.5 8.80964 5.5 9.5V15.75L8.5 13.5H9.5C10.1904 13.5 10.75 12.9404 10.75 12.25V9.5C10.75 8.80964 10.1904 8.25 9.5 8.25Z" stroke-width="1.8" stroke-linejoin="round"/>
+                      <path d="M17.25 8.25H14.5C13.8096 8.25 13.25 8.80964 13.25 9.5V15.75L16.25 13.5H17.25C17.9404 13.5 18.5 12.9404 18.5 12.25V9.5C18.5 8.80964 17.9404 8.25 17.25 8.25Z" stroke-width="1.8" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <div class="testimonial-label">Cliente</div>
+                </div>
+                <div class="testimonial-meta">
+                  <div class="testimonial-name">Francesca D.</div>
+                  <div class="testimonial-role">Responsabile area digitale</div>
+                </div>
+              </div>
+              <p class="testimonial-quote">“Una persona che capisce sia il lato business sia quello digitale. Il progetto è diventato più chiaro e più governabile.”</p>
+            </article>
+
+            <div class="testimonial-controls">
+              <div class="testimonial-dots" aria-label="Selettore testimonianze">
+                <button class="testimonial-dot active" type="button" data-carousel-dot aria-label="Vai alla testimonianza 1"></button>
+                <button class="testimonial-dot" type="button" data-carousel-dot aria-label="Vai alla testimonianza 2"></button>
+                <button class="testimonial-dot" type="button" data-carousel-dot aria-label="Vai alla testimonianza 3"></button>
+                <button class="testimonial-dot" type="button" data-carousel-dot aria-label="Vai alla testimonianza 4"></button>
+              </div>
+
+              <div class="testimonial-nav">
+                <div class="testimonial-status" data-carousel-status>01 / 04</div>
+                <button class="testimonial-btn" type="button" data-carousel-prev aria-label="Testimonianza precedente">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M15 6L9 12L15 18" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <button class="testimonial-btn" type="button" data-carousel-next aria-label="Testimonianza successiva">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M9 6L15 12L9 18" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -1321,45 +1721,242 @@
               servizi di Innovation Management.
             </p>
           </div>
-          <div class="faq-grid">
-          <div class="faq-list">
-            <div class="faq-item">
-              <strong
-                >Cos’è un Innovation Manager e come può aiutare la mia
-                azienda?</strong
+          <div class="faq-accordion" data-faq-accordion>
+            <div class="faq-item open">
+              <button
+                class="faq-trigger"
+                type="button"
+                aria-expanded="true"
+                aria-controls="faq-panel-1"
+                id="faq-trigger-1"
               >
-              <p>
-                Un Innovation Manager è un professionista che guida le aziende
-                nella trasformazione digitale, identificando opportunità di
-                innovazione e implementando soluzioni concrete. Il modo migliore
-                per capire se la tua azienda ne ha bisogno è valutare se i tuoi
-                processi sono efficienti, se sfrutti le tecnologie più adatte e se
-                la tua strategia digitale è allineata agli obiettivi di business.
-              </p>
+                <strong>Cos’è un Innovation Manager e come può aiutare la mia azienda?</strong>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+              <div
+                class="faq-panel"
+                id="faq-panel-1"
+                role="region"
+                aria-labelledby="faq-trigger-1"
+              >
+                <div class="faq-panel-inner">
+                  <p>
+                    Un Innovation Manager è un professionista che guida le aziende
+                    nella trasformazione digitale, identificando opportunità di
+                    innovazione e implementando soluzioni concrete. Il modo migliore
+                    per capire se la tua azienda ne ha bisogno è valutare se i tuoi
+                    processi sono efficienti, se sfrutti le tecnologie più adatte e se
+                    la tua strategia digitale è allineata agli obiettivi di business.
+                  </p>
+                </div>
+              </div>
             </div>
             <div class="faq-item">
-              <strong
-                >Qual è il vantaggio dell’integrazione AI nei processi
-                aziendali?</strong
+              <button
+                class="faq-trigger"
+                type="button"
+                aria-expanded="false"
+                aria-controls="faq-panel-2"
+                id="faq-trigger-2"
               >
-              <p>
-                L’AI permette di automatizzare attività ripetitive, migliorare la
-                qualità delle decisioni e liberare tempo per attività a maggior
-                valore aggiunto, aumentando efficienza e scalabilità.
-              </p>
+                <strong>Qual è il vantaggio dell’integrazione AI nei processi aziendali?</strong>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+              <div
+                class="faq-panel"
+                id="faq-panel-2"
+                role="region"
+                aria-labelledby="faq-trigger-2"
+              >
+                <div class="faq-panel-inner">
+                  <p>
+                    L’AI permette di automatizzare attività ripetitive, migliorare la
+                    qualità delle decisioni e liberare tempo per attività a maggior
+                    valore aggiunto, aumentando efficienza e scalabilità.
+                  </p>
+                </div>
+              </div>
             </div>
             <div class="faq-item">
-              <strong
-                >Come scelgo tra sviluppare un software internamente o
-                acquistarne uno esistente (Build or Buy)?</strong
+              <button
+                class="faq-trigger"
+                type="button"
+                aria-expanded="false"
+                aria-controls="faq-panel-3"
+                id="faq-trigger-3"
               >
-              <p>
-                Dipende da budget, specificità delle esigenze, competenze interne e
-                tempistiche. Un’analisi strutturata dei trade-off è fondamentale
-                per prendere la decisione corretta.
-              </p>
+                <strong>Come scelgo tra sviluppare un software internamente o acquistarne uno esistente (Build or Buy)?</strong>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+              <div
+                class="faq-panel"
+                id="faq-panel-3"
+                role="region"
+                aria-labelledby="faq-trigger-3"
+              >
+                <div class="faq-panel-inner">
+                  <p>
+                    Dipende da budget, specificità delle esigenze, competenze interne e
+                    tempistiche. Un’analisi strutturata dei trade-off è fondamentale
+                    per prendere la decisione corretta.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button
+                class="faq-trigger"
+                type="button"
+                aria-expanded="false"
+                aria-controls="faq-panel-4"
+                id="faq-trigger-4"
+              >
+                <strong>Quanto tempo richiede una trasformazione digitale?</strong>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+              <div
+                class="faq-panel"
+                id="faq-panel-4"
+                role="region"
+                aria-labelledby="faq-trigger-4"
+              >
+                <div class="faq-panel-inner">
+                  <p>
+                    Il tempo necessario per una trasformazione digitale varia in base
+                    alla complessità dell'organizzazione e agli obiettivi prefissati.
+                    Un progetto tipico può durare da poche settimane per interventi
+                    mirati, come la creazione di un sito web, a diversi mesi per
+                    trasformazioni più ampie. L'approccio migliore è procedere per
+                    fasi, iniziando con un'analisi e una roadmap chiara.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button
+                class="faq-trigger"
+                type="button"
+                aria-expanded="false"
+                aria-controls="faq-panel-5"
+                id="faq-trigger-5"
+              >
+                <strong>Quali sono i costi di una consulenza di Innovation Management?</strong>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+              <div
+                class="faq-panel"
+                id="faq-panel-5"
+                role="region"
+                aria-labelledby="faq-trigger-5"
+              >
+                <div class="faq-panel-inner">
+                  <p>
+                    I costi di una consulenza di Innovation Management variano in base
+                    al tipo di intervento, alla durata del progetto e alla complessità
+                    delle soluzioni da implementare. Il modo migliore per ottenere un
+                    preventivo accurato è prenotare una sessione gratuita di
+                    consulenza, durante la quale analizzeremo insieme le tue esigenze
+                    specifiche.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button
+                class="faq-trigger"
+                type="button"
+                aria-expanded="false"
+                aria-controls="faq-panel-6"
+                id="faq-trigger-6"
+              >
+                <strong>Come posso migliorare le performance del mio sito web?</strong>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+              <div
+                class="faq-panel"
+                id="faq-panel-6"
+                role="region"
+                aria-labelledby="faq-trigger-6"
+              >
+                <div class="faq-panel-inner">
+                  <p>
+                    Il modo migliore per migliorare le performance di un sito web è
+                    partire da un'analisi tecnica approfondita che valuti velocità di
+                    caricamento, SEO, user experience e tasso di conversione.
+                    Interventi comuni includono l'ottimizzazione delle immagini, la
+                    ristrutturazione del codice, il miglioramento della navigazione
+                    mobile e l'implementazione di strategie di web marketing mirate.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button
+                class="faq-trigger"
+                type="button"
+                aria-expanded="false"
+                aria-controls="faq-panel-7"
+                id="faq-trigger-7"
+              >
+                <strong>Cosa sono gli Agenti AI e come possono aiutare la mia azienda?</strong>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+              <div
+                class="faq-panel"
+                id="faq-panel-7"
+                role="region"
+                aria-labelledby="faq-trigger-7"
+              >
+                <div class="faq-panel-inner">
+                  <p>
+                    Gli Agenti AI sono sistemi di intelligenza artificiale autonomi
+                    capaci di eseguire compiti specifici per conto dell'azienda.
+                    Possono gestire conversazioni con i clienti, analizzare dati,
+                    automatizzare flussi di lavoro e molto altro. Il vantaggio
+                    principale è la possibilità di scalare le operazioni senza
+                    aumentare proporzionalmente il personale.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button
+                class="faq-trigger"
+                type="button"
+                aria-expanded="false"
+                aria-controls="faq-panel-8"
+                id="faq-trigger-8"
+              >
+                <strong>Come avviene la scelta o sostituzione di un gestionale aziendale?</strong>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+              <div
+                class="faq-panel"
+                id="faq-panel-8"
+                role="region"
+                aria-labelledby="faq-trigger-8"
+              >
+                <div class="faq-panel-inner">
+                  <p>
+                    La scelta di un gestionale aziendale è un processo che parte
+                    dalla mappatura dei processi attuali e dall'identificazione delle
+                    esigenze specifiche. Il modo migliore per scegliere è confrontare
+                    le soluzioni disponibili sul mercato con i requisiti
+                    dell'azienda, valutando fattori come scalabilità, integrazioni,
+                    costi di licenza e supporto tecnico.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
+          <div class="services-cta faq-cta">
+            <a class="services-link" href="#contatti">
+              Vedi altre domande
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M5 12H19" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M13 6L19 12L13 18" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
           </div>
         </div>
       </section>
@@ -1487,5 +2084,99 @@
       </div>
     </footer>
   </div>
+  <script>
+    const testimonialCarousel = document.querySelector("[data-carousel]");
+
+    if (testimonialCarousel) {
+      const items = Array.from(testimonialCarousel.querySelectorAll("[data-testimonial]"));
+      const dots = Array.from(testimonialCarousel.querySelectorAll("[data-carousel-dot]"));
+      const status = testimonialCarousel.querySelector("[data-carousel-status]");
+      const prevButton = testimonialCarousel.querySelector("[data-carousel-prev]");
+      const nextButton = testimonialCarousel.querySelector("[data-carousel-next]");
+      const total = items.length;
+      let currentIndex = 0;
+      let autoplayId;
+
+      const renderCarousel = (index) => {
+        currentIndex = (index + total) % total;
+
+        items.forEach((item, itemIndex) => {
+          item.classList.toggle("active", itemIndex === currentIndex);
+        });
+
+        dots.forEach((dot, dotIndex) => {
+          dot.classList.toggle("active", dotIndex === currentIndex);
+        });
+
+        if (status) {
+          status.textContent = `${String(currentIndex + 1).padStart(2, "0")} / ${String(total).padStart(2, "0")}`;
+        }
+      };
+
+      const startAutoplay = () => {
+        window.clearInterval(autoplayId);
+        autoplayId = window.setInterval(() => {
+          renderCarousel(currentIndex + 1);
+        }, 5500);
+      };
+
+      const resetAutoplay = () => {
+        window.clearInterval(autoplayId);
+        startAutoplay();
+      };
+
+      prevButton?.addEventListener("click", () => {
+        renderCarousel(currentIndex - 1);
+        resetAutoplay();
+      });
+
+      nextButton?.addEventListener("click", () => {
+        renderCarousel(currentIndex + 1);
+        resetAutoplay();
+      });
+
+      dots.forEach((dot, dotIndex) => {
+        dot.addEventListener("click", () => {
+          renderCarousel(dotIndex);
+          resetAutoplay();
+        });
+      });
+
+      testimonialCarousel.addEventListener("mouseenter", () => {
+        window.clearInterval(autoplayId);
+      });
+
+      testimonialCarousel.addEventListener("mouseleave", () => {
+        startAutoplay();
+      });
+
+      renderCarousel(0);
+      startAutoplay();
+    }
+
+    const faqAccordion = document.querySelector("[data-faq-accordion]");
+
+    if (faqAccordion) {
+      const faqItems = Array.from(faqAccordion.querySelectorAll(".faq-item"));
+
+      faqItems.forEach((item) => {
+        const trigger = item.querySelector(".faq-trigger");
+
+        trigger?.addEventListener("click", () => {
+          const isOpen = item.classList.contains("open");
+
+          faqItems.forEach((faqItem) => {
+            faqItem.classList.remove("open");
+            faqItem.querySelector(".faq-trigger")?.setAttribute("aria-expanded", "false");
+          });
+
+          if (!isOpen) {
+            item.classList.add("open");
+            trigger.setAttribute("aria-expanded", "true");
+          }
+        });
+      });
+    }
+  </script>
 </body>
 </html>
