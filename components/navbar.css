@@ -1,0 +1,202 @@
+.site-header {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  width: min(calc(100% - 32px), 760px);
+  z-index: 50;
+  backdrop-filter: blur(18px);
+  border-radius: 999px;
+}
+
+.site-header .nav {
+  position: relative;
+  min-height: var(--nav-height, 68px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 8px 10px 8px 16px;
+  border: 1px solid rgba(224, 221, 219, 1);
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 999px;
+  box-shadow: 0 16px 40px rgba(22, 22, 22, 0.08);
+}
+
+.site-header .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-size: 18px;
+}
+
+.site-header .nav-logo {
+  width: 91px;
+  height: auto;
+  object-fit: contain;
+}
+
+.site-header .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  color: var(--muted, var(--t-muted--light, #585858));
+}
+
+.site-header .nav-links a {
+  padding: 10px 16px;
+  border-radius: 999px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.site-header .nav-links a:hover {
+  color: var(--text, var(--t-bright--light, #161616));
+  background: rgba(98, 152, 168, 0.08);
+}
+
+.site-header .nav-links a.is-active {
+  background: var(--base-opp--light, #161616);
+  color: var(--t-opp-bright--light, #ffffff);
+}
+
+.site-header .nav-toggle {
+  display: none;
+  width: 46px;
+  height: 46px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(224, 221, 219, 1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--text, var(--t-bright--light, #161616));
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.site-header .nav-toggle:hover {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(98, 152, 168, 0.45);
+}
+
+.site-header .nav-toggle:focus-visible {
+  outline: 2px solid rgba(98, 152, 168, 0.45);
+  outline-offset: 2px;
+}
+
+.site-header .nav-toggle svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.site-header .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.site-header .btn {
+  border-radius: var(--radius-pill, 999px);
+  padding: 13px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.site-header .btn svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+}
+
+.site-header .nav-cta {
+  background: var(--accent--light, #6298a8);
+  color: var(--t-opp-bright--light, #ffffff);
+  box-shadow: 0 12px 30px rgba(98, 152, 168, 0.26);
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.site-header .nav-cta:hover {
+  transform: translateY(-1px);
+  background: #4f8392;
+  box-shadow: 0 18px 40px rgba(98, 152, 168, 0.32);
+}
+
+@media (max-width: 720px) {
+  .site-header {
+    top: 0;
+    bottom: auto;
+    width: 100%;
+    transform: none;
+    left: 0;
+    padding: 12px 16px 0;
+  }
+
+  .site-header .nav {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    border-radius: 24px;
+    gap: 12px;
+    padding: 8px 8px 8px 14px;
+  }
+
+  .site-header .nav-left {
+    justify-self: start;
+    font-size: 16px;
+  }
+
+  .site-header .nav-logo {
+    width: 75px;
+  }
+
+  .site-header .nav-links {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    padding: 10px;
+    border: 1px solid rgba(224, 221, 219, 1);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 16px 40px rgba(22, 22, 22, 0.08);
+  }
+
+  .site-header .nav.menu-open .nav-links {
+    display: flex;
+  }
+
+  .site-header .nav-links a {
+    padding: 12px 14px;
+  }
+
+  .site-header .nav-toggle {
+    display: inline-flex;
+    justify-self: center;
+  }
+
+  .site-header .nav-right {
+    display: flex;
+    justify-self: end;
+  }
+
+  .site-header .nav-right .btn {
+    padding: 12px 16px;
+  }
+}
