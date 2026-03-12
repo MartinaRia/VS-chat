@@ -136,6 +136,7 @@
     }
 
     .nav {
+      position: relative;
       min-height: var(--nav-height);
       display: flex;
       align-items: center;
@@ -185,6 +186,40 @@
     .nav-links a.is-active {
       background: var(--base-opp--light);
       color: var(--t-opp-bright--light);
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(224, 221, 219, 1);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--text);
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-toggle:hover {
+      background: rgba(255, 255, 255, 0.96);
+      border-color: rgba(98, 152, 168, 0.45);
+    }
+
+    .nav-toggle:focus-visible {
+      outline: 2px solid rgba(98, 152, 168, 0.45);
+      outline-offset: 2px;
+    }
+
+    .nav-toggle svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .nav-right {
@@ -1380,11 +1415,46 @@
       }
 
       .nav {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
         border-radius: 24px;
+        gap: 10px;
+        padding: 8px 8px 8px 14px;
+      }
+
+      .nav-left {
+        justify-self: start;
       }
 
       .nav-links {
         display: none;
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+        padding: 10px;
+        border: 1px solid rgba(224, 221, 219, 1);
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 16px 40px rgba(22, 22, 22, 0.08);
+      }
+
+      .nav.menu-open .nav-links {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 12px 14px;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+        flex: 0 0 auto;
+        justify-self: center;
       }
 
       .about-metrics {
@@ -1414,6 +1484,14 @@
 
       .nav {
         gap: 12px;
+      }
+
+      .nav-right {
+        justify-self: end;
+      }
+
+      .nav-right .btn {
+        padding: 12px 16px;
       }
 
       .hero {
@@ -1591,7 +1669,24 @@
             decoding="async"
           />
         </div>
-        <nav class="nav-links" aria-label="Navigazione principale">
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-navigation"
+          aria-label="Apri il menu di navigazione"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 7H20"></path>
+            <path d="M4 12H20"></path>
+            <path d="M4 17H20"></path>
+          </svg>
+        </button>
+        <nav
+          class="nav-links"
+          id="primary-navigation"
+          aria-label="Navigazione principale"
+        >
           <a href="#home">Home</a>
           <a href="servizi.html">Servizi</a>
           <a href="chi-sono.html">Chi Sono</a>
@@ -2599,6 +2694,55 @@
     </footer>
   </div>
   <script>
+    const nav = document.querySelector(".nav");
+    const navToggle = document.querySelector(".nav-toggle");
+    const primaryNavigation = document.querySelector("#primary-navigation");
+    const primaryNavigationLinks = Array.from(
+      document.querySelectorAll(".nav-links a")
+    );
+
+    if (nav && navToggle && primaryNavigation) {
+      const closeMobileMenu = () => {
+        nav.classList.remove("menu-open");
+        navToggle.setAttribute("aria-expanded", "false");
+        navToggle.setAttribute("aria-label", "Apri il menu di navigazione");
+      };
+
+      const openMobileMenu = () => {
+        nav.classList.add("menu-open");
+        navToggle.setAttribute("aria-expanded", "true");
+        navToggle.setAttribute("aria-label", "Chiudi il menu di navigazione");
+      };
+
+      navToggle.addEventListener("click", () => {
+        const isOpen = nav.classList.contains("menu-open");
+
+        if (isOpen) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      });
+
+      primaryNavigationLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          closeMobileMenu();
+        });
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!nav.contains(event.target)) {
+          closeMobileMenu();
+        }
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 720) {
+          closeMobileMenu();
+        }
+      });
+    }
+
     const navLinks = Array.from(document.querySelectorAll(".nav-links a[href^='#']"));
     const observedSections = navLinks
       .map((link) => document.querySelector(link.getAttribute("href")))
