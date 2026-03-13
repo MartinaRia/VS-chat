@@ -5,17 +5,27 @@
   <title>Contatti | Martina Ria</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="image/webp" href="assets/logo-martina-ria-M.webp" />
+  <meta
+    name="description"
+    content="Contatta Martina Ria per una consulenza gratuita, una richiesta progettuale o un confronto su innovazione, AI e trasformazione digitale."
+  />
   <style>
     :root {
       --base--light: #faf8f8;
       --base-tint--light: #ffffff;
-      --base-shade--light: #d9d4d2;
-      --t-bright--light: #161616;
-      --t-muted--light: #5d5a59;
-      --t-opp-bright--light: #ffffff;
+      --base-shade--light: #e0dddb;
+      --base-opp--light: #161616;
       --accent--light: #6298a8;
+      --accent-rgb--light: 98, 152, 168;
+      --additional--light: #9f8be7;
+      --t-bright--light: #161616;
+      --t-medium--light: #303030;
+      --t-muted--light: #585858;
+      --t-opp-bright--light: #ffffff;
       --radius-lg: 24px;
+      --radius-md: 16px;
       --radius-pill: 999px;
+      --shadow-soft: 0 18px 45px rgba(22, 22, 22, 0.08);
       --max-width: 1120px;
       --nav-height: 68px;
     }
@@ -29,8 +39,9 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
         "Segoe UI", sans-serif;
-      background: linear-gradient(180deg, #f5f1f0 0%, #efebea 100%);
+      background: #faf7f6;
       color: var(--t-bright--light);
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -111,7 +122,7 @@
     }
 
     .nav-links a.is-active {
-      background: var(--t-bright--light);
+      background: var(--base-opp--light);
       color: var(--t-opp-bright--light);
     }
 
@@ -132,14 +143,30 @@
       align-items: center;
       gap: 8px;
       white-space: nowrap;
-      transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease,
-        border-color 0.2s ease;
+      transition: transform 0.1s ease, box-shadow 0.2s ease, background 0.2s ease;
     }
 
     .btn svg {
       width: 16px;
       height: 16px;
       flex: 0 0 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .btn-primary {
+      background: var(--accent--light);
+      color: var(--t-opp-bright--light);
+      box-shadow: 0 12px 30px rgba(98, 152, 168, 0.26);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      background: #4f8392;
+      box-shadow: 0 18px 40px rgba(98, 152, 168, 0.32);
     }
 
     .nav-cta {
@@ -156,41 +183,373 @@
 
     main {
       flex: 1;
-      display: flex;
-      align-items: center;
-      padding: 64px 0 180px;
     }
 
-    .placeholder {
-      width: 100%;
+    section {
       padding: 64px 0;
     }
 
-    .placeholder-card {
-      min-height: 360px;
-      border: 1px solid var(--base-shade--light);
-      border-radius: var(--radius-lg);
-      background: rgba(255, 255, 255, 0.58);
-      box-shadow: 0 18px 45px rgba(22, 22, 22, 0.05);
+    .hero {
+      padding: 124px 0 48px;
+      background: transparent;
     }
 
-    @media (max-width: 900px) {
+    .section-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .section-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--accent--light);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: -0.03em;
+      line-height: 0.98;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      font-size: 16px;
+      color: var(--t-muted--light);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .contact-section {
+      padding-top: 0;
+    }
+
+    .contact-intro {
+      max-width: 720px;
+      margin-bottom: 0;
+      text-align: left;
+    }
+
+    .contact-intro .section-header {
+      text-align: left;
+      margin-bottom: 0;
+    }
+
+    .contact-intro .section-title,
+    .contact-intro .section-subtitle {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .contact-intro .section-subtitle {
+      max-width: 640px;
+    }
+
+    .contact-shell {
+      padding: 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 26px;
+      align-items: flex-start;
+    }
+
+    .contact-options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--t-muted--light);
+    }
+
+    .contact-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.44);
+      border: 1px solid rgba(206, 201, 198, 1);
+    }
+
+    .contact-pill-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      background: rgba(224, 221, 219, 0.42);
+      color: var(--base-opp--light);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 52px;
+    }
+
+    .contact-pill-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .contact-pill-booking .contact-pill-icon {
+      background: rgba(var(--accent-rgb--light), 0.12);
+      color: var(--accent--light);
+    }
+
+    .contact-pill-content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .contact-pill-content span {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--t-muted--light);
+    }
+
+    .contact-pill-content a {
+      color: var(--t-bright--light);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .contact-socials {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .contact-socials a {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(206, 201, 198, 1);
+      background: rgba(255, 255, 255, 0.44);
+      color: var(--t-bright--light);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .contact-socials a svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex: 0 0 22px;
+    }
+
+    .contact-expectations {
+      border-radius: 24px;
+      padding: 22px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(224, 221, 219, 1);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-expectations h2 {
+      font-size: 17px;
+      line-height: 1.45;
+      font-weight: 700;
+      color: var(--t-bright--light);
+    }
+
+    .contact-expectations ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-expectations li {
+      position: relative;
+      padding-left: 22px;
+      color: var(--t-muted--light);
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .contact-expectations li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.9em;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent--light);
+      transform: translateY(-50%);
+    }
+
+    .contact-form {
+      border-radius: 24px;
+      padding: 24px 24px 26px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(224, 221, 219, 1);
+      box-shadow: var(--shadow-soft);
+      font-size: 13px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .form-field {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    label {
+      font-size: 12px;
+      color: var(--t-muted--light);
+    }
+
+    label span {
+      color: #c65b5b;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      max-width: 100%;
+      background: var(--base-tint--light);
+      border-radius: 10px;
+      border: 1px solid rgba(224, 221, 219, 1);
+      padding: 8px 10px;
+      color: var(--t-bright--light);
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--accent--light);
+      box-shadow: 0 0 0 1px rgba(98, 152, 168, 0.35);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-actions {
+      margin-top: 10px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .contact-note {
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--t-muted--light);
+    }
+
+    footer {
+      background: #161616;
+      border-top: 1px solid rgba(224, 221, 219, 1);
+      padding: 32px 0 120px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 8px;
+    }
+
+    .footer-socials a {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .footer-socials svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    @media (max-width: 960px) {
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
       header {
-        width: min(calc(100% - 24px), 760px);
+        top: 0;
+        bottom: auto;
+        width: 100%;
+        transform: none;
+        left: 0;
+        padding: 12px 16px 0;
       }
 
       .nav {
-        gap: 14px;
-        padding: 10px 12px;
+        border-radius: 24px;
+        gap: 12px;
       }
 
       .nav-links {
-        overflow-x: auto;
-        scrollbar-width: none;
+        display: none;
       }
 
-      .nav-right {
-        display: none;
+      .hero {
+        padding: 120px 0 32px;
+      }
+
+      .form-row {
+        flex-direction: column;
+      }
+
+      .contact-socials {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .contact-form,
+      .contact-expectations {
+        padding: 20px 18px 22px;
       }
     }
   </style>
@@ -200,12 +559,197 @@
     <div data-navbar-root data-current-page="contatti"></div>
 
     <main id="main-content">
-      <section class="placeholder">
+      <section class="hero">
         <div class="container">
-          <div class="placeholder-card"></div>
+          <div class="contact-intro">
+            <div class="section-header">
+              <div class="section-kicker">Contatti</div>
+              <h1 class="section-title">Iniziamo a parlare</h1>
+              <p class="section-subtitle">
+                Hai un progetto in mente o vuoi esplorare nuove possibilita per la
+                tua azienda? Scegli il modo che preferisci per contattarmi.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-section">
+        <div class="container">
+          <div class="contact-shell">
+            <div class="contact-grid">
+              <div class="contact-options">
+                <div class="contact-pill contact-pill-booking">
+                  <div class="contact-pill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <rect x="3" y="5" width="18" height="16" rx="3"></rect>
+                      <path d="M16 3v4"></path>
+                      <path d="M8 3v4"></path>
+                      <path d="M3 10h18"></path>
+                    </svg>
+                  </div>
+                  <div class="contact-pill-content">
+                    <span>Prenota una Sessione</span>
+                    <a
+                      href="https://calendar.app.google/pb9KF4MJrXB4ZnHZ6"
+                      target="_blank"
+                      rel="noopener"
+                    >Consulenza gratuita di 30 minuti</a>
+                  </div>
+                </div>
+
+                <div class="contact-pill">
+                  <div class="contact-pill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                      <path d="M4 7l8 6 8-6"></path>
+                    </svg>
+                  </div>
+                  <div class="contact-pill-content">
+                    <span>Email</span>
+                    <a href="mailto:martina.ria@hotmail.com">martina.ria@hotmail.com</a>
+                  </div>
+                </div>
+
+                <div class="contact-socials">
+                  <a
+                    href="https://www.instagram.com/ria_martina_/"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                      <circle cx="12" cy="12" r="4"></circle>
+                      <circle cx="17.5" cy="6.5" r="1"></circle>
+                    </svg>
+                    Instagram
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/martina-ria/"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M7 9v8"></path>
+                      <path d="M7 7.01l.01-.011"></path>
+                      <path d="M12 17v-4.5a2.5 2.5 0 0 1 5 0V17"></path>
+                      <path d="M12 9v8"></path>
+                    </svg>
+                    LinkedIn
+                  </a>
+                </div>
+
+                <div class="contact-expectations" aria-labelledby="expectations-title">
+                  <h2 id="expectations-title">Cosa aspettarti</h2>
+                  <ul>
+                    <li>Risposta entro 24 ore lavorative</li>
+                    <li>Prima consulenza gratuita</li>
+                    <li>Analisi personalizzata delle esigenze</li>
+                    <li>Trattamento dati riservato e nel rispetto della Privacy Policy</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="contact-form">
+                <form aria-label="Modulo contatti">
+                  <div class="form-row">
+                    <div class="form-field">
+                      <label for="nome">Nome <span>*</span></label>
+                      <input id="nome" type="text" name="nome" autocomplete="name" required />
+                    </div>
+                    <div class="form-field">
+                      <label for="email">Email <span>*</span></label>
+                      <input id="email" type="email" name="email" autocomplete="email" required />
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-field">
+                      <label for="azienda">Azienda</label>
+                      <input id="azienda" type="text" name="azienda" autocomplete="organization" />
+                    </div>
+                    <div class="form-field">
+                      <label for="servizio">Servizio di Interesse</label>
+                      <select id="servizio" name="servizio">
+                        <option value="">Seleziona un servizio</option>
+                        <option>Creazione e ristrutturazione siti web</option>
+                        <option>Creazione web app</option>
+                        <option>Creazione e-commerce</option>
+                        <option>Integrazione AI nei processi aziendali</option>
+                        <option>Analisi performance siti web</option>
+                        <option>Project / Program Management</option>
+                        <option>Innovation Management</option>
+                        <option>Agenti AI</option>
+                        <option>Automazioni processi digitali</option>
+                        <option>Trasformazione Digitale</option>
+                        <option>Scelta o Sostituzione Software/Gestionale</option>
+                        <option>Altro</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="messaggio">Messaggio <span>*</span></label>
+                    <textarea id="messaggio" name="messaggio" required></textarea>
+                  </div>
+
+                  <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M22 2L11 13"></path>
+                        <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
+                      </svg>
+                      Invia Messaggio
+                    </button>
+                  </div>
+
+                  <p class="contact-note">
+                    Preferisci un contatto diretto? Il modo migliore per iniziare e
+                    prenotare una consulenza gratuita di 30 minuti oppure scrivere a
+                    <a href="mailto:martina.ria@hotmail.com">martina.ria@hotmail.com</a>.
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
+
+    <footer>
+      <div class="container footer-row">
+        <div>
+          <strong>MARTINA RIA</strong> · Innovation Manager · Digital Transformation
+          Consultant<br />
+          © 2026 Martina Ria. Tutti i diritti riservati.
+        </div>
+        <div class="footer-socials">
+          <a
+            href="https://www.instagram.com/ria_martina_/"
+            target="_blank"
+            rel="noopener"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="4.5" y="4.5" width="15" height="15" rx="4.5"></rect>
+              <path d="M15.8 8.2h.01"></path>
+              <circle cx="12" cy="12" r="3.2"></circle>
+            </svg>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/martina-ria/"
+            target="_blank"
+            rel="noopener"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 10v7"></path>
+              <path d="M8 7.2h.01"></path>
+              <path d="M12 17v-4.2a2.3 2.3 0 0 1 4.6 0V17"></path>
+              <path d="M12 10v1.1"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
   </div>
   <script src="scripts/navbar.js"></script>
 </body>
