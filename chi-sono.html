@@ -150,6 +150,23 @@
       width: 16px;
       height: 16px;
       flex: 0 0 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .btn-primary {
+      background: var(--accent--light);
+      color: var(--t-opp-bright--light);
+      box-shadow: 0 12px 30px rgba(98, 152, 168, 0.26);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      background: #4f8392;
+      box-shadow: 0 18px 40px rgba(98, 152, 168, 0.32);
     }
 
     .nav-cta {
@@ -402,11 +419,11 @@
     }
 
     footer {
+      background: #161616;
       border-top: 1px solid rgba(224, 221, 219, 1);
       padding: 32px 0 120px;
-      margin-top: 8px;
       font-size: 12px;
-      color: var(--t-muted--light);
+      color: rgba(255, 255, 255, 0.8);
     }
 
     .footer-row {
@@ -423,15 +440,24 @@
     }
 
     .footer-socials a {
-      width: 26px;
-      height: 26px;
+      width: 40px;
+      height: 40px;
       border-radius: 999px;
-      border: 1px solid rgba(224, 221, 219, 1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 11px;
-      color: var(--t-muted--light);
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .footer-socials svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     @media (max-width: 900px) {
@@ -695,7 +721,7 @@
           </section>
 
           <section class="cta" aria-labelledby="cta-title">
-            <h2 id="cta-title">Pronta a trasformare la tua azienda?</h2>
+            <h2 id="cta-title">Trasformiamo insieme la tua azienda</h2>
             <p>
               Prenota una sessione gratuita per discutere le tue esigenze e trovare
               insieme la strategia migliore.
@@ -740,14 +766,25 @@
             href="https://www.instagram.com/ria_martina_/"
             target="_blank"
             rel="noopener"
-            >IG</a
           >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="4.5" y="4.5" width="15" height="15" rx="4.5"></rect>
+              <path d="M15.8 8.2h.01"></path>
+              <circle cx="12" cy="12" r="3.2"></circle>
+            </svg>
+          </a>
           <a
             href="https://www.linkedin.com/in/martina-ria/"
             target="_blank"
             rel="noopener"
-            >IN</a
           >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 10v7"></path>
+              <path d="M8 7.2h.01"></path>
+              <path d="M12 17v-4.2a2.3 2.3 0 0 1 4.6 0V17"></path>
+              <path d="M12 10v1.1"></path>
+            </svg>
+          </a>
         </div>
       </div>
     </footer>
