@@ -22,7 +22,7 @@
       --shadow-soft: 0 18px 45px rgba(22, 22, 22, 0.08);
       --max-width: 1120px;
       --nav-height: 68px;
-      --page-bg: #f3efee;
+      --page-bg: #faf7f6;
       --card-bg: rgba(255, 255, 255, 0.52);
     }
 
@@ -194,40 +194,70 @@
 
     main {
       flex: 1;
-      padding: 68px 0 190px;
+      padding: 0 0 190px;
     }
 
-    .about-page {
-      padding-top: 40px;
+    .hero {
+      padding: 124px 0 48px;
+      background: transparent;
     }
 
-    .intro {
-      max-width: 760px;
-      margin-bottom: 64px;
+    .section-header {
+      text-align: center;
+      margin-bottom: 28px;
     }
 
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 14px;
+    .section-kicker {
+      margin-bottom: 10px;
       font-size: 12px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.34em;
+      letter-spacing: 0.3em;
       color: var(--accent--light);
     }
 
-    h1 {
-      font-size: clamp(3rem, 8vw, 4.5rem);
-      line-height: 0.96;
-      letter-spacing: -0.05em;
-      margin-bottom: 18px;
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
     }
 
-    .lead {
-      max-width: 700px;
-      font-size: clamp(1.18rem, 2vw, 1.95rem);
-      line-height: 1.28;
-      color: #2c2a2a;
+    .section-subtitle {
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--t-muted--light);
+    }
+
+    .services-intro {
+      max-width: 720px;
+      margin-bottom: 0;
+      text-align: left;
+    }
+
+    .services-intro .section-header {
+      text-align: left;
+      margin-bottom: 0;
+    }
+
+    .services-intro .section-title,
+    .services-intro .section-subtitle {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .services-intro .section-subtitle {
+      max-width: 640px;
+    }
+
+    .about-page {
+      padding-top: 0;
+    }
+
+    .intro {
+      margin-bottom: 0;
     }
 
     .content-stack {
@@ -468,16 +498,8 @@
     }
 
     @media (max-width: 780px) {
-      main {
-        padding-top: 42px;
-      }
-
-      .about-page {
-        padding-top: 32px;
-      }
-
-      .intro {
-        margin-bottom: 52px;
+      .hero {
+        padding: 120px 0 32px;
       }
 
       .content-stack {
@@ -523,10 +545,6 @@
         padding: 0 16px;
       }
 
-      .lead {
-        font-size: 1.05rem;
-      }
-
       .timeline {
         padding-left: 20px;
       }
@@ -557,16 +575,22 @@
     <div data-navbar-root data-current-page="chi-sono"></div>
 
     <main id="main-content">
-      <div class="container about-page">
-        <section class="intro">
-          <div class="eyebrow">Chi Sono</div>
-          <h1>Martina Ria</h1>
-          <p class="lead">
-            Innovation Manager specializzata nella trasformazione digitale e nella
-            consulenza per l'innovazione aziendale.
-          </p>
-        </section>
+      <section class="hero">
+        <div class="container">
+          <div class="services-intro">
+            <div class="section-header">
+              <div class="section-kicker">Chi Sono</div>
+              <h1 class="section-title">Martina Ria</h1>
+              <p class="section-subtitle">
+                Innovation Manager specializzata nella trasformazione digitale e nella
+                consulenza per l'innovazione aziendale.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      <div class="container about-page">
         <div class="content-stack">
           <section class="panel" aria-labelledby="missione-title">
             <h2 id="missione-title">La Mia Missione</h2>

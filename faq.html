@@ -24,7 +24,7 @@
       --shadow-soft: 0 18px 45px rgba(22, 22, 22, 0.08);
       --max-width: 1120px;
       --nav-height: 68px;
-      --page-bg: #f6f2f1;
+      --page-bg: #faf7f6;
       --card-bg: rgba(255, 255, 255, 0.58);
     }
 
@@ -182,50 +182,74 @@
 
     main {
       flex: 1;
-      padding: 96px 0 0;
     }
 
     section {
-      padding: 40px 0;
-    }
-
-    .faq-page {
-      padding-top: 36px;
+      padding: 64px 0;
     }
 
     .hero {
-      text-align: center;
-      padding-bottom: 28px;
+      padding: 124px 0 48px;
+      background: transparent;
     }
 
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 16px;
+    .section-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .section-kicker {
+      margin-bottom: 10px;
       font-size: 12px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.34em;
+      letter-spacing: 0.3em;
       color: var(--accent--light);
     }
 
-    h1 {
-      font-size: clamp(3rem, 8vw, 4.8rem);
-      line-height: 0.95;
-      letter-spacing: -0.05em;
-      margin-bottom: 18px;
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
     }
 
-    .hero p {
-      max-width: 760px;
+    .section-subtitle {
+      max-width: 720px;
       margin: 0 auto;
-      font-size: clamp(1.1rem, 2.5vw, 1.55rem);
+      font-size: 16px;
       color: var(--t-muted--light);
-      line-height: 1.35;
+      line-height: 1.6;
+    }
+
+    .services-intro {
+      max-width: 720px;
+      margin-bottom: 0;
+      text-align: left;
+    }
+
+    .services-intro .section-header {
+      text-align: left;
+      margin-bottom: 0;
+    }
+
+    .services-intro .section-title,
+    .services-intro .section-subtitle {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .services-intro .section-subtitle {
+      max-width: 640px;
+    }
+
+    .faq-page {
+      padding-top: 0;
     }
 
     .search-shell {
       max-width: 720px;
-      margin: 36px auto 0;
+      margin: 24px 0 0;
       position: relative;
     }
 
@@ -499,15 +523,15 @@
       }
 
       main {
-        padding-top: 86px;
+        padding-top: 0;
+      }
+
+      .hero {
+        padding: 120px 0 32px;
       }
 
       section {
         padding: 28px 0;
-      }
-
-      .faq-page {
-        padding-top: 24px;
       }
 
       .search-input {
@@ -546,15 +570,17 @@
     <div data-navbar-root data-current-page="faq"></div>
 
     <main id="main-content">
-      <section class="faq-page">
+      <section class="hero">
         <div class="container">
-          <div class="hero">
-            <span class="eyebrow">FAQ</span>
-            <h1>Domande Frequenti</h1>
-            <p>
-              Trova risposte alle domande piu comuni sulla trasformazione digitale,
-              l'innovazione e i servizi di consulenza.
-            </p>
+          <div class="services-intro">
+            <div class="section-header">
+              <div class="section-kicker">FAQ</div>
+              <h1 class="section-title">Domande Frequenti</h1>
+              <p class="section-subtitle">
+                Trova risposte alle domande piu comuni sulla trasformazione digitale,
+                l'innovazione e i servizi di consulenza.
+              </p>
+            </div>
             <div class="search-shell">
               <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
                 <circle cx="11" cy="11" r="6.5"></circle>
@@ -570,7 +596,11 @@
               />
             </div>
           </div>
+        </div>
+      </section>
 
+      <section class="faq-page">
+        <div class="container">
           <section class="search-results" id="search-results" aria-live="polite">
             <h2 class="results-title">Risultati della Ricerca</h2>
             <p class="search-meta" id="search-meta"></p>
