@@ -1248,6 +1248,20 @@
       font-size: 13px;
     }
 
+    .contact-form.contact-portrait {
+      padding: 0;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+    }
+
+    .contact-form.contact-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 18%;
+      display: block;
+    }
+
     .form-row {
       display: flex;
       gap: 10px;
@@ -1553,7 +1567,7 @@
           "@type": "ProfessionalService",
           "name": "Martina Ria",
           "description": "Consulenza in innovation management, trasformazione digitale, software selection, AI e performance web per aziende e PMI.",
-          "email": "martina.ria@hotmail.com",
+          "email": "hello@martinaria.it",
           "image": "assets/martina_ria.webp",
           "priceRange": "$$",
           "areaServed": "IT",
@@ -1575,7 +1589,7 @@
             "@type": "ProfessionalService",
             "name": "Martina Ria"
           },
-          "email": "martina.ria@hotmail.com",
+          "email": "hello@martinaria.it",
           "sameAs": [
             "https://www.linkedin.com/in/martina-ria/",
             "https://www.instagram.com/ria_martina_/"
@@ -2474,8 +2488,8 @@
                 </div>
                 <div class="contact-pill-content">
                   <span>Email</span>
-                  <a href="mailto:martina.ria@hotmail.com"
-                    >martina.ria@hotmail.com</a
+                  <a href="mailto:hello@martinaria.it"
+                    >hello@martinaria.it</a
                   >
                 </div>
               </div>
@@ -2505,61 +2519,8 @@
             </div>
           </div>
 
-          <div class="contact-form">
-            <form aria-label="Modulo contatti">
-              <div class="form-row">
-                <div class="form-field">
-                  <label for="nome">Nome <span>*</span></label>
-                  <input id="nome" type="text" name="nome" autocomplete="name" required />
-                </div>
-                <div class="form-field">
-                  <label for="email">Email <span>*</span></label>
-                  <input id="email" type="email" name="email" autocomplete="email" required />
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-field">
-                  <label for="azienda">Azienda</label>
-                  <input id="azienda" type="text" name="azienda" autocomplete="organization" />
-                </div>
-                <div class="form-field">
-                  <label for="servizio">Servizio di Interesse</label>
-                  <select id="servizio" name="servizio">
-                    <option value="">Seleziona un servizio</option>
-                    <option>Creazione e ristrutturazione siti web</option>
-                    <option>Creazione web app</option>
-                    <option>Creazione e-commerce</option>
-                    <option>Integrazione AI nei processi aziendali</option>
-                    <option>Analisi performance siti web</option>
-                    <option>Project / Program Management</option>
-                    <option>Innovation Management</option>
-                    <option>Agenti AI</option>
-                    <option>Automazioni processi digitali</option>
-                    <option>Trasformazione Digitale</option>
-                    <option>Scelta o Sostituzione Software/Gestionale</option>
-                    <option>Altro</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-field">
-                <label for="messaggio">Messaggio <span>*</span></label>
-                <textarea id="messaggio" name="messaggio" required></textarea>
-              </div>
-              <div class="form-actions">
-                <button type="submit" class="btn btn-primary">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M22 2L11 13"></path>
-                    <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
-                  </svg>
-                  Invia Messaggio
-                </button>
-              </div>
-              <p class="contact-note">
-                Preferisci un contatto diretto? Il modo migliore per iniziare è
-                prenotare una consulenza gratuita di 30 minuti oppure scrivere a
-                <a href="mailto:martina.ria@hotmail.com">martina.ria@hotmail.com</a>.
-              </p>
-            </form>
+          <div class="contact-form contact-portrait" aria-hidden="true">
+            <img src="assets/martina-ria.webp" alt="Martina Ria" />
           </div>
           </div>
         </div>
