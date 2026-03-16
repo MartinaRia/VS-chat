@@ -1,18 +1,49 @@
-const navbarCssHref = "components/navbar.css";
-const navbarHtmlHref = "components/navbar.html";
+const currentNavbarScript =
+  document.currentScript ||
+  Array.from(document.scripts).find((script) =>
+    script.src.endsWith("/scripts/navbar.js") || script.src.endsWith("scripts/navbar.js")
+  );
+const navbarScriptUrl = new URL(
+  currentNavbarScript?.src || "scripts/navbar.js",
+  window.location.href
+);
+const siteRootUrl = new URL("../", navbarScriptUrl);
+const isFileProtocol = siteRootUrl.protocol === "file:";
+const navbarCssHref = new URL("components/navbar.css", siteRootUrl).href;
+const navbarHtmlHref = new URL("components/navbar.html", siteRootUrl).href;
 const navbarRoots = Array.from(document.querySelectorAll("[data-navbar-root]"));
 
 const pageMap = {
   "": "home",
+  "/": "home",
+  "index": "home",
   "index.html": "home",
   "index-lab.html": "home",
+  "servizi": "servizi",
   "servizi.html": "servizi",
+  "chi-sono": "chi-sono",
   "chi-sono.html": "chi-sono",
+  "faq": "faq",
   "faq.html": "faq",
+  "contatti": "contatti",
   "contatti.html": "contatti",
 };
 
 let navbarMarkupPromise;
+
+const hrefFromSiteRoot = (path) => new URL(path, siteRootUrl).href;
+
+const getPageHref = (slug) => {
+  if (!slug) {
+    return isFileProtocol
+      ? hrefFromSiteRoot("index.html")
+      : hrefFromSiteRoot("");
+  }
+
+  return isFileProtocol
+    ? hrefFromSiteRoot(`${slug}/index.html`)
+    : hrefFromSiteRoot(slug);
+};
 
 const ensureNavbarStyles = () => {
   if (document.querySelector('link[data-navbar-styles="true"]')) {
@@ -27,8 +58,9 @@ const ensureNavbarStyles = () => {
 };
 
 const inferCurrentPage = () => {
-  const pathname = window.location.pathname.split("/").pop() || "index.html";
-  return pageMap[pathname] || "";
+  const pathname = window.location.pathname.replace(/\/+$/, "") || "/";
+  const slug = pathname === "/" ? "/" : pathname.split("/").pop() || "";
+  return pageMap[slug] || "";
 };
 
 const getNavbarMarkup = async () => {
@@ -47,8 +79,16 @@ const getNavbarMarkup = async () => {
 
 const setActiveNavItem = (root, currentPage) => {
   const links = Array.from(root.querySelectorAll(".nav-links a[data-nav-page]"));
+  const pageHrefMap = {
+    home: getPageHref(""),
+    servizi: getPageHref("servizi"),
+    "chi-sono": getPageHref("chi-sono"),
+    faq: getPageHref("faq"),
+    contatti: getPageHref("contatti"),
+  };
 
   links.forEach((link) => {
+    link.href = pageHrefMap[link.dataset.navPage] || link.href;
     const isActive = link.dataset.navPage === currentPage;
     link.classList.toggle("is-active", isActive);
 
@@ -70,7 +110,11 @@ const configureHomeLink = (root, currentPage) => {
   const hasHomeSection = Boolean(document.querySelector("#home"));
   homeLink.setAttribute(
     "href",
-    currentPage === "home" && hasHomeSection ? "#home" : "index.html#home"
+    currentPage === "home" && hasHomeSection
+      ? "#home"
+      : isFileProtocol
+        ? hrefFromSiteRoot("index.html#home")
+        : hrefFromSiteRoot("#home")
   );
 };
 
@@ -133,6 +177,11 @@ const initNavbarRoot = async (root) => {
   try {
     const markup = await getNavbarMarkup();
     root.innerHTML = markup;
+    const logo = root.querySelector(".nav-logo");
+
+    if (logo) {
+      logo.src = hrefFromSiteRoot("assets/logo-martina-ria.webp");
+    }
 
     const currentPage = root.dataset.currentPage || inferCurrentPage();
     configureHomeLink(root, currentPage);

@@ -1286,6 +1286,31 @@
       stroke-linejoin: round;
     }
 
+    .footer-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    .footer-policies {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .footer-policies a {
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 12px;
+      text-decoration: none;
+    }
+
+    .footer-policies a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
     /* RESPONSIVE */
 
     @media (max-width: 960px) {
@@ -1309,6 +1334,15 @@
 
       .process-grid {
         grid-template-columns: minmax(0, 1fr);
+      }
+
+      .footer-meta {
+        width: 100%;
+        align-items: flex-start;
+      }
+
+      .footer-policies {
+        justify-content: flex-start;
       }
     }
 
@@ -1638,7 +1672,7 @@
                   />
                 </svg>Prenota una Sessione</a
               >
-              <a class="btn btn-outline" href="servizi.html">Scopri i Servizi</a>
+              <a class="btn btn-outline" href="/servizi">Scopri i Servizi</a>
             </div>
             <div class="hero-meta">
               <span><span class="hero-meta-dot"></span> Innovation Management</span>
@@ -1663,7 +1697,7 @@
           </div>
 
           <div class="services-grid">
-            <a class="service-card" href="servizi.html">
+            <a class="service-card" href="/servizi">
               <div class="service-top">
                 <span class="service-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1688,7 +1722,7 @@
               </div>
             </a>
 
-            <a class="service-card" href="servizi.html">
+            <a class="service-card" href="/servizi">
               <div class="service-top">
                 <span class="service-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1712,7 +1746,7 @@
               </div>
             </a>
 
-            <a class="service-card" href="servizi.html">
+            <a class="service-card" href="/servizi">
               <div class="service-top">
                 <span class="service-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1740,7 +1774,7 @@
               </div>
             </a>
 
-            <a class="service-card" href="servizi.html">
+            <a class="service-card" href="/servizi">
               <div class="service-top">
                 <span class="service-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1765,7 +1799,7 @@
             </a>
           </div>
           <div class="services-cta">
-            <a class="services-link" href="servizi.html">
+            <a class="services-link" href="/servizi">
               Scopri di piu
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path d="M5 12H19" stroke-width="1.8" stroke-linecap="round"/>
@@ -1795,7 +1829,7 @@
               business, capace di tradurre la complessità in soluzioni fluide e
               concrete.
             </p>
-            <a class="services-link about-cta" href="chi-sono.html">
+            <a class="services-link about-cta" href="/chi-sono">
               Scopri di piu
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path d="M5 12H19" stroke-width="1.8" stroke-linecap="round"/>
@@ -2306,7 +2340,7 @@
             </div>
           </div>
           <div class="services-cta faq-cta">
-            <a class="services-link" href="faq.html">
+            <a class="services-link" href="/faq">
               Vedi altre domande
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path d="M5 12H19" stroke-width="1.8" stroke-linecap="round"/>
@@ -2407,39 +2441,46 @@
           © 2026 Martina Ria. Tutti i diritti riservati.<br />
           Partita IVA: 05447850750
         </div>
-        <div class="footer-socials">
-          <a
-            href="https://www.instagram.com/ria_martina_/"
-            target="_blank"
-            rel="noopener"
-            aria-label="Instagram"
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-              <circle cx="12" cy="12" r="4"></circle>
-              <circle cx="17.5" cy="6.5" r="1"></circle>
-            </svg>
-          </a
-          >
-          <a
-            href="https://www.linkedin.com/in/martina-ria/"
-            target="_blank"
-            rel="noopener"
-            aria-label="LinkedIn"
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M7 9v8"></path>
-              <path d="M7 7.01l.01-.011"></path>
-              <path d="M12 17v-4.5a2.5 2.5 0 0 1 5 0V17"></path>
-              <path d="M12 9v8"></path>
-            </svg>
-          </a
-          >
+        <div class="footer-meta">
+          <div class="footer-socials">
+            <a
+              href="https://www.instagram.com/ria_martina_/"
+              target="_blank"
+              rel="noopener"
+              aria-label="Instagram"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                <circle cx="12" cy="12" r="4"></circle>
+                <circle cx="17.5" cy="6.5" r="1"></circle>
+              </svg>
+            </a
+            >
+            <a
+              href="https://www.linkedin.com/in/martina-ria/"
+              target="_blank"
+              rel="noopener"
+              aria-label="LinkedIn"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 9v8"></path>
+                <path d="M7 7.01l.01-.011"></path>
+                <path d="M12 17v-4.5a2.5 2.5 0 0 1 5 0V17"></path>
+                <path d="M12 9v8"></path>
+              </svg>
+            </a
+            >
+          </div>
+          <div class="footer-policies">
+            <a href="https://www.iubenda.com/privacy-policy/71570924" class="iubenda-white iubenda-noiframe iubenda-embed" title="Privacy Policy">Privacy Policy</a>
+            <a href="https://www.iubenda.com/privacy-policy/71570924/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed" title="Cookie Policy">Cookie Policy</a>
+          </div>
         </div>
       </div>
     </footer>
   </div>
   <script src="scripts/navbar.js"></script>
+  <script type="text/javascript">(function(w,d){var loader=function(){var s=d.createElement("script"),tag=d.getElementsByTagName("script")[0];s.src="https://cdn.iubenda.com/iubenda.js";tag.parentNode.insertBefore(s,tag);};if(w.addEventListener){w.addEventListener("load",loader,false);}else if(w.attachEvent){w.attachEvent("onload",loader);}else{w.onload=loader;}})(window,document);</script>
   <script>
     const testimonialCarousel = document.querySelector("[data-carousel]");
 
