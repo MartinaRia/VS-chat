@@ -20,13 +20,10 @@ const pageMap = {
   "index.html": "home",
   "index-lab.html": "home",
   "servizi": "servizi",
-  "servizi.html": "servizi",
   "chi-sono": "chi-sono",
-  "chi-sono.html": "chi-sono",
   "faq": "faq",
-  "faq.html": "faq",
   "contatti": "contatti",
-  "contatti.html": "contatti",
+  "scadenzapp": "scadenzapp",
 };
 
 let navbarMarkupPromise;

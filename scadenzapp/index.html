@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PF8QN7CD');</script>
+  <!-- End Google Tag Manager -->
+  <script type="text/javascript" src="https://embeds.iubenda.com/widgets/f88d360b-0a85-4a22-8ec6-6b6dc339836f.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScadenzApp – Notifiche WhatsApp per commercialisti</title>
+  <meta name="description" content="Invia fino a 250 notifiche WhatsApp personalizzate con 1 clic. Carica il tuo Google Sheets, personalizza il messaggio, premi invio. Setup incluso, disdici quando vuoi.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Martina Ria">
+  <link rel="icon" type="image/webp" href="../assets/logo-martina-ria-M.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F8F7F5;
+      --bg-card: #EFEFED;
+      --text: #1A1A1A;
+      --text-mid: #5A5A5A;
+      --text-light: #8A8A8A;
+      --border: #E0DFDD;
+      --accent: #6098A7;
+      --green: #16A57A;
+      --green-dark: #0F7A5A;
+      --green-light: #E8F7F2;
+      --black: #0A0A0A;
+      --white: #FFFFFF;
+      --font: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .nav-logo-mark {
+      width: 32px;
+      height: 32px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .nav-logo-text {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--text);
+      letter-spacing: -0.5px;
+    }
+
+    .nav-logo-text span {
+      font-weight: 700;
+      color: var(--green);
+    }
+
+    .nav-cta {
+      background: var(--green);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--green-dark); }
+
+    /* SECTIONS GENERAL */
+    section { padding: 80px 2rem; }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+    .container-wide { max-width: 1200px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 16px;
+    }
+
+    h1, h2, h3 { line-height: 1.2; letter-spacing: -0.5px; }
+
+    /* HERO */
+    .hero {
+      padding: 60px 2rem 80px;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      background: linear-gradient(330deg, #0f7a5a 0%, #16a57a 45%, #1ec48f 100%);
+    }
+
+    .hero h1 { color: #ffffff; }
+
+
+
+    .hero .hero-tag {
+      background: rgba(255,255,255,0.18);
+      color: #ffffff;
+    }
+
+    .hero .hero-tag-dot { background: rgba(255,255,255,0.8); }
+
+    .hero .hero-sub { color: rgba(255,255,255,0.82); }
+
+    .hero .hero-bullets li { color: rgba(255,255,255,0.82); }
+
+    .hero .hero-bullets li::before {
+      background-color: rgba(255,255,255,0.25);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9l3 3 5-5' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+    }
+
+    .hero .btn-primary {
+      background: #ffffff;
+      color: var(--green-dark);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    }
+
+    .hero .btn-primary:hover {
+      background: rgba(255,255,255,0.9);
+    }
+
+    .hero .btn-ghost { color: rgba(255,255,255,0.75); }
+
+    .hero .container { display: grid; grid-template-columns: 3fr 2fr; gap: 60px; align-items: center; }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--green-light);
+      color: var(--green-dark);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+
+    .hero-tag-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 em {
+      color: #63ffce;
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      color: var(--text-mid);
+      font-weight: 500;
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    .hero-bullets {
+      list-style: none;
+      margin-bottom: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hero-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--text-mid);
+    }
+
+    .hero-bullets li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      background: var(--green);
+      border-radius: 50%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9l3 3 5-5' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+    }
+
+    .cta-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+
+    .btn-ghost {
+      color: var(--text-mid);
+      font-size: 14px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+    }
+
+    .hero-visual {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+
+    .hero-visual-top {
+      background: var(--black);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-r { background: #FF5F57; }
+    .dot-y { background: #FEBC2E; }
+    .dot-g { background: #28C840; }
+
+    .hero-visual-body { padding: 20px; }
+
+    .panel-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+
+    .panel-row {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+    }
+
+    .panel-row-label { font-size: 10px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+    .panel-row-value { font-size: 13px; color: var(--text); font-weight: 400; }
+    .panel-row-value a { color: var(--accent); font-size: 12px; }
+
+    .panel-btn {
+      width: 100%;
+      background: var(--green);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: var(--font);
+      cursor: pointer;
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    /* PROBLEMA */
+    .problema {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .problema h2 {
+      font-size: clamp(26px, 3vw, 36px);
+      font-weight: 700;
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .pain-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .pain-x {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      background: #FEE8E8;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #C0392B;
+      margin-top: 1px;
+    }
+
+    .pain-text { font-size: 15px; color: var(--text-mid); line-height: 1.5; }
+
+    /* SOLUZIONE */
+    .soluzione {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .soluzione h2 {
+      font-size: clamp(26px, 3vw, 36px);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .soluzione-sub {
+      font-size: 17px;
+      color: var(--text-mid);
+      font-weight: 300;
+      margin-bottom: 48px;
+      max-width: 560px;
+    }
+
+    .steps { display: flex; flex-direction: column; gap: 0; }
+
+    .step {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 20px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+
+    .step:last-child { border-bottom: none; }
+
+    .step-num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--green);
+      color: white;
+      font-size: 18px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .step-content h3 { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+    .step-content p { font-size: 15px; color: var(--text-mid); line-height: 1.6; }
+
+    /* COME FUNZIONA */
+    .come-funziona { border-bottom: 1px solid var(--border); }
+
+    .come-funziona h2 {
+      font-size: clamp(26px, 3vw, 36px);
+      font-weight: 700;
+      margin-bottom: 48px;
+      text-align: center;
+    }
+
+    .flow-diagram {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    .flow-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .flow-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid var(--border);
+      background: var(--white);
+    }
+
+    .flow-icon.green { background: var(--green); border-color: var(--green); }
+
+    .flow-label {
+      font-size: 12px;
+      color: var(--text-mid);
+      text-align: center;
+      max-width: 80px;
+      line-height: 1.4;
+    }
+
+    .flow-arrow {
+      font-size: 20px;
+      color: var(--border);
+      margin: 0 8px;
+      padding-bottom: 24px;
+      flex-shrink: 0;
+    }
+
+    /* INTERFACCIA */
+    .interfaccia {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .interfaccia h2 {
+      font-size: clamp(26px, 3vw, 36px);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .interfaccia-sub {
+      font-size: 16px;
+      color: var(--text-mid);
+      font-weight: 300;
+      margin-bottom: 48px;
+    }
+
+    .screen-mockup {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      max-width: 700px;
+      margin: 0 auto;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+    }
+
+    .screen-bar {
+      background: #F1F0EE;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .screen-body {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      min-height: 340px;
+    }
+
+    .screen-sidebar {
+      background: #FAFAF9;
+      border-right: 1px solid var(--border);
+      padding: 20px 16px;
+    }
+
+    .sidebar-brand {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .sidebar-tagline {
+      font-size: 11px;
+      color: var(--text-light);
+      margin-bottom: 24px;
+    }
+
+    .sidebar-nav-item {
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-mid);
+    }
+
+    .sidebar-nav-item.active {
+      background: var(--black);
+      color: white;
+      font-weight: 500;
+    }
+
+    .screen-main {
+      padding: 24px;
+      position: relative;
+    }
+
+    .screen-main-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .screen-main-sub {
+      font-size: 12px;
+      color: var(--text-light);
+      margin-bottom: 20px;
+    }
+
+    .screen-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+    }
+
+    .screen-card-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-light);
+      margin-bottom: 4px;
+    }
+
+    .screen-card-value { font-size: 12px; color: var(--text); }
+    .screen-card-value.link { color: var(--accent); font-size: 11px; word-break: break-all; }
+
+    .screen-send-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-top: 10px;
+    }
+
+    .screen-send-text h4 { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+    .screen-send-text p { font-size: 11px; color: var(--text-light); }
+
+    .screen-send-btn {
+      background: var(--black);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: var(--font);
+      cursor: pointer;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* PREZZO */
+    .prezzo { border-bottom: 1px solid var(--border); }
+
+    .prezzo h2 {
+      font-size: clamp(26px, 3vw, 36px);
+      font-weight: 700;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .pricing-card {
+      background: var(--white);
+      border: 2px solid var(--green);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--green);
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 18px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .pricing-old {
+      font-size: 16px;
+      color: var(--text-light);
+      text-decoration: line-through;
+      margin-bottom: 4px;
+    }
+
+    .pricing-price {
+      font-size: 52px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .pricing-price sup { font-size: 24px; vertical-align: super; }
+    .pricing-price span { font-size: 18px; font-weight: 400; color: var(--text-mid); }
+
+    .pricing-note { font-size: 14px; color: var(--text-light); margin-bottom: 32px; }
+
+    .pricing-features {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .pricing-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--text-mid);
+    }
+
+    .pricing-features li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      background: var(--green);
+      border-radius: 50%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 10l3 3 5-5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+    }
+
+    .pricing-cta {
+      width: 100%;
+      background: var(--green);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 600;
+      font-family: var(--font);
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+      display: block;
+    }
+
+    .pricing-cta:hover { background: var(--green-dark); }
+
+    .pricing-reassurance {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--text-light);
+      text-align: center;
+    }
+
+    /* FAQ */
+    .faq {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq h2 {
+      font-size: clamp(26px, 3vw, 36px);
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+
+    .faq-item:last-child { border-bottom: none; }
+
+    .faq-q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      gap: 16px;
+    }
+
+    .faq-q-text { font-size: 16px; font-weight: 500; color: var(--text); }
+
+    .faq-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+      color: var(--text-mid);
+      transition: transform 0.2s;
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--green); border-color: var(--green); color: white; }
+
+    .faq-a {
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.7;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s;
+      padding-top: 0;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 200px;
+      padding-top: 12px;
+    }
+
+    /* CHI LO USA */
+    .chi-lo-usa {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .chi-lo-usa h2 {
+      font-size: clamp(26px, 3vw, 36px);
+      font-weight: 700;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .partner-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .partner-initials {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-mid);
+      margin-bottom: 4px;
+    }
+
+    .partner-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .partner-role {
+      font-size: 13px;
+      color: var(--text-light);
+      line-height: 1.4;
+    }
+
+    .partner-city {
+      font-size: 12px;
+      color: var(--text-light);
+      margin-top: 2px;
+    }
+
+    /* TESTIMONIANZE */
+    .testimonianze {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .testimonianze h2 {
+      font-size: clamp(26px, 3vw, 36px);
+      font-weight: 700;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .testi-carousel-wrap {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      position: relative;
+    }
+
+    .testi-inner {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 24px;
+      align-items: center;
+      min-height: 160px;
+    }
+
+    .testi-card {
+      background: var(--accent);
+      border-radius: 14px;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 160px;
+      position: relative;
+    }
+
+    .testi-card-logo {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      width: 32px;
+      height: 32px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .testi-card-logo svg { width: 16px; height: 16px; }
+
+    .testi-card-role {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 6px;
+    }
+
+    .testi-card-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 2px;
+    }
+
+    .testi-card-title {
+      font-size: 13px;
+      color: rgba(255,255,255,0.75);
+    }
+
+    .testi-quote-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 24px;
+      display: flex;
+      align-items: center;
+      min-height: 160px;
+    }
+
+    .testi-quote {
+      font-size: 17px;
+      color: var(--text);
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    .testi-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .testi-dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .testi-dot {
+      width: 28px;
+      height: 8px;
+      border-radius: 4px;
+      background: var(--border);
+      cursor: pointer;
+      transition: background 0.2s, width 0.2s;
+    }
+
+    .testi-dot.active {
+      background: var(--text);
+      width: 36px;
+    }
+
+    .testi-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .testi-counter {
+      font-size: 13px;
+      color: var(--text-light);
+      min-width: 40px;
+      text-align: center;
+    }
+
+    .testi-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--white);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, border-color 0.15s;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .testi-btn:hover {
+      background: var(--bg-card);
+      border-color: var(--text-mid);
+    }
+
+    @media (max-width: 600px) {
+      .testi-inner { grid-template-columns: 1fr; }
+      .testi-card { min-height: 120px; }
+      .partners-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* CTA FINALE */
+    .cta-finale {
+      background: var(--black);
+      color: white;
+      text-align: center;
+    }
+
+    .cta-finale h2 {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      color: white;
+      margin-bottom: 16px;
+    }
+
+    .cta-finale p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.6);
+      font-weight: 300;
+      margin-bottom: 36px;
+    }
+
+    .cta-finale-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-white {
+      background: white;
+      color: var(--black);
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      display: inline-block;
+    }
+
+    .btn-white:hover { opacity: 0.9; }
+
+    .btn-outline-white {
+      background: transparent;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.3);
+      display: inline-block;
+      transition: border-color 0.2s;
+    }
+
+    .btn-outline-white:hover { border-color: rgba(255,255,255,0.6); }
+
+    .cta-finale-reassurance {
+      margin-top: 20px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: rgba(255,255,255,0.4);
+      padding: 24px 2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 13px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .footer-logo-mark {
+      width: 26px;
+      height: 26px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .footer-logo-text {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: -0.3px;
+    }
+
+    .footer-logo-text span {
+      font-weight: 700;
+      color: var(--green);
+    }
+
+    .footer-policies {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer-policies a {
+      color: rgba(255,255,255,0.5);
+      font-size: 12px;
+      text-decoration: none;
+    }
+
+    .footer-policies a:hover {
+      color: rgba(255,255,255,0.8);
+      text-decoration: underline;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
+      .hero .container { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .screen-body { grid-template-columns: 1fr; }
+      .screen-sidebar { display: none; }
+      section { padding: 60px 1.25rem; }
+      .hero { padding: 60px 1.25rem 60px; }
+      nav { padding: 0 1.25rem; }
+      footer { padding: 20px 1.25rem; }
+    }
+
+    @media (max-width: 500px) {
+      .flow-diagram { gap: 0; }
+      .flow-arrow { margin: 0 4px; }
+      .flow-icon { width: 52px; height: 52px; border-radius: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PF8QN7CD"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-mark">S</div>
+    <span class="nav-logo-text">Scadenz<span>App</span></span>
+  </a>
+  <a class="nav-cta" href="#prezzo">Inizia gratis</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div>
+      <div class="hero-tag">
+        <div class="hero-tag-dot"></div>
+        Notifiche WhatsApp per commercialisti
+      </div>
+      <h1>Invia fino a 250 notifiche WhatsApp personalizzate, <br><em>con 1 clic!</em></h1>
+      <p class="hero-sub">Aggiorna il tuo excel in cloud, premi invio. Tutti i tuoi clienti ricevono una notifica di scadenza con nome e importo personalizzato.</p>
+      <ul class="hero-bullets">
+        <li>Nessuna configurazione tecnica da parte tua</li>
+        <li>Usa l'excel Google che già hai</li>
+        <li>Messaggio personalizzato per ogni cliente</li>
+        <li>Abbonamento mensile, disdici quando vuoi</li>
+      </ul>
+      <div class="cta-group">
+        <a class="btn-primary" href="#cta-finale">Inizia subito</a>
+        <span class="btn-ghost" onclick="document.querySelector('.interfaccia').scrollIntoView({behavior:'smooth'})">Guarda come funziona →</span>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-visual-top">
+        <div class="dot dot-r"></div>
+        <div class="dot dot-y"></div>
+        <div class="dot dot-g"></div>
+      </div>
+      <div class="hero-visual-body">
+        <div class="panel-title">Pannello di controllo</div>
+        <div class="panel-row">
+          <div class="panel-row-label">Il file collegato è</div>
+          <div class="panel-row-value"><span style="color:var(--accent);font-size:12px">docs.google.com/spreadsheets/d/...</span></div>
+        </div>
+        <div class="panel-row">
+          <div class="panel-row-label">Il foglio collegato è</div>
+          <div class="panel-row-value">Clienti Marzo 2026</div>
+        </div>
+        <div class="panel-row">
+          <div class="panel-row-label">Il numero mittente è</div>
+          <div class="panel-row-value">+39 327 123 456</div>
+        </div>
+        <div class="panel-row">
+          <div class="panel-row-label">Il tuo messaggio personalizzato è</div>
+          <div class="panel-row-value" style="font-style:italic;color:#5A5A5A;font-size:13px;line-height:1.5">"Gentile {{nome}}, le ricordiamo che entro il 16 corrente mese deve pagare {{importo}}..."</div>
+        </div>
+        <button class="panel-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Invia notifica ora
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMA -->
+<section class="problema">
+  <div class="container">
+    <div class="section-label">Il problema</div>
+    <h2>Ogni mese perdi ore in promemoria che i clienti ignorano</h2>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-x">✗</div>
+        <div class="pain-text">Chiami o scrivi email ai clienti ogni mese per ricordargli le scadenze</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-x">✗</div>
+        <div class="pain-text">Perdi ore a comporre messaggi manuali perché ogni cliente ha dati diversi</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-x">✗</div>
+        <div class="pain-text">Dovresti avvisare tutti ma farlo uno ad uno farebbe perdere troppo tempo</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-x">✗</div>
+        <div class="pain-text">Le email vengono ignorate — i clienti le leggono tardi o non le aprono</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUZIONE -->
+<section class="soluzione">
+  <div class="container">
+    <div class="section-label">La soluzione</div>
+    <h2>Con ScadenzApp ci vogliono 30 secondi</h2>
+    <p class="soluzione-sub">Nessun software da imparare, nessuna configurazione. Faccio io il setup iniziale. Tu premi un bottone.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Assicurati che il tuo Google Sheets sia aggiornato</h3>
+          <p>Nomi, importi e numeri di telefono dei tuoi clienti: il foglio che probabilmente hai già. Non serve migrare nulla.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Accedi al pannello privato su ScadenzApp</h3>
+          <p>Trovi il riepilogo della tua configurazione: foglio collegato, numero mittente, template del messaggio. Tutto già pronto.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Clicca "Invia notifica ora"</h3>
+          <p>In pochi secondi tutti i tuoi assistiti ricevono un WhatsApp con nome e importo personalizzato. Fatto.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COME FUNZIONA -->
+<section class="come-funziona">
+  <div class="container">
+    <div class="section-label" style="text-align:center">Il flusso tecnico</div>
+    <h2>Come funziona dietro le quinte</h2>
+    <div class="flow-diagram">
+
+      <div class="flow-node">
+        <div class="flow-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6098A7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="flow-label">Google Sheets</div>
+      </div>
+
+      <div class="flow-arrow">→</div>
+
+      <div class="flow-node">
+        <div class="flow-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6098A7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="flow-label">Legge i dati clienti</div>
+      </div>
+
+      <div class="flow-arrow">→</div>
+
+      <div class="flow-node">
+        <div class="flow-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6098A7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="flow-label">Compone il messaggio</div>
+      </div>
+
+      <div class="flow-arrow">→</div>
+
+      <div class="flow-node">
+        <div class="flow-icon green">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </div>
+        <div class="flow-label">WhatsApp al cliente</div>
+      </div>
+
+      <div class="flow-arrow" style="color:#16A57A">→</div>
+
+      <div class="flow-node">
+        <div class="flow-icon" style="background:#E8F7F2;border-color:#16A57A">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#16A57A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="flow-label" style="color:#16A57A;font-weight:500">Tutti notificati</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- INTERFACCIA -->
+<section class="interfaccia">
+  <div class="container">
+    <div class="section-label">L'interfaccia di utilizzo</div>
+    <h2>Il tuo pannello di controllo</h2>
+    <p class="interfaccia-sub">Semplice, chiaro, accessibile da qualsiasi dispositivo. Vedi tutto con un colpo d'occhio, invii con un clic.</p>
+
+    <div class="screen-mockup">
+      <div class="screen-bar">
+        <div class="dot dot-r"></div>
+        <div class="dot dot-y"></div>
+        <div class="dot dot-g"></div>
+      </div>
+      <div class="screen-body">
+        <div class="screen-sidebar">
+          <div class="sidebar-brand">Studio Consulenza</div>
+          <div class="sidebar-tagline">The Best</div>
+          <div class="sidebar-nav-item active">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            Pannello di Controllo
+          </div>
+          <div class="sidebar-nav-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            Account
+          </div>
+        </div>
+        <div class="screen-main">
+          <div class="screen-main-title">Pannello di Controllo</div>
+          <div class="screen-main-sub">Riepilogo della tua configurazione</div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div class="screen-card">
+              <div class="screen-card-label">Il file collegato è</div>
+              <div class="screen-card-value link">docs.google.com/spreadsheets/d/1NUz_0X7j...</div>
+            </div>
+            <div class="screen-card">
+              <div class="screen-card-label">Il foglio collegato è</div>
+              <div class="screen-card-value">Clienti A-M</div>
+            </div>
+          </div>
+
+          <div class="screen-card" style="margin-top:8px">
+            <div class="screen-card-label">Il numero mittente è</div>
+            <div class="screen-card-value">+39 327 123 456</div>
+          </div>
+
+          <div class="screen-card">
+            <div class="screen-card-label">Il tuo messaggio personalizzato è</div>
+            <div class="screen-card-value" style="font-style:italic;color:#5A5A5A;font-size:12px;line-height:1.5">"Gentile {{nome}}, le ricordiamo che entro il 16 corrente mese deve pagare {{importo}}. Come preferisce procedere?"</div>
+          </div>
+
+          <div class="screen-send-row">
+            <div class="screen-send-text">
+              <h4>Invia notifica ai tuoi clienti</h4>
+              <p>Clicca il pulsante per inviare la notifica ora</p>
+            </div>
+            <button class="screen-send-btn">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Invio notifica ora
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREZZO -->
+<section class="prezzo" id="prezzo">
+  <div class="container">
+    <div class="section-label" style="text-align:center">Prezzo</div>
+    <h2>Un piano. Tutto incluso.</h2>
+
+    <div class="pricing-card">
+      <div class="pricing-badge">Offerta lancio · primi iscritti</div>
+      <div class="pricing-old">€59/mese</div>
+      <div class="pricing-price"><sup>€</sup>29<span>/mese</span></div>
+      <div class="pricing-note">Setup incluso · Disdici quando vuoi</div>
+      <ul class="pricing-features">
+        <li>Setup completo fatto da noi entro 48h</li>
+        <li>Pannello di controllo dedicato</li>
+        <li>Messaggio WhatsApp personalizzabile</li>
+        <li>Invio a tutti i tuoi clienti con 1 clic</li>
+        <li>Supporto via email incluso</li>
+        <li>Nessun contratto annuale</li>
+      </ul>
+      <a class="pricing-cta" href="#">Inizia la prova gratuita di 14 giorni</a>
+      <div class="pricing-reassurance">Nessuna carta richiesta per la prova · Disdici quando vuoi</div>
+    </div>
+  </div>
+</section>
+
+<!-- CHI LO USA -->
+<section class="chi-lo-usa">
+  <div class="container">
+    <div class="section-label" style="text-align:center">Chi lo sta già usando</div>
+    <h2>Studi che hanno smesso di chiamare i clienti</h2>
+    <div class="partners-grid">
+      <div class="partner-card">
+        <div class="partner-initials">SC</div>
+        <div class="partner-name">Studio Carbone</div>
+        <div class="partner-role">Commercialista · Studio individuale</div>
+        <div class="partner-city">Lecce</div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-initials">MR</div>
+        <div class="partner-name">Studio Russo &amp; Associati</div>
+        <div class="partner-role">Commercialisti · Studio associato</div>
+        <div class="partner-city">Napoli</div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-initials">FP</div>
+        <div class="partner-name">Francesco Palmieri</div>
+        <div class="partner-role">Dottore Commercialista</div>
+        <div class="partner-city">Bari</div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-initials">ST</div>
+        <div class="partner-name">Studio Todisco</div>
+        <div class="partner-role">Commercialista · Consulenza fiscale</div>
+        <div class="partner-city">Milano</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIANZE -->
+<section class="testimonianze">
+  <div class="container">
+    <div class="section-label" style="text-align:center">Testimonianze</div>
+    <h2>Cosa dicono i clienti</h2>
+
+    <div class="testi-carousel-wrap">
+      <div class="testi-inner" id="testi-inner">
+        <div class="testi-card">
+          <div class="testi-card-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="testi-card-role">Cliente</div>
+          <div class="testi-card-name" id="testi-name">Marco R.</div>
+          <div class="testi-card-title" id="testi-title">Commercialista · Taranto</div>
+        </div>
+        <div class="testi-quote-box">
+          <div class="testi-quote" id="testi-quote">"Prima perdevo un pomeriggio intero ogni mese a contattare i clienti. Adesso premo un bottone e in cinque minuti ho finito. I clienti rispondono anche prima di quanto mi aspettassi."</div>
+        </div>
+      </div>
+
+      <div class="testi-controls">
+        <div class="testi-dots" id="testi-dots"></div>
+        <div class="testi-nav">
+          <span class="testi-counter" id="testi-counter">01 / 03</span>
+          <button class="testi-btn" onclick="testiNav(-1)">&#8249;</button>
+          <button class="testi-btn" onclick="testiNav(1)">&#8250;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="section-label">Domande frequenti</div>
+    <h2>Hai dubbi? Ti rispondo qui.</h2>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <div class="faq-q-text">Devo sapere usare strumenti tecnici?</div>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a">No. Il setup lo faccio io: collego il tuo Google Sheets, configuro il numero WhatsApp e imposto il template. Tu ricevi accesso al pannello già pronto. Non tocchi nulla di tecnico.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <div class="faq-q-text">I dati dei miei clienti sono al sicuro?</div>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a">I dati rimangono nel tuo Google Drive, sotto il tuo account Google. ScadenzApp legge il foglio al momento dell'invio ma non archivia i dati dei tuoi clienti su server esterni.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <div class="faq-q-text">Posso personalizzare il messaggio?</div>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a">Sì, completamente. Puoi usare variabili dinamiche come {{nome}} e {{importo}} che vengono sostituite con i dati reali di ogni cliente. Il testo del messaggio lo scrivi tu in fase di setup e puoi richiedermi modifiche in qualsiasi momento.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <div class="faq-q-text">Cosa succede dopo i 14 giorni di prova?</div>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a">Alla scadenza della prova puoi attivare l'abbonamento a €29/mese oppure semplicemente non fare nulla e il servizio si interrompe. Nessun addebito automatico senza il tuo consenso esplicito.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <div class="faq-q-text">Funziona con qualsiasi numero WhatsApp?</div>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a">Serve un account WhatsApp Business API. In fase di setup mi occupo io di configurarlo con il numero che preferisci usare per le comunicazioni con i clienti.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <div class="faq-q-text">Quanti clienti posso notificare per invio?</div>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a">Fino a 250 contatti per singolo invio. Per la maggior parte degli studi piccoli è più che sufficiente. Se hai un volume maggiore scrivimi e valutiamo insieme la soluzione più adatta.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINALE -->
+<section class="cta-finale" id="cta-finale">
+  <div class="container" style="text-align:center">
+    <h2>Smetti di perdere tempo con i promemoria manuali.</h2>
+    <p>Setup in 48 ore. Nessun impegno. Disdici quando vuoi.</p>
+    <div class="cta-finale-group">
+      <a class="btn-white" href="#">Inizia la prova gratuita</a>
+      <a class="btn-outline-white" href="mailto:hello@martinaria.it">Scrivimi una mail</a>
+    </div>
+    <div class="cta-finale-reassurance">Nessuna carta richiesta · Setup incluso · Supporto diretto</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a class="footer-logo" href="#">
+    <div class="footer-logo-mark">S</div>
+    <span class="footer-logo-text">Scadenz<span>App</span></span>
+  </a>
+  <span>Un servizio di <a href="https://martinaria.it" style="color:rgba(255,255,255,0.5);text-decoration:underline">martinaria.it</a></span>
+  <div class="footer-policies">
+    <a href="https://www.iubenda.com/privacy-policy/71570924" class="iubenda-white iubenda-noiframe iubenda-embed" title="Privacy Policy">Privacy Policy</a>
+    <a href="https://www.iubenda.com/privacy-policy/71570924/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed" title="Cookie Policy">Cookie Policy</a>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(el) {
+  const item = el.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+const testimonianze = [
+  {
+    name: "Marco R.",
+    title: "Commercialista · Taranto",
+    quote: "Prima perdevo un pomeriggio intero ogni mese a contattare i clienti. Adesso premo un bottone e in cinque minuti ho finito. I clienti rispondono anche prima di quanto mi aspettassi."
+  },
+  {
+    name: "Giulia F.",
+    title: "Studio Farina · Bologna",
+    quote: "Setup velocissimo, Martina ha fatto tutto lei. Il pannello è chiarissimo. I miei clienti mi hanno fatto i complimenti per i messaggi – sembrano scritti a mano."
+  },
+  {
+    name: "Antonio C.",
+    title: "Dottore Commercialista · Lecce",
+    quote: "Scettico all'inizio, convinto dopo la prima settimana. Le telefonate di sollecito sono calate drasticamente. Vale già solo per quello."
+  }
+];
+
+let testiCurrent = 0;
+
+function renderDots() {
+  const container = document.getElementById('testi-dots');
+  container.innerHTML = '';
+  testimonianze.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'testi-dot' + (i === testiCurrent ? ' active' : '');
+    d.onclick = () => { testiCurrent = i; updateTesti(); };
+    container.appendChild(d);
+  });
+}
+
+function updateTesti() {
+  const t = testimonianze[testiCurrent];
+  const nameEl = document.getElementById('testi-name');
+  const titleEl = document.getElementById('testi-title');
+  const quoteEl = document.getElementById('testi-quote');
+  const counter = document.getElementById('testi-counter');
+  const inner = document.getElementById('testi-inner');
+
+  inner.style.opacity = '0';
+  inner.style.transform = 'translateY(6px)';
+  inner.style.transition = 'opacity 0.2s, transform 0.2s';
+
+  setTimeout(() => {
+    nameEl.textContent = t.name;
+    titleEl.textContent = t.title;
+    quoteEl.textContent = '\u201c' + t.quote + '\u201d';
+    counter.textContent = String(testiCurrent + 1).padStart(2, '0') + ' / ' + String(testimonianze.length).padStart(2, '0');
+    renderDots();
+    inner.style.opacity = '1';
+    inner.style.transform = 'translateY(0)';
+  }, 200);
+}
+
+function testiNav(dir) {
+  testiCurrent = (testiCurrent + dir + testimonianze.length) % testimonianze.length;
+  updateTesti();
+}
+
+renderDots();
+</script>
+<script type="text/javascript">(function(w,d){var loader=function(){var s=d.createElement("script"),tag=d.getElementsByTagName("script")[0];s.src="https://cdn.iubenda.com/iubenda.js";tag.parentNode.insertBefore(s,tag);};if(w.addEventListener){w.addEventListener("load",loader,false);}else if(w.attachEvent){w.attachEvent("onload",loader);}else{w.onload=loader;}})(window,document);</script>
+</body>
+</html>
