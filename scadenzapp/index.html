@@ -73,14 +73,17 @@
     .nav-logo-mark {
       width: 32px;
       height: 32px;
-      background: var(--green);
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      font-weight: 700;
-      color: white;
+      overflow: hidden;
+      flex-shrink: 0;
+      padding: 3px;
+    }
+
+    .nav-logo-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .nav-logo-text {
@@ -194,7 +197,7 @@
     }
 
     .hero h1 em {
-      color: #63ffce;
+      color: #d1fff1;
       font-style: normal;
       font-weight: 700;
     }
@@ -369,7 +372,9 @@
       margin-top: 1px;
     }
 
-    .pain-text { font-size: 15px; color: var(--text-mid); line-height: 1.5; }
+    .pain-body { display: flex; flex-direction: column; gap: 4px; }
+    .pain-title { font-size: 15px; font-weight: 600; color: var(--text-dark); line-height: 1.4; }
+    .pain-text { font-size: 14px; color: var(--text-mid); line-height: 1.5; }
 
     /* SOLUZIONE */
     .soluzione {
@@ -383,12 +388,28 @@
       margin-bottom: 12px;
     }
 
-    .soluzione-sub {
-      font-size: 17px;
-      color: var(--text-mid);
-      font-weight: 300;
+    .soluzione-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
       margin-bottom: 48px;
-      max-width: 560px;
+    }
+
+    .soluzione-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 8px 16px;
+      font-size: 14px;
+      color: var(--text-mid);
+      line-height: 1.4;
+    }
+
+    .soluzione-pill svg {
+      flex-shrink: 0;
     }
 
     .steps { display: flex; flex-direction: column; gap: 0; }
@@ -434,12 +455,10 @@
 
     .flow-diagram {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       gap: 0;
       flex-wrap: nowrap;
-      overflow-x: auto;
-      padding-bottom: 8px;
     }
 
     .flow-node {
@@ -475,8 +494,9 @@
       font-size: 20px;
       color: var(--border);
       margin: 0 8px;
-      padding-bottom: 24px;
+      margin-top: 21px;
       flex-shrink: 0;
+      line-height: 1;
     }
 
     /* INTERFACCIA */
@@ -503,7 +523,7 @@
       border: 1px solid var(--border);
       border-radius: 16px;
       overflow: hidden;
-      max-width: 700px;
+      max-width: 800px;
       margin: 0 auto;
       box-shadow: 0 8px 40px rgba(0,0,0,0.08);
     }
@@ -519,7 +539,7 @@
 
     .screen-body {
       display: grid;
-      grid-template-columns: 200px 1fr;
+      grid-template-columns: 230px 1fr;
       min-height: 340px;
     }
 
@@ -661,7 +681,7 @@
 
     .pricing-old {
       font-size: 16px;
-      color: var(--text-light);
+      color: #f57076;
       text-decoration: line-through;
       margin-bottom: 4px;
     }
@@ -770,6 +790,8 @@
       justify-content: center;
       flex-shrink: 0;
       font-size: 16px;
+      line-height: 1;
+      padding-bottom: 5px;
       color: var(--text-mid);
       transition: transform 0.2s;
     }
@@ -803,52 +825,97 @@
       text-align: center;
     }
 
-    .partners-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 12px;
-    }
-
-    .partner-card {
-      background: var(--white);
+    .brand-carousel {
+      position: relative;
+      overflow: hidden;
+      padding: 24px 0;
+      border-radius: 32px;
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 20px 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+      background:
+        radial-gradient(circle at top left, rgba(98, 152, 168, 0.16), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,0.94), rgba(255,255,255,0.82));
+      box-shadow: 0 18px 40px rgba(22,22,22,0.06);
     }
 
-    .partner-initials {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      background: var(--bg-card);
+    .brand-carousel::before,
+    .brand-carousel::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 92px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .brand-carousel::before {
+      left: 0;
+      background: linear-gradient(90deg, var(--bg) 8%, transparent);
+    }
+
+    .brand-carousel::after {
+      right: 0;
+      background: linear-gradient(270deg, var(--bg) 8%, transparent);
+    }
+
+    .brand-track {
+      display: flex;
+      align-items: stretch;
+      gap: 18px;
+      width: max-content;
+      animation: brand-scroll 30s linear infinite;
+    }
+
+    .brand-carousel:hover .brand-track {
+      animation-play-state: paused;
+    }
+
+    .brand-card {
+      min-width: 220px;
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(210,216,224,0.9);
+      background: rgba(255,255,255,0.9);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 10px 24px rgba(22,22,22,0.05);
+    }
+
+    .brand-mark {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 13px;
+      background: var(--bg-card);
+      border: 1px solid rgba(98,152,168,0.24);
+      font-size: 14px;
       font-weight: 700;
       color: var(--text-mid);
-      margin-bottom: 4px;
+      flex-shrink: 0;
     }
 
-    .partner-name {
-      font-size: 14px;
-      font-weight: 600;
+    .brand-copy { min-width: 0; }
+
+    .brand-name {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.2;
       color: var(--text);
     }
 
-    .partner-role {
-      font-size: 13px;
+    .brand-role {
+      margin-top: 4px;
       color: var(--text-light);
-      line-height: 1.4;
+      font-size: 13px;
     }
 
-    .partner-city {
-      font-size: 12px;
-      color: var(--text-light);
-      margin-top: 2px;
+    @keyframes brand-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(calc(-50% - 9px)); }
     }
 
     /* TESTIMONIANZE */
@@ -864,154 +931,176 @@
       text-align: center;
     }
 
-    .testi-carousel-wrap {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 32px;
+    .testimonial-carousel {
       position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 18px 18px 14px;
+      background: rgba(255,255,255,0.68);
+      border: 1px solid rgba(210,215,223,0.9);
+      border-radius: 28px;
+      box-shadow: 0 8px 20px rgba(22,22,22,0.06);
     }
 
-    .testi-inner {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 24px;
-      align-items: center;
-      min-height: 160px;
+    .testimonial {
+      grid-template-columns: minmax(190px, 0.72fr) minmax(0, 1.28fr);
+      gap: 16px;
+      align-items: stretch;
+      background: rgba(244,245,247,0.8);
+      border-radius: 22px;
+      padding: 16px;
+      border: 1px solid rgba(234,236,240,0.95);
+      min-height: 220px;
+      display: none;
     }
 
-    .testi-card {
+    .testimonial.active { display: grid; }
+
+    .testimonial-client {
       background: var(--accent);
-      border-radius: 14px;
-      padding: 24px 20px;
+      border-radius: 22px;
+      padding: 18px;
+      color: rgba(255,255,255,0.94);
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      min-height: 160px;
-      position: relative;
+      justify-content: space-between;
+      min-height: 168px;
     }
 
-    .testi-card-logo {
-      position: absolute;
-      top: 16px;
-      left: 16px;
-      width: 32px;
-      height: 32px;
-      background: rgba(255,255,255,0.2);
-      border-radius: 8px;
-      display: flex;
+    .testimonial-client-top { display: grid; gap: 12px; }
+
+    .testimonial-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.14);
+      display: inline-flex;
       align-items: center;
       justify-content: center;
+      color: rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.04);
     }
 
-    .testi-card-logo svg { width: 16px; height: 16px; }
+    .testimonial-icon svg { width: 18px; height: 18px; stroke: currentColor; }
 
-    .testi-card-role {
-      font-size: 11px;
-      letter-spacing: 0.08em;
+    .testimonial-label {
+      font-size: 10px;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 6px;
+      color: rgba(237,245,247,0.82);
     }
 
-    .testi-card-name {
-      font-size: 20px;
+    .testimonial-meta { display: grid; gap: 4px; }
+
+    .testimonial-name {
+      font-size: clamp(20px, 2.2vw, 26px);
+      line-height: 1.08;
       font-weight: 700;
-      color: white;
-      margin-bottom: 2px;
+      color: #ffffff;
     }
 
-    .testi-card-title {
+    .testimonial-role {
       font-size: 13px;
-      color: rgba(255,255,255,0.75);
+      color: rgba(239,246,248,0.84);
     }
 
-    .testi-quote-box {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 28px 24px;
+    .testimonial-quote {
       display: flex;
       align-items: center;
-      min-height: 160px;
-    }
-
-    .testi-quote {
-      font-size: 17px;
-      color: var(--text);
+      min-height: 168px;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid rgba(208,214,223,0.9);
+      border-radius: 22px;
+      padding: 18px 20px;
+      font-size: 15px;
       line-height: 1.6;
-      font-style: italic;
+      color: var(--text-mid);
+      margin-bottom: 0;
     }
 
-    .testi-controls {
+    .testimonial-controls {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: 20px;
+      gap: 16px;
+      margin-top: 12px;
     }
 
-    .testi-dots {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
+    .testimonial-nav { display: flex; gap: 10px; }
 
-    .testi-dot {
-      width: 28px;
-      height: 8px;
-      border-radius: 4px;
-      background: var(--border);
-      cursor: pointer;
-      transition: background 0.2s, width 0.2s;
-    }
-
-    .testi-dot.active {
-      background: var(--text);
+    .testimonial-btn {
       width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      border: 1px solid rgba(200,208,219,0.95);
+      background: rgba(255,255,255,0.92);
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
     }
 
-    .testi-nav {
+    .testimonial-btn:hover {
+      transform: translateY(-1px);
+      background: #fff;
+      border-color: rgba(11,23,53,0.22);
+    }
+
+    .testimonial-btn:focus-visible,
+    .testimonial-dot:focus-visible {
+      outline: 2px solid rgba(180,157,147,0.7);
+      outline-offset: 3px;
+    }
+
+    .testimonial-btn svg { width: 14px; height: 14px; stroke: currentColor; }
+
+    .testimonial-dots {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      flex: 1;
     }
 
-    .testi-counter {
-      font-size: 13px;
+    .testimonial-dot {
+      width: 10px;
+      height: 10px;
+      padding: 0;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(181,191,206,0.9);
+      cursor: pointer;
+      transition: transform 180ms ease, background 180ms ease;
+    }
+
+    .testimonial-dot.active {
+      width: 30px;
+      background: var(--text);
+    }
+
+    .testimonial-status {
+      font-size: 11px;
       color: var(--text-light);
-      min-width: 40px;
+      min-width: 48px;
       text-align: center;
     }
 
-    .testi-btn {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      background: var(--white);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.15s, border-color 0.15s;
-      font-size: 14px;
-      color: var(--text);
-    }
-
-    .testi-btn:hover {
-      background: var(--bg-card);
-      border-color: var(--text-mid);
-    }
-
     @media (max-width: 600px) {
-      .testi-inner { grid-template-columns: 1fr; }
-      .testi-card { min-height: 120px; }
-      .partners-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonial-carousel { padding: 14px 14px 16px; border-radius: 22px; }
+      .testimonial { grid-template-columns: 1fr; }
+      .testimonial-client { min-height: 0; padding: 18px 16px; border-radius: 18px; }
+      .testimonial-client-top { gap: 12px; }
+      .testimonial-role { font-size: 14px; }
+      .testimonial-dot.active { width: 28px; }
+      .brand-carousel { padding: 18px 0; border-radius: 24px; }
+      .brand-carousel::before, .brand-carousel::after { width: 42px; }
+      .brand-card { min-width: 184px; padding: 16px; gap: 12px; }
     }
 
     /* CTA FINALE */
     .cta-finale {
-      background: var(--black);
+      background: linear-gradient(330deg, #0f7a5a 0%, #16a57a 45%, #1ec48f 100%);
       color: white;
       text-align: center;
     }
@@ -1026,7 +1115,7 @@
     .cta-finale p {
       font-size: 18px;
       color: rgba(255,255,255,0.6);
-      font-weight: 300;
+      font-weight: 500;
       margin-bottom: 36px;
     }
 
@@ -1047,10 +1136,30 @@
       font-weight: 600;
       text-decoration: none;
       transition: opacity 0.2s;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid white;
     }
 
     .btn-white:hover { opacity: 0.9; }
+
+    .btn-black {
+      background: var(--black);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.2s;
+      border: 1px solid var(--black);
+    }
+
+    .btn-black:hover { opacity: 0.85; }
 
     .btn-outline-white {
       background: transparent;
@@ -1061,7 +1170,9 @@
       font-weight: 500;
       text-decoration: none;
       border: 1px solid rgba(255,255,255,0.3);
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       transition: border-color 0.2s;
     }
 
@@ -1069,7 +1180,7 @@
 
     .cta-finale-reassurance {
       margin-top: 20px;
-      font-size: 13px;
+      font-size: 15px;
       color: rgba(255,255,255,0.4);
     }
 
@@ -1097,14 +1208,17 @@
     .footer-logo-mark {
       width: 26px;
       height: 26px;
-      background: var(--green);
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      font-weight: 700;
-      color: white;
+      overflow: hidden;
+      flex-shrink: 0;
+      padding: 3px;
+    }
+
+    .footer-logo-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .footer-logo-text {
@@ -1148,10 +1262,16 @@
       footer { padding: 20px 1.25rem; }
     }
 
-    @media (max-width: 500px) {
-      .flow-diagram { gap: 0; }
-      .flow-arrow { margin: 0 4px; }
-      .flow-icon { width: 52px; height: 52px; border-radius: 12px; }
+    @media (max-width: 700px) {
+      .flow-diagram {
+        flex-direction: column;
+        align-items: center;
+      }
+      .flow-arrow {
+        margin: 4px 0;
+        margin-top: 0;
+        transform: rotate(90deg);
+      }
     }
   </style>
 </head>
@@ -1164,10 +1284,10 @@
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">
-    <div class="nav-logo-mark">S</div>
+    <div class="nav-logo-mark"><img src="../assets/logo-scadenzapp.webp" alt="ScadenzApp"></div>
     <span class="nav-logo-text">Scadenz<span>App</span></span>
   </a>
-  <a class="nav-cta" href="#prezzo">Inizia gratis</a>
+  <a class="nav-cta" href="#prezzo">Inizia subito</a>
 </nav>
 
 <!-- HERO -->
@@ -1188,7 +1308,7 @@
       </ul>
       <div class="cta-group">
         <a class="btn-primary" href="#cta-finale">Inizia subito</a>
-        <span class="btn-ghost" onclick="document.querySelector('.interfaccia').scrollIntoView({behavior:'smooth'})">Guarda come funziona →</span>
+        <span class="btn-ghost" onclick="document.querySelector('.come-funziona').scrollIntoView({behavior:'smooth'})">Guarda come funziona →</span>
       </div>
     </div>
 
@@ -1233,19 +1353,31 @@
     <div class="pain-grid">
       <div class="pain-card">
         <div class="pain-x">✗</div>
-        <div class="pain-text">Chiami o scrivi email ai clienti ogni mese per ricordargli le scadenze</div>
+        <div class="pain-body">
+          <div class="pain-title">Recuperare i dati è lento</div>
+          <div class="pain-text">Ogni cliente ha importi diversi, scadenze diverse, situazioni diverse. Non puoi mandare lo stesso messaggio a tutti.</div>
+        </div>
       </div>
       <div class="pain-card">
         <div class="pain-x">✗</div>
-        <div class="pain-text">Perdi ore a comporre messaggi manuali perché ogni cliente ha dati diversi</div>
+        <div class="pain-body">
+          <div class="pain-title">Comporre e inviare è ripetitivo</div>
+          <div class="pain-text">Che tu usi email, WhatsApp o telefono, farlo cliente per cliente è tempo che non genera valore.</div>
+        </div>
       </div>
       <div class="pain-card">
         <div class="pain-x">✗</div>
-        <div class="pain-text">Dovresti avvisare tutti ma farlo uno ad uno farebbe perdere troppo tempo</div>
+        <div class="pain-body">
+          <div class="pain-title">Non sai se il messaggio è arrivato</div>
+          <div class="pain-text">Email non aperte, messaggi ignorati, clienti che "non hanno visto". L'avviso è partito ma non è detto che abbia funzionato.</div>
+        </div>
       </div>
       <div class="pain-card">
         <div class="pain-x">✗</div>
-        <div class="pain-text">Le email vengono ignorate — i clienti le leggono tardi o non le aprono</div>
+        <div class="pain-body">
+          <div class="pain-title">Il cliente ti richiama comunque</div>
+          <div class="pain-text">Anche dopo l'avviso, molti chiamano per chiedere conferma o chiarimenti, vanificando il tempo impiegato.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1256,7 +1388,20 @@
   <div class="container">
     <div class="section-label">La soluzione</div>
     <h2>Con ScadenzApp ci vogliono 30 secondi</h2>
-    <p class="soluzione-sub">Nessun software da imparare, nessuna configurazione. Faccio io il setup iniziale. Tu premi un bottone.</p>
+    <div class="soluzione-pills">
+      <div class="soluzione-pill">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6098A7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Nessun software da imparare, nessuna configurazione.
+      </div>
+      <div class="soluzione-pill">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6098A7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Faccio io il setup iniziale, tu premi solo un bottone.
+      </div>
+      <div class="soluzione-pill">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6098A7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        WhatsApp ha un tasso di apertura del 98%, rispetto a email o SMS è il canale più letto.
+      </div>
+    </div>
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
@@ -1284,7 +1429,7 @@
 </section>
 
 <!-- COME FUNZIONA -->
-<section class="come-funziona">
+<section class="come-funziona" id="come-funziona">
   <div class="container">
     <div class="section-label" style="text-align:center">Il flusso tecnico</div>
     <h2>Come funziona dietro le quinte</h2>
@@ -1292,18 +1437,18 @@
 
       <div class="flow-node">
         <div class="flow-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6098A7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6098A7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="M13 13l6 6"/></svg>
         </div>
-        <div class="flow-label">Google Sheets</div>
+        <div class="flow-label">Clic su Invia</div>
       </div>
 
       <div class="flow-arrow">→</div>
 
       <div class="flow-node">
         <div class="flow-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6098A7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6098A7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
         </div>
-        <div class="flow-label">Legge i dati clienti</div>
+        <div class="flow-label">Legge i dati clienti dall'excel</div>
       </div>
 
       <div class="flow-arrow">→</div>
@@ -1342,7 +1487,7 @@
   <div class="container">
     <div class="section-label">L'interfaccia di utilizzo</div>
     <h2>Il tuo pannello di controllo</h2>
-    <p class="interfaccia-sub">Semplice, chiaro, accessibile da qualsiasi dispositivo. Vedi tutto con un colpo d'occhio, invii con un clic.</p>
+    <p class="interfaccia-sub">Semplice, chiaro, accessibile. Vedi tutto con un colpo d'occhio, invii con un clic.</p>
 
     <div class="screen-mockup">
       <div class="screen-bar">
@@ -1370,11 +1515,11 @@
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
             <div class="screen-card">
               <div class="screen-card-label">Il file collegato è</div>
-              <div class="screen-card-value link">docs.google.com/spreadsheets/d/1NUz_0X7j...</div>
+              <div class="screen-card-value link">docs.google.com/spreadsheets...</div>
             </div>
             <div class="screen-card">
               <div class="screen-card-label">Il foglio collegato è</div>
-              <div class="screen-card-value">Clienti A-M</div>
+              <div class="screen-card-value">Clienti Marzo 2026</div>
             </div>
           </div>
 
@@ -1416,15 +1561,15 @@
       <div class="pricing-price"><sup>€</sup>29<span>/mese</span></div>
       <div class="pricing-note">Setup incluso · Disdici quando vuoi</div>
       <ul class="pricing-features">
-        <li>Setup completo fatto da noi entro 48h</li>
+        <li>Setup completo fatto da noi</li>
         <li>Pannello di controllo dedicato</li>
         <li>Messaggio WhatsApp personalizzabile</li>
         <li>Invio a tutti i tuoi clienti con 1 clic</li>
         <li>Supporto via email incluso</li>
         <li>Nessun contratto annuale</li>
       </ul>
-      <a class="pricing-cta" href="#">Inizia la prova gratuita di 14 giorni</a>
-      <div class="pricing-reassurance">Nessuna carta richiesta per la prova · Disdici quando vuoi</div>
+      <a class="pricing-cta" href="#cta-finale">Inizia subito</a>
+      <div class="pricing-reassurance">Disdici quando vuoi</div>
     </div>
   </div>
 </section>
@@ -1434,30 +1579,66 @@
   <div class="container">
     <div class="section-label" style="text-align:center">Chi lo sta già usando</div>
     <h2>Studi che hanno smesso di chiamare i clienti</h2>
-    <div class="partners-grid">
-      <div class="partner-card">
-        <div class="partner-initials">SC</div>
-        <div class="partner-name">Studio Carbone</div>
-        <div class="partner-role">Commercialista · Studio individuale</div>
-        <div class="partner-city">Lecce</div>
-      </div>
-      <div class="partner-card">
-        <div class="partner-initials">MR</div>
-        <div class="partner-name">Studio Russo &amp; Associati</div>
-        <div class="partner-role">Commercialisti · Studio associato</div>
-        <div class="partner-city">Napoli</div>
-      </div>
-      <div class="partner-card">
-        <div class="partner-initials">FP</div>
-        <div class="partner-name">Francesco Palmieri</div>
-        <div class="partner-role">Dottore Commercialista</div>
-        <div class="partner-city">Bari</div>
-      </div>
-      <div class="partner-card">
-        <div class="partner-initials">ST</div>
-        <div class="partner-name">Studio Todisco</div>
-        <div class="partner-role">Commercialista · Consulenza fiscale</div>
-        <div class="partner-city">Milano</div>
+    <div class="brand-carousel" aria-label="Studi che usano ScadenzApp">
+      <div class="brand-track">
+        <!-- originali -->
+        <div class="brand-card">
+          <div class="brand-mark">SC</div>
+          <div class="brand-copy">
+            <div class="brand-name">Studio Carbone</div>
+            <div class="brand-role">Commercialista · Lecce</div>
+          </div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-mark">MR</div>
+          <div class="brand-copy">
+            <div class="brand-name">Studio Russo &amp; Associati</div>
+            <div class="brand-role">Commercialisti · Napoli</div>
+          </div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-mark">FP</div>
+          <div class="brand-copy">
+            <div class="brand-name">Francesco Palmieri</div>
+            <div class="brand-role">Dottore Commercialista · Bari</div>
+          </div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-mark">ST</div>
+          <div class="brand-copy">
+            <div class="brand-name">Studio Todisco</div>
+            <div class="brand-role">Commercialista · Milano</div>
+          </div>
+        </div>
+        <!-- duplicati per loop continuo -->
+        <div class="brand-card" aria-hidden="true">
+          <div class="brand-mark">SC</div>
+          <div class="brand-copy">
+            <div class="brand-name">Studio Carbone</div>
+            <div class="brand-role">Commercialista · Lecce</div>
+          </div>
+        </div>
+        <div class="brand-card" aria-hidden="true">
+          <div class="brand-mark">MR</div>
+          <div class="brand-copy">
+            <div class="brand-name">Studio Russo &amp; Associati</div>
+            <div class="brand-role">Commercialisti · Napoli</div>
+          </div>
+        </div>
+        <div class="brand-card" aria-hidden="true">
+          <div class="brand-mark">FP</div>
+          <div class="brand-copy">
+            <div class="brand-name">Francesco Palmieri</div>
+            <div class="brand-role">Dottore Commercialista · Bari</div>
+          </div>
+        </div>
+        <div class="brand-card" aria-hidden="true">
+          <div class="brand-mark">ST</div>
+          <div class="brand-copy">
+            <div class="brand-name">Studio Todisco</div>
+            <div class="brand-role">Commercialista · Milano</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1469,29 +1650,86 @@
     <div class="section-label" style="text-align:center">Testimonianze</div>
     <h2>Cosa dicono i clienti</h2>
 
-    <div class="testi-carousel-wrap">
-      <div class="testi-inner" id="testi-inner">
-        <div class="testi-card">
-          <div class="testi-card-logo">
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <div class="testimonial-carousel" data-carousel>
+
+      <article class="testimonial active" data-testimonial>
+        <div class="testimonial-client">
+          <div class="testimonial-client-top">
+            <span class="testimonial-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.5 8.25H6.75C6.05964 8.25 5.5 8.80964 5.5 9.5V15.75L8.5 13.5H9.5C10.1904 13.5 10.75 12.9404 10.75 12.25V9.5C10.75 8.80964 10.1904 8.25 9.5 8.25Z" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M17.25 8.25H14.5C13.8096 8.25 13.25 8.80964 13.25 9.5V15.75L16.25 13.5H17.25C17.9404 13.5 18.5 12.9404 18.5 12.25V9.5C18.5 8.80964 17.9404 8.25 17.25 8.25Z" stroke-width="1.8" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <div class="testimonial-label">Cliente</div>
           </div>
-          <div class="testi-card-role">Cliente</div>
-          <div class="testi-card-name" id="testi-name">Marco R.</div>
-          <div class="testi-card-title" id="testi-title">Commercialista · Taranto</div>
+          <div class="testimonial-meta">
+            <div class="testimonial-name">Marco R.</div>
+            <div class="testimonial-role">Commercialista · Taranto</div>
+          </div>
         </div>
-        <div class="testi-quote-box">
-          <div class="testi-quote" id="testi-quote">"Prima perdevo un pomeriggio intero ogni mese a contattare i clienti. Adesso premo un bottone e in cinque minuti ho finito. I clienti rispondono anche prima di quanto mi aspettassi."</div>
+        <p class="testimonial-quote">"Prima perdevo un pomeriggio intero ogni mese a contattare i clienti. Adesso premo un bottone e in cinque minuti ho finito. I clienti rispondono anche prima di quanto mi aspettassi."</p>
+      </article>
+
+      <article class="testimonial" data-testimonial>
+        <div class="testimonial-client">
+          <div class="testimonial-client-top">
+            <span class="testimonial-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.5 8.25H6.75C6.05964 8.25 5.5 8.80964 5.5 9.5V15.75L8.5 13.5H9.5C10.1904 13.5 10.75 12.9404 10.75 12.25V9.5C10.75 8.80964 10.1904 8.25 9.5 8.25Z" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M17.25 8.25H14.5C13.8096 8.25 13.25 8.80964 13.25 9.5V15.75L16.25 13.5H17.25C17.9404 13.5 18.5 12.9404 18.5 12.25V9.5C18.5 8.80964 17.9404 8.25 17.25 8.25Z" stroke-width="1.8" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <div class="testimonial-label">Cliente</div>
+          </div>
+          <div class="testimonial-meta">
+            <div class="testimonial-name">Giulia F.</div>
+            <div class="testimonial-role">Studio Farina · Bologna</div>
+          </div>
+        </div>
+        <p class="testimonial-quote">"Setup velocissimo, Martina ha fatto tutto lei. Il pannello è chiarissimo. I miei clienti mi hanno fatto i complimenti per i messaggi."</p>
+      </article>
+
+      <article class="testimonial" data-testimonial>
+        <div class="testimonial-client">
+          <div class="testimonial-client-top">
+            <span class="testimonial-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.5 8.25H6.75C6.05964 8.25 5.5 8.80964 5.5 9.5V15.75L8.5 13.5H9.5C10.1904 13.5 10.75 12.9404 10.75 12.25V9.5C10.75 8.80964 10.1904 8.25 9.5 8.25Z" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M17.25 8.25H14.5C13.8096 8.25 13.25 8.80964 13.25 9.5V15.75L16.25 13.5H17.25C17.9404 13.5 18.5 12.9404 18.5 12.25V9.5C18.5 8.80964 17.9404 8.25 17.25 8.25Z" stroke-width="1.8" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <div class="testimonial-label">Cliente</div>
+          </div>
+          <div class="testimonial-meta">
+            <div class="testimonial-name">Antonio C.</div>
+            <div class="testimonial-role">Dottore Commercialista · Lecce</div>
+          </div>
+        </div>
+        <p class="testimonial-quote">"Scettico all'inizio, convinto dopo la prima settimana. Le telefonate di sollecito sono calate drasticamente. Vale già solo per quello."</p>
+      </article>
+
+      <div class="testimonial-controls">
+        <div class="testimonial-dots" aria-label="Selettore testimonianze">
+          <button class="testimonial-dot active" type="button" data-carousel-dot aria-label="Vai alla testimonianza 1"></button>
+          <button class="testimonial-dot" type="button" data-carousel-dot aria-label="Vai alla testimonianza 2"></button>
+          <button class="testimonial-dot" type="button" data-carousel-dot aria-label="Vai alla testimonianza 3"></button>
+        </div>
+        <div class="testimonial-nav">
+          <div class="testimonial-status" data-carousel-status>01 / 03</div>
+          <button class="testimonial-btn" type="button" data-carousel-prev aria-label="Testimonianza precedente">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M15 6L9 12L15 18" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="testimonial-btn" type="button" data-carousel-next aria-label="Testimonianza successiva">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M9 6L15 12L9 18" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
         </div>
       </div>
 
-      <div class="testi-controls">
-        <div class="testi-dots" id="testi-dots"></div>
-        <div class="testi-nav">
-          <span class="testi-counter" id="testi-counter">01 / 03</span>
-          <button class="testi-btn" onclick="testiNav(-1)">&#8249;</button>
-          <button class="testi-btn" onclick="testiNav(1)">&#8250;</button>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -1523,18 +1761,10 @@
         <div class="faq-q-text">Posso personalizzare il messaggio?</div>
         <div class="faq-icon">+</div>
       </div>
-      <div class="faq-a">Sì, completamente. Puoi usare variabili dinamiche come {{nome}} e {{importo}} che vengono sostituite con i dati reali di ogni cliente. Il testo del messaggio lo scrivi tu in fase di setup e puoi richiedermi modifiche in qualsiasi momento.</div>
+      <div class="faq-a">Sì, completamente. Puoi usare variabili dinamiche come {{nome}} e {{importo}} che vengono sostituite con i dati reali di ogni cliente. Il testo del messaggio lo scrivi tu in fase di setup.</div>
     </div>
 
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        <div class="faq-q-text">Cosa succede dopo i 14 giorni di prova?</div>
-        <div class="faq-icon">+</div>
-      </div>
-      <div class="faq-a">Alla scadenza della prova puoi attivare l'abbonamento a €29/mese oppure semplicemente non fare nulla e il servizio si interrompe. Nessun addebito automatico senza il tuo consenso esplicito.</div>
-    </div>
-
-    <div class="faq-item">
+<div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">
         <div class="faq-q-text">Funziona con qualsiasi numero WhatsApp?</div>
         <div class="faq-icon">+</div>
@@ -1547,7 +1777,7 @@
         <div class="faq-q-text">Quanti clienti posso notificare per invio?</div>
         <div class="faq-icon">+</div>
       </div>
-      <div class="faq-a">Fino a 250 contatti per singolo invio. Per la maggior parte degli studi piccoli è più che sufficiente. Se hai un volume maggiore scrivimi e valutiamo insieme la soluzione più adatta.</div>
+      <div class="faq-a">Fino a 250 contatti al mese o per singolo invio. Per la maggior parte degli studi piccoli è più che sufficiente. Se hai un volume maggiore scrivimi e valutiamo insieme la soluzione più adatta.</div>
     </div>
   </div>
 </section>
@@ -1558,17 +1788,27 @@
     <h2>Smetti di perdere tempo con i promemoria manuali.</h2>
     <p>Setup in 48 ore. Nessun impegno. Disdici quando vuoi.</p>
     <div class="cta-finale-group">
-      <a class="btn-white" href="#">Inizia la prova gratuita</a>
-      <a class="btn-outline-white" href="mailto:hello@martinaria.it">Scrivimi una mail</a>
+      <a class="btn-white" href="#">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+        Inizia subito
+      </a>
+      <a class="btn-black" href="https://calendly.com/martinaria/scadenzapp" target="_blank" rel="noopener noreferrer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Prenota una riunione conoscitiva
+      </a>
+      <a class="btn-outline-white" href="mailto:hello@martinaria.it">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Scrivimi una mail
+      </a>
     </div>
-    <div class="cta-finale-reassurance">Nessuna carta richiesta · Setup incluso · Supporto diretto</div>
+    <div class="cta-finale-reassurance">Setup incluso · Supporto diretto</div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <a class="footer-logo" href="#">
-    <div class="footer-logo-mark">S</div>
+    <div class="footer-logo-mark"><img src="../assets/logo-scadenzapp.webp" alt="ScadenzApp"></div>
     <span class="footer-logo-text">Scadenz<span>App</span></span>
   </a>
   <span>Un servizio di <a href="https://martinaria.it" style="color:rgba(255,255,255,0.5);text-decoration:underline">martinaria.it</a></span>
@@ -1586,66 +1826,43 @@ function toggleFaq(el) {
   if (!isOpen) item.classList.add('open');
 }
 
-const testimonianze = [
-  {
-    name: "Marco R.",
-    title: "Commercialista · Taranto",
-    quote: "Prima perdevo un pomeriggio intero ogni mese a contattare i clienti. Adesso premo un bottone e in cinque minuti ho finito. I clienti rispondono anche prima di quanto mi aspettassi."
-  },
-  {
-    name: "Giulia F.",
-    title: "Studio Farina · Bologna",
-    quote: "Setup velocissimo, Martina ha fatto tutto lei. Il pannello è chiarissimo. I miei clienti mi hanno fatto i complimenti per i messaggi – sembrano scritti a mano."
-  },
-  {
-    name: "Antonio C.",
-    title: "Dottore Commercialista · Lecce",
-    quote: "Scettico all'inizio, convinto dopo la prima settimana. Le telefonate di sollecito sono calate drasticamente. Vale già solo per quello."
-  }
-];
+const testimonialCarousel = document.querySelector("[data-carousel]");
 
-let testiCurrent = 0;
+if (testimonialCarousel) {
+  const items = Array.from(testimonialCarousel.querySelectorAll("[data-testimonial]"));
+  const dots = Array.from(testimonialCarousel.querySelectorAll("[data-carousel-dot]"));
+  const status = testimonialCarousel.querySelector("[data-carousel-status]");
+  const prevButton = testimonialCarousel.querySelector("[data-carousel-prev]");
+  const nextButton = testimonialCarousel.querySelector("[data-carousel-next]");
+  const total = items.length;
+  let currentIndex = 0;
+  let autoplayId;
 
-function renderDots() {
-  const container = document.getElementById('testi-dots');
-  container.innerHTML = '';
-  testimonianze.forEach((_, i) => {
-    const d = document.createElement('div');
-    d.className = 'testi-dot' + (i === testiCurrent ? ' active' : '');
-    d.onclick = () => { testiCurrent = i; updateTesti(); };
-    container.appendChild(d);
-  });
+  const renderCarousel = (index) => {
+    currentIndex = (index + total) % total;
+    items.forEach((item, i) => item.classList.toggle("active", i === currentIndex));
+    dots.forEach((dot, i) => dot.classList.toggle("active", i === currentIndex));
+    if (status) {
+      status.textContent = `${String(currentIndex + 1).padStart(2, "0")} / ${String(total).padStart(2, "0")}`;
+    }
+  };
+
+  const startAutoplay = () => {
+    window.clearInterval(autoplayId);
+    autoplayId = window.setInterval(() => renderCarousel(currentIndex + 1), 5500);
+  };
+
+  const resetAutoplay = () => { window.clearInterval(autoplayId); startAutoplay(); };
+
+  prevButton?.addEventListener("click", () => { renderCarousel(currentIndex - 1); resetAutoplay(); });
+  nextButton?.addEventListener("click", () => { renderCarousel(currentIndex + 1); resetAutoplay(); });
+  dots.forEach((dot, i) => dot.addEventListener("click", () => { renderCarousel(i); resetAutoplay(); }));
+  testimonialCarousel.addEventListener("mouseenter", () => window.clearInterval(autoplayId));
+  testimonialCarousel.addEventListener("mouseleave", () => startAutoplay());
+
+  renderCarousel(0);
+  startAutoplay();
 }
-
-function updateTesti() {
-  const t = testimonianze[testiCurrent];
-  const nameEl = document.getElementById('testi-name');
-  const titleEl = document.getElementById('testi-title');
-  const quoteEl = document.getElementById('testi-quote');
-  const counter = document.getElementById('testi-counter');
-  const inner = document.getElementById('testi-inner');
-
-  inner.style.opacity = '0';
-  inner.style.transform = 'translateY(6px)';
-  inner.style.transition = 'opacity 0.2s, transform 0.2s';
-
-  setTimeout(() => {
-    nameEl.textContent = t.name;
-    titleEl.textContent = t.title;
-    quoteEl.textContent = '\u201c' + t.quote + '\u201d';
-    counter.textContent = String(testiCurrent + 1).padStart(2, '0') + ' / ' + String(testimonianze.length).padStart(2, '0');
-    renderDots();
-    inner.style.opacity = '1';
-    inner.style.transform = 'translateY(0)';
-  }, 200);
-}
-
-function testiNav(dir) {
-  testiCurrent = (testiCurrent + dir + testimonianze.length) % testimonianze.length;
-  updateTesti();
-}
-
-renderDots();
 </script>
 <script type="text/javascript">(function(w,d){var loader=function(){var s=d.createElement("script"),tag=d.getElementsByTagName("script")[0];s.src="https://cdn.iubenda.com/iubenda.js";tag.parentNode.insertBefore(s,tag);};if(w.addEventListener){w.addEventListener("load",loader,false);}else if(w.attachEvent){w.attachEvent("onload",loader);}else{w.onload=loader;}})(window,document);</script>
 </body>
