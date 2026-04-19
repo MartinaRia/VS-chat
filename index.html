@@ -670,42 +670,116 @@
       display: inline-flex;
     }
 
-    /* METODO */
+    /* PORTFOLIO LOGHI */
 
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+    .brand-section {
+      position: relative;
     }
 
-    .process-card {
-      min-height: 220px;
-      padding: 24px;
-      border-radius: var(--radius-lg);
+    .brand-carousel {
+      position: relative;
+      overflow: hidden;
+      padding: 24px 0;
+      border-radius: 32px;
       border: 1px solid rgba(224, 221, 219, 1);
-      background: rgba(255, 255, 255, 0.82);
-      box-shadow: 0 14px 35px rgba(22, 22, 22, 0.05);
+      background:
+        radial-gradient(circle at top left, rgba(98, 152, 168, 0.16), transparent 34%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.82));
+      box-shadow: 0 18px 40px rgba(22, 22, 22, 0.06);
+    }
+
+    .brand-carousel::before,
+    .brand-carousel::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 92px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .brand-carousel::before {
+      left: 0;
+      background: linear-gradient(90deg, #faf7f6 8%, rgba(250, 247, 246, 0));
+    }
+
+    .brand-carousel::after {
+      right: 0;
+      background: linear-gradient(270deg, #faf7f6 8%, rgba(250, 247, 246, 0));
+    }
+
+    .brand-track {
       display: flex;
-      flex-direction: column;
+      align-items: stretch;
+      gap: 18px;
+      width: max-content;
+      animation: brand-scroll 30s linear infinite;
+    }
+
+    .brand-carousel:hover .brand-track {
+      animation-play-state: paused;
+    }
+
+    .brand-card {
+      min-width: 220px;
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(210, 216, 224, 0.9);
+      background: rgba(255, 255, 255, 0.9);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
       gap: 14px;
+      box-shadow: 0 10px 24px rgba(22, 22, 22, 0.05);
     }
 
-    .process-step {
-      font-size: 12px;
-      letter-spacing: 0.2em;
+    .brand-mark {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border: 1px solid rgba(98, 152, 168, 0.24);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--accent--light);
+      flex-shrink: 0;
+    }
+
+    .brand-copy {
+      min-width: 0;
+    }
+
+    .brand-name {
+      font-size: 18px;
       font-weight: 700;
-    }
-
-    .process-card h3 {
-      font-size: 20px;
       line-height: 1.1;
+      letter-spacing: -0.02em;
     }
 
-    .process-card p {
+    .brand-role {
+      margin-top: 4px;
       color: var(--muted);
-      font-size: 14px;
+      font-size: 13px;
+    }
+
+    @keyframes brand-scroll {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(calc(-50% - 9px));
+      }
     }
 
     /* PORTFOLIO */
@@ -1064,6 +1138,8 @@
       background: rgba(255, 255, 255, 0.82);
       border: 1px solid rgba(224, 221, 219, 1);
       font-size: 13px;
+      color: var(--text);
+      cursor: pointer;
     }
 
     .contact-pill-icon {
@@ -1096,16 +1172,15 @@
       min-width: 0;
     }
 
-    .contact-pill span:first-child {
+    .contact-pill-content span:first-child {
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.16em;
       color: var(--muted);
     }
 
-    .contact-pill a {
-      color: var(--text);
-      font-weight: 500;
+    .contact-pill-content span:last-child {
+      font-weight: 600;
     }
 
     .contact-socials {
@@ -1339,10 +1414,6 @@
         max-width: 227px;
       }
 
-      .process-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
       .footer-meta {
         width: 100%;
         align-items: flex-start;
@@ -1425,6 +1496,32 @@
       .services-grid,
       .cases-grid {
         grid-template-columns: minmax(0, 1fr);
+      }
+
+      .brand-carousel {
+        padding: 18px 0;
+        border-radius: 24px;
+      }
+
+      .brand-carousel::before,
+      .brand-carousel::after {
+        width: 42px;
+      }
+
+      .brand-card {
+        min-width: 184px;
+        padding: 16px;
+        gap: 12px;
+      }
+
+      .brand-mark {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+      }
+
+      .brand-name {
+        font-size: 16px;
       }
 
       .service-card {
@@ -1634,7 +1731,7 @@
               <span>Innovation Manager · Digital Transformation</span>
             </div>
             <h1 class="hero-title">
-               CONSULENTE PER L' <span>INNOVAZIONE</span> E IL <span>DIGITALE</span>
+               CONSULENTE PER <br> L'<span>INNOVAZIONE</span> E IL <span>DIGITALE</span>
             </h1>
             <p class="hero-subtitle">
               L'innovazione è diventata una questione di sopravvivenza per le aziende che devono rispondere costantemente alle esigenze di un mercato estremamente volatile.
@@ -1868,6 +1965,66 @@
       </section>
       <div class="section-divider"></div>
 
+      <!-- METODO -->
+      <section id="metodo">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-kicker">Partners</div>
+            <h2 class="section-title">I professionisti con cui collaboro</h2>
+          </div>
+          <div class="brand-section">
+            <div class="brand-carousel" aria-label="Carosello aziende">
+              <div class="brand-track">
+                <a class="brand-card" href="https://quorum-advisors.com/" target="_blank" rel="noopener noreferrer">
+                  <div class="brand-mark" aria-hidden="true"><img src="assets/quorum.webp" alt="Quorum Advisors"></div>
+                  <div class="brand-copy">
+                    <div class="brand-name">Quorum Advisors</div>
+                    <div class="brand-role">Law firm and accounting</div>
+                  </div>
+                </a>
+                <a class="brand-card" href="http://orizzontestudioassociato.it/" target="_blank" rel="noopener noreferrer">
+                  <div class="brand-mark" aria-hidden="true"><img src="assets/orizzonte studio associato.webp" alt="Orizzonte Studio Associato"></div>
+                  <div class="brand-copy">
+                    <div class="brand-name">Orizzonte Studio Associato</div>
+                    <div class="brand-role">Consulenza aziendale</div>
+                  </div>
+                </a>
+                <a class="brand-card" href="https://www.econsulenza.net/" target="_blank" rel="noopener noreferrer">
+                  <div class="brand-mark" aria-hidden="true"><img src="assets/e-consulenza.webp" alt="E-Consulenza"></div>
+                  <div class="brand-copy">
+                    <div class="brand-name">E-Consulenza</div>
+                    <div class="brand-role">Consulenza, fiscalità e gestione</div>
+                  </div>
+                </a>
+
+                <a class="brand-card" aria-hidden="true" href="https://quorum-advisors.com/" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                  <div class="brand-mark"><img src="assets/quorum.webp" alt=""></div>
+                  <div class="brand-copy">
+                    <div class="brand-name">Quorum Advisors</div>
+                    <div class="brand-role">Law firm and accounting</div>
+                  </div>
+                </a>
+                <a class="brand-card" aria-hidden="true" href="http://orizzontestudioassociato.it/" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                  <div class="brand-mark"><img src="assets/orizzonte studio associato.webp" alt=""></div>
+                  <div class="brand-copy">
+                    <div class="brand-name">Orizzonte Studio Associato</div>
+                    <div class="brand-role">Consulenza aziendale</div>
+                  </div>
+                </a>
+                <a class="brand-card" aria-hidden="true" href="https://www.econsulenza.net/" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                  <div class="brand-mark"><img src="assets/e-consulenza.webp" alt=""></div>
+                  <div class="brand-copy">
+                    <div class="brand-name">E-Consulenza</div>
+                    <div class="brand-role">Consulenza, fiscalità e gestione</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="section-divider"></div>
+
       <!-- PORTFOLIO -->
       <section id="portfolio">
         <div class="container">
@@ -2059,48 +2216,6 @@
                 </button>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-      <div class="section-divider"></div>
-
-      <!-- METODO -->
-      <section id="metodo">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-kicker">Metodo</div>
-            <h2 class="section-title">Come lavoro per ridurre rischi e aumentare risultati</h2>
-            <p class="section-subtitle">
-              Il modo migliore per ottenere un progetto digitale utile è partire da
-              una diagnosi chiara, definire priorità misurabili e implementare solo
-              ciò che migliora davvero performance, efficienza o conversione.
-            </p>
-          </div>
-          <div class="process-grid">
-            <article class="process-card">
-              <div class="process-step">01 Analisi</div>
-              <h3>Capisco il problema prima della soluzione</h3>
-              <p>
-                Analizzo processi, strumenti, attriti operativi e obiettivi di
-                business per individuare dove si perde tempo, margine o controllo.
-              </p>
-            </article>
-            <article class="process-card">
-              <div class="process-step">02 Strategia</div>
-              <h3>Definisco una roadmap sostenibile</h3>
-              <p>
-                Traduco le priorità in un piano concreto: software, AI,
-                automazioni, governance del progetto e metriche da monitorare.
-              </p>
-            </article>
-            <article class="process-card">
-              <div class="process-step">03 Implementazione</div>
-              <h3>Rendo l'innovazione operativa</h3>
-              <p>
-                Coordino la messa a terra delle soluzioni e verifico che il
-                risultato migliori davvero efficienza, chiarezza e generazione lead.
-              </p>
-            </article>
           </div>
         </div>
       </section>
@@ -2375,7 +2490,7 @@
           <div class="contact-grid">
           <div>
             <div class="contact-options">
-              <div class="contact-pill contact-pill-booking">
+              <a class="contact-pill contact-pill-booking" href="https://calendar.app.google/MGvPffEcebbui3EM9" target="_blank" rel="noopener">
                 <div class="contact-pill-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="3" y="5" width="18" height="16" rx="3"></rect>
@@ -2386,15 +2501,10 @@
                 </div>
                 <div class="contact-pill-content">
                   <span>Prenota una Sessione</span>
-                  <a
-                    href="https://calendar.app.google/MGvPffEcebbui3EM9"
-                    target="_blank"
-                    rel="noopener"
-                    >Consulenza gratuita di 30 minuti</a
-                  >
+                  <span>Consulenza gratuita di 30 minuti</span>
                 </div>
-              </div>
-              <div class="contact-pill">
+              </a>
+              <a class="contact-pill" href="mailto:hello@martinaria.it">
                 <div class="contact-pill-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="3" y="5" width="18" height="14" rx="2"></rect>
@@ -2403,11 +2513,9 @@
                 </div>
                 <div class="contact-pill-content">
                   <span>Email</span>
-                  <a href="mailto:hello@martinaria.it"
-                    >hello@martinaria.it</a
-                  >
+                  <span>hello@martinaria.it</span>
                 </div>
-              </div>
+              </a>
               <div class="contact-socials">
                 <a
                   href="https://www.instagram.com/ria_martina_/"
