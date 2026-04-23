@@ -134,7 +134,7 @@
 
     /* HERO */
     .hero {
-      padding: 60px 2rem 80px;
+      padding: 60px 2rem 20px;
       border-bottom: 1px solid rgba(255,255,255,0.15);
       background: linear-gradient(330deg, #0f7a5a 0%, #16a57a 45%, #1ec48f 100%);
     }
@@ -171,7 +171,7 @@
 
     .hero .btn-ghost { color: rgba(255,255,255,0.75); }
 
-    .hero .container { display: grid; grid-template-columns: 3fr 2fr; gap: 60px; align-items: center; }
+    .hero .container { display: grid; grid-template-columns: 3fr 2fr; gap: 10px; align-items: flex-start; }
 
     .hero-tag {
       display: inline-flex;
@@ -271,66 +271,115 @@
     }
 
     .hero-visual {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      /* background: #16A57A; */
+      /* border-radius: 20px; */
+      width: 100%;
+      /* max-width: 480px; */
+      aspect-ratio: 3 / 4;
+      margin: 0 auto;
+      position: relative;
+      /* overflow: hidden; */
+      /* box-shadow: 0 12px 48px rgba(0,0,0,0.22);
+      border: 1px solid rgba(255,255,255,0.12); */
     }
 
-    .hero-visual-top {
-      background: var(--black);
-      padding: 12px 16px;
+    .btn-wrap {
+      position: absolute;
+      top: 6%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      white-space: nowrap;
+    }
+
+    .send-btn {
+      background: #1ec48f;
+      border: 2px solid rgba(255,255,255,0.5);
+      color: white;
+      border-radius: 40px;
+      padding: 10px 20px;
+      font-size: clamp(10px, 2.5vw, 13px);
+      font-weight: 700;
+      font-family: inherit;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
+      cursor: default;
+      position: relative;
+      transition: background 0.15s, border-color 0.15s;
     }
 
-    .dot { width: 10px; height: 10px; border-radius: 50%; }
-    .dot-r { background: #FF5F57; }
-    .dot-y { background: #FEBC2E; }
-    .dot-g { background: #28C840; }
+    .send-btn.firing { background: #0F7A5A; border-color: white; }
 
-    .hero-visual-body { padding: 20px; }
+    .cursor-svg {
+      position: absolute;
+      bottom: -9px;
+      right: 8px;
+      width: 17px;
+      height: 17px;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4));
+      animation: cursorPulse 1.4s ease-in-out infinite;
+    }
 
-    .panel-title {
-      font-size: 13px;
+    @keyframes cursorPulse {
+      0%, 100% { transform: scale(1) rotate(-10deg); opacity: 1; }
+      50%       { transform: scale(1.25) rotate(-10deg); opacity: 0.8; }
+    }
+
+    .lines-svg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .connector {
+      stroke: rgba(255,255,255,0.35);
+      stroke-width: 1.5;
+      fill: none;
+      stroke-dasharray: 5 5;
+      animation: dashMove 1.1s linear infinite;
+    }
+
+    @keyframes dashMove { to { stroke-dashoffset: -20; } }
+
+    .template-card {
+      position: absolute;
+      background: #fff;
+      border-radius: 12px;
+      padding: 9px 10px;
+      width: 40%;
+      min-width: 120px;
+      max-width: 180px;
+      z-index: 5;
+      opacity: 0;
+      transform: scale(0.88) translateY(10px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18), 0 1px 4px rgba(0,0,0,0.10);
+    }
+
+    .template-card.visible { opacity: 1; transform: scale(1) translateY(0); }
+
+    .wa-header { font-size: clamp(7.5px,1.8vw,9.5px); font-weight: 700; color: #1A1A1A; margin-bottom: 3px; }
+    .wa-body   { font-size: clamp(7px,1.6vw,10px); color: #3a3a3a; line-height: 1.45; margin-bottom: 4px; }
+    .compiled-val { color: #16A57A; font-weight: 700; }
+    .wa-time   { font-size: 7px; color: #aaa; float: right; margin-top: -1px; }
+    .wa-divider { height: 0.5px; background: #E8E8E8; margin: 3px 0; clear: both; }
+
+    .wa-action {
+      font-size: clamp(6.5px,1.5vw,8px);
+      color: #16A57A;
       font-weight: 500;
-      color: var(--text-light);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 16px;
-    }
-
-    .panel-row {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px 14px;
-      margin-bottom: 10px;
-    }
-
-    .panel-row-label { font-size: 10px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
-    .panel-row-value { font-size: 13px; color: var(--text); font-weight: 400; }
-    .panel-row-value a { color: var(--accent); font-size: 12px; }
-
-    .panel-btn {
-      width: 100%;
-      background: var(--green);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      padding: 12px;
-      font-size: 14px;
-      font-weight: 600;
-      font-family: var(--font);
-      cursor: pointer;
-      margin-top: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 3px;
+      padding: 3px 0;
+      border-top: 0.5px solid #E8E8E8;
     }
+
+    .wa-action:first-of-type { border-top: none; }
 
     /* PROBLEMA */
     .problema {
@@ -1255,18 +1304,19 @@
     }
 
     /* RESPONSIVE */
-    @media (max-width: 700px) {
+    @media (max-width: 900px) {
       .hero .container { grid-template-columns: 1fr; }
-      .hero-visual { display: none; }
+      .hero-visual { display: block; margin-top: 36px; background: #16A57A; border-radius: 20px; box-shadow: 0 12px 48px rgba(0,0,0,0.22); border: 1px solid rgba(255,255,255,0.12); aspect-ratio: 1 / 1; background: #a7d6c840;}
       .screen-body { grid-template-columns: 1fr; }
       .screen-sidebar { display: none; }
       section { padding: 60px 1.25rem; }
       .hero { padding: 60px 1.25rem 60px; }
       nav { padding: 0 1.25rem; }
       footer { padding: 20px 1.25rem; }
+      .template-card { width: 34%; }
     }
 
-    @media (max-width: 700px) {
+    @media (max-width: 900px) {
       .flow-diagram {
         flex-direction: column;
         align-items: center;
@@ -1316,35 +1366,65 @@
       </div>
     </div>
 
-    <div class="hero-visual">
-      <div class="hero-visual-top">
-        <div class="dot dot-r"></div>
-        <div class="dot dot-y"></div>
-        <div class="dot dot-g"></div>
-      </div>
-      <div class="hero-visual-body">
-        <div class="panel-title">Pannello di controllo</div>
-        <div class="panel-row">
-          <div class="panel-row-label">Il file collegato è</div>
-          <div class="panel-row-value"><span style="color:var(--accent);font-size:12px">docs.google.com/spreadsheets/d/...</span></div>
-        </div>
-        <div class="panel-row">
-          <div class="panel-row-label">Il foglio collegato è</div>
-          <div class="panel-row-value">Clienti Marzo 2026</div>
-        </div>
-        <div class="panel-row">
-          <div class="panel-row-label">Il numero mittente è</div>
-          <div class="panel-row-value">+39 327 123 456</div>
-        </div>
-        <div class="panel-row">
-          <div class="panel-row-label">Il tuo messaggio personalizzato è</div>
-          <div class="panel-row-value" style="font-style:italic;color:#5A5A5A;font-size:13px;line-height:1.5">"Gentile {{nome}}, le ricordiamo che entro il 16 corrente mese deve pagare {{importo}}..."</div>
-        </div>
-        <button class="panel-btn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    <div class="hero-visual" id="hv">
+
+      <div class="btn-wrap">
+        <div class="send-btn" id="sendbtn">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2" fill="white"/></svg>
           Invia notifica ora
-        </button>
+          <svg class="cursor-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 2l16 10-7 1-4 7z" fill="white" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+          </svg>
+        </div>
       </div>
+
+      <svg class="lines-svg" id="lines-svg" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+
+      <div class="template-card" id="tc0">
+        <div class="wa-header">Notifica scadenza</div>
+        <div class="wa-body">Gentile <span class="compiled-val">Antonio</span>, deve pagare <span class="compiled-val">&euro; 200</span> entro il 16. Come preferisce procedere?<span class="wa-time">14:41</span></div>
+        <div class="wa-divider"></div>
+        <div class="wa-action"><svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#16A57A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>Chiamaci per chiarimenti</div>
+        <div class="wa-action"><svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#16A57A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 0 0-4-4H4"/></svg>Pago in autonomia</div>
+        <div class="wa-action"><svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#16A57A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 0 0-4-4H4"/></svg>Procedete al pagamento</div>
+      </div>
+
+      <div class="template-card" id="tc1">
+        <div class="wa-header">Notifica scadenza</div>
+        <div class="wa-body">Gentile <span class="compiled-val">Maria</span>, deve pagare <span class="compiled-val">&euro; 450</span> entro il 16. Come preferisce procedere?<span class="wa-time">14:41</span></div>
+        <div class="wa-divider"></div>
+        <div class="wa-action"><svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#16A57A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>Chiamaci per chiarimenti</div>
+        <div class="wa-action"><svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#16A57A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 0 0-4-4H4"/></svg>Pago in autonomia</div>
+        <div class="wa-action"><svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#16A57A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 0 0-4-4H4"/></svg>Procedete al pagamento</div>
+      </div>
+
+      <div class="template-card" id="tc2">
+        <div class="wa-header">Notifica scadenza</div>
+        <div class="wa-body">Gentile <span class="compiled-val">Luca</span>, deve pagare <span class="compiled-val">&euro; 130</span> entro il 16. Come preferisce procedere?<span class="wa-time">14:41</span></div>
+        <div class="wa-divider"></div>
+        <div class="wa-action"><svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#16A57A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>Chiamaci per chiarimenti</div>
+        <div class="wa-action"><svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#16A57A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 0 0-4-4H4"/></svg>Pago in autonomia</div>
+        <div class="wa-action"><svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#16A57A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 0 0-4-4H4"/></svg>Procedete al pagamento</div>
+      </div>
+
+      <div class="template-card" id="tc3">
+        <div class="wa-header">Notifica scadenza</div>
+        <div class="wa-body">Gentile <span class="compiled-val">Sara</span>, deve pagare <span class="compiled-val">&euro; 310</span> entro il 16. Come preferisce procedere?<span class="wa-time">14:41</span></div>
+        <div class="wa-divider"></div>
+        <div class="wa-action"><svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#16A57A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>Chiamaci per chiarimenti</div>
+        <div class="wa-action"><svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#16A57A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 0 0-4-4H4"/></svg>Pago in autonomia</div>
+        <div class="wa-action"><svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#16A57A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 0 0-4-4H4"/></svg>Procedete al pagamento</div>
+      </div>
+
+      <div class="template-card" id="tc4">
+        <div class="wa-header">Notifica scadenza</div>
+        <div class="wa-body">Gentile <span class="compiled-val">Paolo</span>, deve pagare <span class="compiled-val">&euro; 870</span> entro il 16. Come preferisce procedere?<span class="wa-time">14:41</span></div>
+        <div class="wa-divider"></div>
+        <div class="wa-action"><svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#16A57A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>Chiamaci per chiarimenti</div>
+        <div class="wa-action"><svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#16A57A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 0 0-4-4H4"/></svg>Pago in autonomia</div>
+        <div class="wa-action"><svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="#16A57A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 0 0-4-4H4"/></svg>Procedete al pagamento</div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1823,6 +1903,90 @@
 </footer>
 
 <script>
+(function() {
+  const positions = [
+    [3,  22],
+    [62, 18],
+    [4,  54],
+    [39, 38],
+    [62, 60],
+  ];
+  const btnAnchor = [50, 13];
+
+  function placeCards() {
+    const hv = document.getElementById('hv');
+    if (!hv) return;
+    const W = hv.offsetWidth;
+    const H = hv.offsetHeight;
+    positions.forEach(([lp, tp], i) => {
+      const card = document.getElementById('tc' + i);
+      card.style.left = (W * lp / 100) + 'px';
+      card.style.top  = (H * tp / 100) + 'px';
+    });
+  }
+
+  function drawLines() {
+    const hv = document.getElementById('hv');
+    if (!hv) return;
+    const W = hv.offsetWidth;
+    const H = hv.offsetHeight;
+    const svg = document.getElementById('lines-svg');
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    svg.innerHTML = '';
+    const bx = W * btnAnchor[0] / 100;
+    const by = H * btnAnchor[1] / 100;
+    positions.forEach(([lp, tp], i) => {
+      const card = document.getElementById('tc' + i);
+      const cw = card.offsetWidth;
+      const ch = card.offsetHeight;
+      const cx = W * lp / 100 + cw / 2;
+      const cy = H * tp / 100 + ch * 0.2;
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      const midY = by + (cy - by) * 0.45;
+      path.setAttribute('d', `M${bx},${by} C${bx},${midY} ${cx},${midY} ${cx},${cy}`);
+      path.setAttribute('class', 'connector');
+      path.setAttribute('stroke-dashoffset', i * 4);
+      svg.appendChild(path);
+    });
+  }
+
+  function triggerOnce() {
+    const btn = document.getElementById('sendbtn');
+    btn.classList.add('firing');
+    setTimeout(() => btn.classList.remove('firing'), 700);
+    for (let i = 0; i < 5; i++) {
+      const card = document.getElementById('tc' + i);
+      card.classList.remove('visible');
+      card.style.opacity = '0';
+      card.style.transform = 'scale(0.88) translateY(10px)';
+    }
+    for (let i = 0; i < 5; i++) {
+      (function(idx) {
+        setTimeout(() => {
+          const card = document.getElementById('tc' + idx);
+          card.style.transition = 'opacity 0.38s ease, transform 0.38s ease';
+          card.classList.add('visible');
+          card.style.opacity = '1';
+          card.style.transform = 'scale(1) translateY(0)';
+        }, 180 + idx * 190);
+      })(i);
+    }
+  }
+
+  function hvInit() {
+    placeCards();
+    drawLines();
+    setTimeout(triggerOnce, 400);
+  }
+
+  const hv = document.getElementById('hv');
+  if (hv) {
+    const ro = new ResizeObserver(() => { placeCards(); drawLines(); });
+    ro.observe(hv);
+    hvInit();
+  }
+})();
+
 function toggleFaq(el) {
   const item = el.closest('.faq-item');
   const isOpen = item.classList.contains('open');
