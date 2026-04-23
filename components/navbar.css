@@ -3,7 +3,7 @@
   left: 50%;
   bottom: 24px;
   transform: translateX(-50%);
-  width: min(calc(100% - 32px), 760px);
+  width: min(calc(100% - 32px), 810px);
   z-index: 50;
   backdrop-filter: blur(18px);
   border-radius: 999px;
