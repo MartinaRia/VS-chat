@@ -849,15 +849,32 @@
       text-align: center;
     }
 
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+        margin: 0 auto;
+      }
+    }
+
     .pricing-card {
       background: var(--white);
-      border: 2px solid var(--green);
+      border: 2px solid var(--border);
       border-radius: 20px;
-      padding: 40px;
-      max-width: 480px;
-      margin: 0 auto;
+      padding: 36px 32px;
       text-align: center;
       position: relative;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--green);
     }
 
     .pricing-badge {
@@ -1904,23 +1921,60 @@
 <section class="prezzo" id="prezzo">
   <div class="container">
     <div class="section-label" style="text-align:center">Prezzo</div>
-    <h2>Un piano. Tutto incluso.</h2>
+    <h2>Scegli il piano giusto per te.</h2>
 
-    <div class="pricing-card">
-      <div class="pricing-badge">Offerta lancio · primi iscritti</div>
-      <div class="pricing-old">€59/mese</div>
-      <div class="pricing-price"><sup>€</sup>29<span>/mese</span></div>
-      <div class="pricing-note">Setup incluso · Disdici quando vuoi</div>
-      <ul class="pricing-features">
-        <li>Setup completo fatto da noi</li>
-        <li>Pannello di controllo dedicato</li>
-        <li>Messaggio WhatsApp personalizzabile</li>
-        <li>Invio a tutti i tuoi clienti con 1 clic</li>
-        <li>Supporto via email incluso</li>
-        <li>Nessun contratto annuale</li>
-      </ul>
-      <a class="pricing-cta" href="#cta-finale" onclick="fbq('track','ViewContent',{content_name:'ScadenzApp',content_category:'pricing'})">Inizia subito</a>
-      <div class="pricing-reassurance">Disdici quando vuoi</div>
+    <div class="pricing-grid">
+
+      <!-- Piano Starter -->
+      <div class="pricing-card">
+        <div class="pricing-price"><sup>€</sup>9<span>/mese</span></div>
+        <div class="pricing-note">fino a 50 invii · Disdici quando vuoi</div>
+        <ul class="pricing-features">
+          <li>Setup completo fatto da noi</li>
+          <li>Pannello di controllo dedicato</li>
+          <li>Messaggio WhatsApp personalizzabile</li>
+          <li>Invio con 1 clic</li>
+          <li>Supporto via email incluso</li>
+          <li>Nessun contratto annuale</li>
+        </ul>
+        <a class="pricing-cta" href="#cta-finale" onclick="fbq('track','ViewContent',{content_name:'ScadenzApp',content_category:'pricing'})">Inizia subito</a>
+        <div class="pricing-reassurance">Disdici quando vuoi</div>
+      </div>
+
+      <!-- Piano Pro -->
+      <div class="pricing-card">
+        <div class="pricing-price"><sup>€</sup>19<span>/mese</span></div>
+        <div class="pricing-note">fino a 100 invii · Disdici quando vuoi</div>
+        <ul class="pricing-features">
+          <li>Setup completo fatto da noi</li>
+          <li>Pannello di controllo dedicato</li>
+          <li>Messaggio WhatsApp personalizzabile</li>
+          <li>Invio con 1 clic</li>
+          <li>Supporto via email incluso</li>
+          <li>Nessun contratto annuale</li>
+        </ul>
+        <a class="pricing-cta" href="#cta-finale" onclick="fbq('track','ViewContent',{content_name:'ScadenzApp',content_category:'pricing'})">Inizia subito</a>
+        <div class="pricing-reassurance">Disdici quando vuoi</div>
+      </div>
+
+      <!-- Piano Studio (featured) -->
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Offerta lancio · primi iscritti</div>
+        <div class="pricing-old">€59/mese</div>
+        <div class="pricing-price"><sup>€</sup>29<span>/mese</span></div>
+        <div class="pricing-note">fino a 250 invii · Disdici quando vuoi</div>
+        <ul class="pricing-features">
+          <li>Setup completo fatto da noi</li>
+          <li>Pannello di controllo dedicato</li>
+          <li>Messaggio WhatsApp personalizzabile</li>
+          <li>Invio a tutti i tuoi clienti con 1 clic</li>
+          <li>Supporto via email incluso</li>
+          <li>Nessun contratto annuale</li>
+        </ul>
+        <a class="pricing-cta" href="#cta-finale" onclick="fbq('track','ViewContent',{content_name:'ScadenzApp',content_category:'pricing'})">Inizia subito</a>
+        <div class="pricing-reassurance">Disdici quando vuoi</div>
+      </div>
+
     </div>
   </div>
 </section>
