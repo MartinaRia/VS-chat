@@ -20,7 +20,7 @@
       fetch('https://meta-capi.martina-ria.workers.dev',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({event_name:name,event_id:id,event_source_url:window.location.href,custom_data:data||{},test_event_code:'TEST64404'})
+        body:JSON.stringify({event_name:name,event_id:id,event_source_url:window.location.href,custom_data:data||{}})
       }).catch(function(){});
     }
   </script>
