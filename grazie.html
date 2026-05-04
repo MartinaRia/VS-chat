@@ -154,6 +154,10 @@
     .divider::after  { right: 0; }
   </style>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="dbcdf8fa-70f6-4845-8787-f057298d2dfb"></script>
+  <!-- Facebook Pixel Code -->
+  <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '4298912547016195'); fbq('track', 'PageView');</script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=4298912547016195&ev=PageView&noscript=1"/></noscript>
+  <!-- End Facebook Pixel Code -->
 </head>
 <body>
   <!-- Stato default: opt-out -->
@@ -186,6 +190,7 @@
       document.title = 'Messaggio ricevuto – ScadenzApp';
       document.getElementById('card-default').style.display = 'none';
       document.getElementById('card-scadenzapp').style.display = 'block';
+      fbq('track', 'Contact', { content_name: 'ScadenzApp', content_category: 'form' });
     }
   </script>
 </body>
