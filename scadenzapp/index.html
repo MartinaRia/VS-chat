@@ -135,41 +135,40 @@
     /* HERO */
     .hero {
       padding: 60px 2rem 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.15);
-      background: linear-gradient(330deg, #0f7a5a 0%, #16a57a 45%, #1ec48f 100%);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
     }
 
-    .hero h1 { color: #ffffff; }
-
-
+    .hero h1 { color: var(--text); }
 
     .hero .hero-tag {
-      background: rgba(255,255,255,0.18);
-      color: #ffffff;
+      background: #ffffff;
+      color: var(--green-dark);
+      border: 1px solid var(--green);
     }
 
-    .hero .hero-tag-dot { background: rgba(255,255,255,0.8); }
+    .hero .hero-tag-dot { background: var(--green); }
 
-    .hero .hero-sub { color: rgba(255,255,255,0.82); }
+    .hero .hero-sub { color: var(--text-mid); }
 
-    .hero .hero-bullets li { color: rgba(255,255,255,0.82); }
+    .hero .hero-bullets li { color: var(--text-mid); }
 
     .hero .hero-bullets li::before {
-      background-color: rgba(255,255,255,0.25);
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9l3 3 5-5' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+      background-color: var(--green-light);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9l3 3 5-5' stroke='%2316a57a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
     }
 
     .hero .btn-primary {
-      background: #ffffff;
-      color: var(--green-dark);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      background: var(--green);
+      color: #ffffff;
+      box-shadow: 0 4px 20px rgba(22,165,122,0.25);
     }
 
     .hero .btn-primary:hover {
-      background: rgba(255,255,255,0.9);
+      background: var(--green-dark);
     }
 
-    .hero .btn-ghost { color: rgba(255,255,255,0.75); }
+    .hero .btn-ghost { color: var(--text-mid); }
 
     .hero .container { display: grid; grid-template-columns: 3fr 2fr; gap: 10px; align-items: flex-start; }
 
@@ -335,7 +334,7 @@
     }
 
     .connector {
-      stroke: rgba(255,255,255,0.35);
+      stroke: var(--green);
       stroke-width: 1.5;
       fill: none;
       stroke-dasharray: 5 5;
@@ -1314,30 +1313,166 @@
     /* CTA FINALE */
     .cta-finale {
       background: linear-gradient(330deg, #0f7a5a 0%, #16a57a 45%, #1ec48f 100%);
-      color: white;
-      text-align: center;
+      padding: 80px 2rem;
     }
 
-    .cta-finale h2 {
+    .cta-finale-intro {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .cta-finale-intro h2 {
       font-size: clamp(28px, 4vw, 44px);
       font-weight: 700;
-      color: white;
-      margin-bottom: 16px;
+      color: #ffffff;
+      margin-bottom: 12px;
     }
 
-    .cta-finale p {
+    .cta-finale-intro p {
       font-size: 18px;
-      color: rgba(255,255,255,0.6);
-      font-weight: 500;
-      margin-bottom: 36px;
+      color: rgba(255,255,255,0.75);
+      font-weight: 400;
     }
 
-    .cta-finale-group {
+    .cta-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .cta-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .cta-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
+      flex-shrink: 0;
+    }
+
+    .cta-card-icon.green { background: var(--green-light); color: var(--green); }
+    .cta-card-icon.dark  { background: #e8e8e8; color: var(--black); }
+
+    .cta-card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .cta-card > p {
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    .btn-green {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green);
+      color: white;
+      padding: 14px 24px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s;
+      align-self: flex-start;
+    }
+
+    .btn-green:hover { background: var(--green-dark); }
+
+    /* Jotform embed dentro la card */
+    .cta-card-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cta-card-form .jf-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .cta-card-form label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-mid);
+    }
+
+    .cta-card-form input,
+    .cta-card-form textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-family: var(--font);
+      font-size: 15px;
+      color: var(--text);
+      background: white;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .cta-card-form input:focus,
+    .cta-card-form textarea:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(22,165,122,0.15);
+    }
+
+    .cta-card-form textarea { resize: vertical; min-height: 100px; }
+
+    .cta-card-form .jf-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .cta-card-form .btn-submit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--green);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font);
+      transition: background 0.2s;
+      width: 100%;
+      margin-top: 4px;
+    }
+
+    .cta-card-form .btn-submit:hover { background: var(--green-dark); }
+
+    .cta-card-form .form-note {
+      font-size: 12px;
+      color: var(--text-light);
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      .cta-cards { grid-template-columns: 1fr; }
+      .cta-card-form .jf-row { grid-template-columns: 1fr; }
+      .cta-finale { padding: 60px 1.5rem; }
     }
 
     .btn-white {
@@ -1395,6 +1530,14 @@
       margin-top: 20px;
       font-size: 15px;
       color: rgba(255,255,255,0.4);
+    }
+
+    /* CONFRONTA I PIANI CTA */
+    .confronta-piani-cta {
+      background: var(--green-light);
+      border-top: 1px solid rgba(22,165,122,0.2);
+      border-bottom: 1px solid rgba(22,165,122,0.2);
+      padding: 40px 2rem;
     }
 
     /* FOOTER */
@@ -1466,7 +1609,7 @@
     /* RESPONSIVE */
     @media (max-width: 900px) {
       .hero .container { grid-template-columns: 1fr; }
-      .hero-visual { display: block; margin-top: 36px; background: #16A57A; border-radius: 20px; box-shadow: 0 12px 48px rgba(0,0,0,0.22); border: 1px solid rgba(255,255,255,0.12); aspect-ratio: 1 / 1; background: #a7d6c840;}
+      .hero-visual { display: block; margin-top: 0; margin-bottom: 36px; aspect-ratio: 1 / 1; order: -1; }
       .screen-body { grid-template-columns: 1fr; }
       .screen-sidebar { display: none; }
       section { padding: 60px 1.25rem; }
@@ -1517,13 +1660,13 @@
     <div>
       <div class="hero-tag">
         <div class="hero-tag-dot"></div>
-        Notifiche WhatsApp per commercialisti
+        Notifiche WhatsApp per <strong>commercialisti</strong>
       </div>
-      <h1>Invia fino a 250 notifiche WhatsApp personalizzate, <br><em>con 1 clic!</em></h1>
-      <p class="hero-sub">Aggiorna il tuo excel in cloud, premi invio. Tutti i tuoi clienti ricevono una notifica di scadenza con nome e importo personalizzato.</p>
+      <h1>Invia fino a 250 notifiche WhatsApp personalizzate, <br><em style="color: var(--green);">con 1 clic!</em></h1>
+      <p class="hero-sub">Basta perdere tempo con i promemoria manuali.</p>
       <ul class="hero-bullets">
         <li>Nessuna configurazione tecnica da parte tua</li>
-        <li>Usa l'excel Google che già hai</li>
+        <li>Si integra con i tuoi file Excel</li>
         <li>Messaggio personalizzato per ogni cliente</li>
         <li>Abbonamento mensile, disdici quando vuoi</li>
       </ul>
@@ -1676,6 +1819,18 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- CONFRONTA I PIANI -->
+<section class="confronta-piani-cta">
+  <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
+    <div>
+      <div class="section-label">Piani</div>
+      <h2 style="font-size:clamp(22px,3vw,32px); font-weight:700; color:var(--text); margin-bottom:8px;">Confronta i piani</h2>
+      <p style="font-size:16px; color:var(--text-mid); max-width:480px;">Tre opzioni pensate per studi di diverse dimensioni. Disdici quando vuoi, senza vincoli.</p>
+    </div>
+    <a class="btn-primary" href="#prezzo" style="flex-shrink:0;" onclick="fbq('track','ViewContent',{content_name:'ScadenzApp',content_category:'pricing'})">Vedi i prezzi →</a>
   </div>
 </section>
 
@@ -1937,7 +2092,7 @@
           <li>Supporto via email incluso</li>
           <li>Nessun contratto annuale</li>
         </ul>
-        <a class="pricing-cta" href="#cta-finale" onclick="fbq('track','ViewContent',{content_name:'ScadenzApp',content_category:'pricing'})">Inizia subito</a>
+        <a class="pricing-cta" href="#cta-finale" onclick="fbq('track','InitiateCheckout',{content_name:'ScadenzApp',content_category:'pricing'})">Inizia subito</a>
         <div class="pricing-reassurance">Disdici quando vuoi</div>
       </div>
 
@@ -1953,7 +2108,7 @@
           <li>Supporto via email incluso</li>
           <li>Nessun contratto annuale</li>
         </ul>
-        <a class="pricing-cta" href="#cta-finale" onclick="fbq('track','ViewContent',{content_name:'ScadenzApp',content_category:'pricing'})">Inizia subito</a>
+        <a class="pricing-cta" href="#cta-finale" onclick="fbq('track','InitiateCheckout',{content_name:'ScadenzApp',content_category:'pricing'})">Inizia subito</a>
         <div class="pricing-reassurance">Disdici quando vuoi</div>
       </div>
 
@@ -1971,7 +2126,7 @@
           <li>Supporto via email incluso</li>
           <li>Nessun contratto annuale</li>
         </ul>
-        <a class="pricing-cta" href="#cta-finale" onclick="fbq('track','ViewContent',{content_name:'ScadenzApp',content_category:'pricing'})">Inizia subito</a>
+        <a class="pricing-cta" href="#cta-finale" onclick="fbq('track','InitiateCheckout',{content_name:'ScadenzApp',content_category:'pricing'})">Inizia subito</a>
         <div class="pricing-reassurance">Disdici quando vuoi</div>
       </div>
 
@@ -2189,24 +2344,66 @@
 
 <!-- CTA FINALE -->
 <section class="cta-finale" id="cta-finale">
-  <div class="container" style="text-align:center">
-    <h2>Basta perdere tempo con i promemoria manuali.</h2>
-    <p>Setup in 48 ore. Nessun impegno. Disdici quando vuoi.</p>
-    <div class="cta-finale-group">
-      <a class="btn-white" href="https://scadenzapp.base44.app/" target="_blank" rel="noopener noreferrer" onclick="fbq('track','Lead',{content_name:'ScadenzApp',content_category:'app_access'})">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+  <div class="cta-finale-intro">
+    <h2>Pronto a iniziare?</h2>
+    <p>Scegli come vuoi procedere.</p>
+  </div>
+  <div class="cta-cards">
+
+    <!-- Card 1: Accedi -->
+    <div class="cta-card">
+      <div class="cta-card-icon green">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+      </div>
+      <h3>Accedi a ScadenzApp gratuitamente</h3>
+      <p>Crea il tuo account, vedi ScadenzApp dall'interno e decidi se vuoi utilizzarlo. Nessun impegno.</p>
+      <a class="btn-green" href="https://scadenzapp.base44.app/" target="_blank" rel="noopener noreferrer" onclick="fbq('track','Lead',{content_name:'ScadenzApp',content_category:'app_access'})">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
         Accedi gratis
       </a>
-      <a class="btn-black" href="https://calendly.com/martinaria/scadenzapp" target="_blank" rel="noopener noreferrer" onclick="fbq('track','Schedule',{content_name:'ScadenzApp',content_category:'calendly'})">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Prenota una riunione conoscitiva
-      </a>
-      <a class="btn-outline-white" href="mailto:hello@martinaria.it" onclick="fbq('track','Contact',{content_name:'ScadenzApp',content_category:'email'})">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Scrivimi una mail
-      </a>
     </div>
-    <div class="cta-finale-reassurance">Setup incluso · Supporto diretto</div>
+
+    <!-- Card 2: Contattami con form Jotform -->
+    <div class="cta-card">
+      <div class="cta-card-icon dark">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <h3>Contattami per maggiori informazioni</h3>
+      <p>Hai domande o vuoi capire se ScadenzApp fa al caso tuo? Scrivimi direttamente.</p>
+      <form class="cta-card-form" action="https://eu-submit.jotform.com/submit/253452281146050" method="post" accept-charset="utf-8" autocomplete="off" onsubmit="fbq('track','Contact',{content_name:'ScadenzApp',content_category:'form'})">
+        <input type="hidden" name="formID" value="253452281146050" />
+        <input type="hidden" name="simple_spc" value="253452281146050-253452281146050" />
+        <input type="hidden" name="thankurl" value="https://martinaria.it/grazie?motivo=invio_form_scadenzapp" />
+        <div class="jf-row">
+          <div class="jf-field">
+            <label for="jf_nome">Nome *</label>
+            <input type="text" id="jf_nome" name="q3_nome[first]" placeholder="Mario" required>
+          </div>
+          <div class="jf-field">
+            <label for="jf_cognome">Cognome *</label>
+            <input type="text" id="jf_cognome" name="q3_nome[last]" placeholder="Rossi" required>
+          </div>
+        </div>
+        <div class="jf-field">
+          <label for="jf_email">E-mail *</label>
+          <input type="email" id="jf_email" name="q4_email" placeholder="latua@mail.it" required>
+        </div>
+        <div class="jf-field">
+          <label for="jf_tel">Telefono</label>
+          <input type="text" id="jf_tel" name="q8_numeroDi" placeholder="3241234567">
+        </div>
+        <div class="jf-field">
+          <label for="jf_msg">Messaggio</label>
+          <textarea id="jf_msg" name="q6_riepilogo" placeholder="Scrivi qui la tua domanda…"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Invia messaggio
+        </button>
+        <p class="form-note">Rispondo entro 24 ore · Nessuno spam</p>
+      </form>
+    </div>
+
   </div>
 </section>
 
