@@ -12,6 +12,18 @@
   <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '4298912547016195'); fbq('track', 'PageView');</script>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=4298912547016195&ev=PageView&noscript=1"/></noscript>
   <!-- End Facebook Pixel Code -->
+  <script>
+    function _eid(){return Date.now().toString(36)+Math.random().toString(36).slice(2);}
+    function trackEvent(name,data){
+      var id=_eid();
+      fbq('track',name,data||{},{eventID:id});
+      fetch('https://meta-capi.martina-ria.workers.dev',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({event_name:name,event_id:id,event_source_url:window.location.href,custom_data:data||{}})
+      }).catch(function(){});
+    }
+  </script>
   <script type="text/javascript" src="https://embeds.iubenda.com/widgets/f88d360b-0a85-4a22-8ec6-6b6dc339836f.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1651,7 +1663,7 @@
     <div class="nav-logo-mark"><img src="../assets/logo-scadenzapp.webp" alt="ScadenzApp"></div>
     <span class="nav-logo-text">Scadenz<span>App</span></span>
   </a>
-  <a class="nav-cta" href="#cta-finale" onclick="fbq('track','ViewContent',{content_name:'ScadenzApp',content_category:'landing'})">Inizia subito</a>
+  <a class="nav-cta" href="#cta-finale" onclick="trackEvent('ViewContent',{content_name:'ScadenzApp',content_category:'landing'})">Inizia subito</a>
 </nav>
 
 <!-- HERO -->
@@ -1671,7 +1683,7 @@
         <li>Abbonamento mensile, disdici quando vuoi</li>
       </ul>
       <div class="cta-group">
-        <a class="btn-primary" href="#cta-finale" onclick="fbq('track','ViewContent',{content_name:'ScadenzApp',content_category:'landing'})">Inizia subito</a>
+        <a class="btn-primary" href="#cta-finale" onclick="trackEvent('ViewContent',{content_name:'ScadenzApp',content_category:'landing'})">Inizia subito</a>
         <span class="btn-ghost" onclick="document.querySelector('.come-funziona').scrollIntoView({behavior:'smooth'})">Guarda come funziona →</span>
       </div>
     </div>
@@ -1830,7 +1842,7 @@
       <h2 style="font-size:clamp(22px,3vw,32px); font-weight:700; color:var(--text); margin-bottom:8px;">Confronta i piani</h2>
       <p style="font-size:16px; color:var(--text-mid); max-width:480px;">Tre opzioni pensate per studi di diverse dimensioni. Disdici quando vuoi, senza vincoli.</p>
     </div>
-    <a class="btn-primary" href="#prezzo" style="flex-shrink:0;" onclick="fbq('track','ViewContent',{content_name:'ScadenzApp',content_category:'pricing'})">Vedi i prezzi →</a>
+    <a class="btn-primary" href="#prezzo" style="flex-shrink:0;" onclick="trackEvent('ViewContent',{content_name:'ScadenzApp',content_category:'pricing'})">Vedi i prezzi →</a>
   </div>
 </section>
 
@@ -2092,7 +2104,7 @@
           <li>Supporto via email incluso</li>
           <li>Nessun contratto annuale</li>
         </ul>
-        <a class="pricing-cta" href="#cta-finale" onclick="fbq('track','InitiateCheckout',{content_name:'ScadenzApp',content_category:'pricing'})">Inizia subito</a>
+        <a class="pricing-cta" href="#cta-finale" onclick="trackEvent('InitiateCheckout',{content_name:'ScadenzApp',content_category:'pricing'})">Inizia subito</a>
         <div class="pricing-reassurance">Disdici quando vuoi</div>
       </div>
 
@@ -2108,7 +2120,7 @@
           <li>Supporto via email incluso</li>
           <li>Nessun contratto annuale</li>
         </ul>
-        <a class="pricing-cta" href="#cta-finale" onclick="fbq('track','InitiateCheckout',{content_name:'ScadenzApp',content_category:'pricing'})">Inizia subito</a>
+        <a class="pricing-cta" href="#cta-finale" onclick="trackEvent('InitiateCheckout',{content_name:'ScadenzApp',content_category:'pricing'})">Inizia subito</a>
         <div class="pricing-reassurance">Disdici quando vuoi</div>
       </div>
 
@@ -2126,7 +2138,7 @@
           <li>Supporto via email incluso</li>
           <li>Nessun contratto annuale</li>
         </ul>
-        <a class="pricing-cta" href="#cta-finale" onclick="fbq('track','InitiateCheckout',{content_name:'ScadenzApp',content_category:'pricing'})">Inizia subito</a>
+        <a class="pricing-cta" href="#cta-finale" onclick="trackEvent('InitiateCheckout',{content_name:'ScadenzApp',content_category:'pricing'})">Inizia subito</a>
         <div class="pricing-reassurance">Disdici quando vuoi</div>
       </div>
 
@@ -2357,7 +2369,7 @@
       </div>
       <h3>Accedi a ScadenzApp gratuitamente</h3>
       <p>Crea il tuo account, vedi ScadenzApp dall'interno e decidi se vuoi utilizzarlo. Nessun impegno.</p>
-      <a class="btn-green" href="https://scadenzapp.base44.app/" target="_blank" rel="noopener noreferrer" onclick="fbq('track','Lead',{content_name:'ScadenzApp',content_category:'app_access'})">
+      <a class="btn-green" href="https://scadenzapp.base44.app/" target="_blank" rel="noopener noreferrer" onclick="trackEvent('Lead',{content_name:'ScadenzApp',content_category:'app_access'})">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
         Accedi gratis
       </a>
