@@ -179,6 +179,13 @@
     <p>Grazie per averci fatto sapere. Non riceverà ulteriori comunicazioni su questo argomento.</p>
   </div>
 
+  <!-- Stato risposta lead social -->
+  <div class="card card-default" id="card-lead-social" style="display:none">
+    <div class="icon">✓</div>
+    <h1>Ricevuto</h1>
+    <p>Grazie per la risposta</p>
+  </div>
+
   <!-- Stato ScadenzApp: dopo invio form contatto -->
   <div class="card card-scadenzapp" id="card-scadenzapp">
     <div class="check-circle">
@@ -197,8 +204,12 @@
   <script>
     const params = new URLSearchParams(window.location.search);
     const motivo = params.get('motivo') || '';
+    const motivoLeadSocial = params.get('motivo_lead_social') || '';
 
-    if (motivo === 'invio_form_scadenzapp') {
+    if (motivoLeadSocial) {
+      document.getElementById('card-default').style.display = 'none';
+      document.getElementById('card-lead-social').style.display = 'block';
+    } else if (motivo === 'invio_form_scadenzapp') {
       document.title = 'Messaggio ricevuto – ScadenzApp';
       document.getElementById('card-default').style.display = 'none';
       document.getElementById('card-scadenzapp').style.display = 'block';
